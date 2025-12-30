@@ -286,6 +286,41 @@ result = platform.query(
 
 ---
 
+## Future Work & Open Problems
+
+Tokenomics is intentionally early-stage and experimental.  
+The following are open technical problems (not roadmap promises) where contributions are especially valuable:
+
+- **3-class complexity classification**  
+  The current ML model predicts two classes (simple/medium), with heuristic escalation to "complex".
+  An open direction is collecting 3-class training data and evaluating whether ML-based
+  "complex" prediction improves routing outcomes without degrading cost savings.
+
+- **Distributed and reproducible routing state**  
+  Adaptive routing currently uses file-backed state for simplicity.
+  Designing a pluggable, concurrency-safe backend (e.g., SQLite or Redis) that preserves
+  reproducibility and debuggability remains an open systems challenge.
+
+- **Evaluation and quality regression bounds**  
+  Tokenomics measures cost and latency reliably, but defining repeatable benchmarks and
+  enforcing quality regression guardrails for routing and compression decisions
+  is an ongoing area of work.
+
+- **Observability and explainability of routing decisions**  
+  Understanding *why* a particular model, strategy, or escalation path was chosen
+  is critical for trust and debugging. Improving structured logging, traceability,
+  and decision explainability is an open area.
+
+- **Cache semantics and invalidation strategies**  
+  Both exact and semantic caching are powerful but subtle.
+  Defining robust invalidation, TTL, and trust-decay policies for cached LLM outputs
+  remains an open problem.
+
+These are areas of active exploration; thoughtful experiments, design discussions,
+and incremental contributions are welcome.
+
+---
+
 ## License
 
 MIT License - see [LICENSE](LICENSE)
