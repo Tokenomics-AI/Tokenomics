@@ -1,0 +1,6 @@
+{
+  "model_type": "XGBoost Classifier",
+  "trained_at": "2025-12-29T12:27:00.008758",
+  "model_trained": true,
+  "feature_count": 13
+}

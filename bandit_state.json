@@ -1,0 +1,42 @@
+{
+  "total_pulls": 3274,
+  "query_count": 3274,
+  "arms": {
+    "cheap": {
+      "pulls": 2808,
+      "total_reward": 2650.671045606739,
+      "average_reward": 0.94397117008787,
+      "routing_metrics": {
+        "total_cost": 1.1424451500000008,
+        "total_tokens": 1094111,
+        "total_latency_ms": 27283336.938381195,
+        "total_quality": 2797.2999999999993,
+        "query_count": 2808
+      }
+    },
+    "balanced": {
+      "pulls": 464,
+      "total_reward": 432.23896207921405,
+      "average_reward": 0.9315494872396854,
+      "routing_metrics": {
+        "total_cost": 0.21581695000000012,
+        "total_tokens": 225083,
+        "total_latency_ms": 6296722.202062607,
+        "total_quality": 461.90000000000003,
+        "query_count": 464
+      }
+    },
+    "premium": {
+      "pulls": 2,
+      "total_reward": 1.7002838859067757,
+      "average_reward": 0.8501419429533879,
+      "routing_metrics": {
+        "total_cost": 0.004435,
+        "total_tokens": 1774,
+        "total_latency_ms": 26781.56042098999,
+        "total_quality": 2.0,
+        "query_count": 2
+      }
+    }
+  }
+}

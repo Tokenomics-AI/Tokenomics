@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenomics Diagnostic Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --accent-cyan: #00d4ff;
+            --accent-green: #00ff88;
+            --accent-purple: #a855f7;
+            --accent-orange: #ff6b35;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border: #2a2a4a;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid var(--accent-cyan);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
+        
+        .grid { display: grid; gap: 20px; margin-bottom: 30px; }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        
+        @media (max-width: 1200px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+        
+        .stat-card {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+        
+        .stat-value.green { color: var(--accent-green); }
+        .stat-value.purple { color: var(--accent-purple); }
+        .stat-value.orange { color: var(--accent-orange); }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--bg-secondary);
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        
+        tr:hover { background: var(--bg-secondary); }
+        
+        .status-ok { color: var(--accent-green); }
+        .status-warn { color: var(--accent-orange); }
+        .status-fail { color: #ff4757; }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .badge-green { background: rgba(0, 255, 136, 0.2); color: var(--accent-green); }
+        .badge-cyan { background: rgba(0, 212, 255, 0.2); color: var(--accent-cyan); }
+        .badge-purple { background: rgba(168, 85, 247, 0.2); color: var(--accent-purple); }
+        .badge-orange { background: rgba(255, 107, 53, 0.2); color: var(--accent-orange); }
+        
+        .component-list { list-style: none; }
+        .component-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .llmlingua-highlight {
+            background: linear-gradient(135deg, var(--bg-card), rgba(0, 212, 255, 0.1));
+            border: 2px solid var(--accent-cyan);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tokenomics Diagnostic Results</h1>
+            <p class="subtitle">Comprehensive Platform Test Suite</p>
+            <p class="subtitle">Test Date: 2025-12-14 19:32:03 | Duration: 819.2s</p>
+        </header>
+        
+        <!-- Summary Stats -->
+        <div class="grid grid-4">
+            <div class="card stat-card">
+                <div class="stat-value">98.1%</div>
+                <div class="stat-label">Success Rate (51/52)</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value green">8,161</div>
+                <div class="stat-label">Tokens Saved</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value purple">5</div>
+                <div class="stat-label">LLMLingua Compressions</div>
+            </div>
+            <div class="card stat-card">
+                <div class="stat-value orange">0.9671</div>
+                <div class="stat-label">Avg Bandit Reward</div>
+            </div>
+        </div>
+        
+        <!-- LLMLingua Section -->
+        <div class="card llmlingua-highlight">
+            <h2>LLMLingua Compression</h2>
+            <div class="grid grid-4">
+                <div class="stat-card">
+                    <div class="stat-value">✅</div>
+                    <div class="stat-label">Status</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">Context Compressions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Query Compressions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">2,138</div>
+                    <div class="stat-label">Tokens Saved</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Charts -->
+        <div class="grid grid-3" style="margin-top: 30px;">
+            <div class="card">
+                <h2>Cache Performance</h2>
+                <div class="chart-container">
+                    <canvas id="cacheChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Strategy Distribution</h2>
+                <div class="chart-container">
+                    <canvas id="strategyChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Query Complexity</h2>
+                <div class="chart-container">
+                    <canvas id="complexityChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Component Health -->
+        <div class="card" style="margin-top: 30px;">
+            <h2>Component Health</h2>
+            <ul class="component-list">
+                <li><span>Exact Cache</span><span class="status-ok">OK</span></li>
+                <li><span>Semantic Cache</span><span class="status-ok">OK</span></li>
+                <li><span>LLMLingua</span><span class="status-ok">OK</span></li>
+                <li><span>User Preferences</span><span class="status-ok">OK</span></li>
+                <li><span>Memory Layer</span><span class="status-ok">OK</span></li>
+                <li><span>Orchestrator</span><span class="status-ok">OK</span></li>
+                <li><span>Bandit Optimizer</span><span class="status-ok">OK</span></li>
+                <li><span>Quality Judge</span><span class="status-ok">OK</span></li>
+                <li><span>LLM Provider</span><span class="status-ok">OK</span></li>
+            </ul>
+        </div>
+        
+        <!-- Results Table -->
+        <div class="card" style="margin-top: 30px;">
+            <h2>Query Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Category</th>
+                        <th>Cache</th>
+                        <th>Compressed</th>
+                        <th>Strategy</th>
+                        <th>Tokens Saved</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>exact_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>154</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>exact_cache</td>
+                        <td><span class="badge badge-purple">exact</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>313</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>exact_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>203</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>exact_cache</td>
+                        <td><span class="badge badge-purple">exact</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>312</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>exact_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>167</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>exact_cache</td>
+                        <td><span class="badge badge-purple">exact</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>315</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">semantic_direct</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>317</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>91</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>semantic_cache</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge badge-cyan">Yes</span></td>
+                        <td>cheap</td>
+                        <td>418</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge badge-cyan">Yes</span></td>
+                        <td>cheap</td>
+                        <td>533</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge badge-cyan">Yes</span></td>
+                        <td>cheap</td>
+                        <td>372</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge badge-cyan">Yes</span></td>
+                        <td>cheap</td>
+                        <td>445</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>56</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>compression</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>orchestrator</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>2</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>1</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>71</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td>bandit</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>80</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td>preferences</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td>preferences</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>1</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td>preferences</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>11</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td>preferences</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td>preferences</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>212</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td>preferences</td>
+                        <td><span class="badge badge-purple">context</span></td>
+                        <td><span class="badge badge-cyan">Yes</span></td>
+                        <td>cheap</td>
+                        <td>153</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td>edge_case</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>-</td>
+                        <td>0</td>
+                        <td class="status-fail">FAIL</td>
+                    </tr>
+                    <tr>
+                        <td>46</td>
+                        <td>edge_case</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>1</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>47</td>
+                        <td>edge_case</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>15</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td>edge_case</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>49</td>
+                        <td>quality</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td>quality</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>12</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>51</td>
+                        <td>quality</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>0</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                    <tr>
+                        <td>52</td>
+                        <td>quality</td>
+                        <td><span class="badge badge-purple">miss</span></td>
+                        <td><span class="badge ">No</span></td>
+                        <td>cheap</td>
+                        <td>90</td>
+                        <td class="status-ok">OK</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <footer>
+            <p>Generated by Tokenomics Platform Diagnostic Suite</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Cache Chart
+        new Chart(document.getElementById('cacheChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Exact Hit', 'Semantic Direct', 'Context Injection', 'Miss'],
+                datasets: [{ data: [3, 1, 1, 47], backgroundColor: ["#00ff88", "#00d4ff", "#a855f7", "#ff4757"] }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { color: '#fff' } } }
+            }
+        });
+        
+        // Strategy Chart
+        new Chart(document.getElementById('strategyChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Cheap', 'Balanced', 'Premium'],
+                datasets: [{ label: "Uses", data: [51, 0, 0], backgroundColor: ["#00ff88", "#00d4ff", "#a855f7"] }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { ticks: { color: '#fff' } }, x: { ticks: { color: '#fff' } } }
+            }
+        });
+        
+        // Complexity Chart
+        new Chart(document.getElementById('complexityChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Simple', 'Medium', 'Complex'],
+                datasets: [{ data: [42, 4, 5], backgroundColor: ["#00ff88", "#00d4ff", "#a855f7"] }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { color: '#fff' } } }
+            }
+        });
+    </script>
+</body>
+</html>

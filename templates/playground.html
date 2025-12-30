@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block title %}Tokenomics Playground - Interactive Testing{% endblock %}
+
+{% block content %}
+<div class="playground-container">
+    <!-- Mode Toggle -->
+    <div class="mode-toggle">
+        <button class="mode-btn active" data-mode="explore" id="mode-explore">
+            <span class="mode-icon">💬</span>
+            <span class="mode-label">Explore</span>
+        </button>
+        <button class="mode-btn" data-mode="test" id="mode-test">
+            <span class="mode-icon">🧪</span>
+            <span class="mode-label">Test</span>
+        </button>
+    </div>
+
+    <!-- Explore Mode (Chat Interface) -->
+    <div class="playground-mode" id="explore-mode">
+        <div class="explore-layout">
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="chat-messages" id="explore-chat-messages">
+                    <div class="welcome-message">
+                        <h3>Welcome to Tokenomics Playground</h3>
+                        <p>Ask me anything and see how Tokenomics optimizes your queries!</p>
+                        <p class="welcome-hint">Every response shows cost savings, efficiency gains, and decision transparency.</p>
+                    </div>
+                </div>
+                
+                <!-- Chat Input -->
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper">
+                        <textarea 
+                            id="explore-chat-input" 
+                            class="chat-input" 
+                            rows="1" 
+                            placeholder="Ask me anything..."
+                            maxlength="2000"></textarea>
+                        <button id="explore-send-btn" class="btn btn-primary send-btn">
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Value Dashboard Panel -->
+            <div class="value-dashboard">
+                <h3>Value Dashboard</h3>
+                <div class="value-stats">
+                    <div class="value-stat">
+                        <div class="value-label">Total Saved</div>
+                        <div class="value-amount" id="total-cost-saved">$0.00</div>
+                        <div class="value-percent" id="total-cost-saved-percent">0%</div>
+                    </div>
+                    <div class="value-stat">
+                        <div class="value-label">Tokens Saved</div>
+                        <div class="value-amount" id="total-tokens-saved">0</div>
+                    </div>
+                    <div class="value-stat">
+                        <div class="value-label">Queries Processed</div>
+                        <div class="value-amount" id="queries-count">0</div>
+                    </div>
+                </div>
+                
+                <div class="value-charts">
+                    <div class="value-chart-container">
+                        <h4>Strategy Distribution</h4>
+                        <canvas id="strategy-chart"></canvas>
+                    </div>
+                    <div class="value-chart-container">
+                        <h4>Cache Performance</h4>
+                        <canvas id="cache-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Mode (Experiment Interface) -->
+    <div class="playground-mode hidden" id="test-mode">
+        <div class="test-layout">
+            <!-- Query Input Section -->
+            <div class="test-input-section">
+                <div class="input-group">
+                    <label for="test-query-input">Enter Query:</label>
+                    <textarea 
+                        id="test-query-input" 
+                        class="test-query-input" 
+                        rows="3" 
+                        placeholder="Enter your query here..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="batch-mode">
+                        Batch Mode (one query per line)
+                    </label>
+                </div>
+                
+                <div class="input-group">
+                    <button id="test-run-btn" class="btn btn-primary">Run Comparison</button>
+                    <button id="test-clear-btn" class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+            
+            <!-- Results Section -->
+            <div class="test-results" id="test-results">
+                <div class="results-placeholder">
+                    <p>Enter a query and click "Run Comparison" to see A/B results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Value Card Template -->
+<template id="value-card-template">
+    <div class="value-card">
+        <div class="value-card-header">
+            <h4>💰 Value Breakdown</h4>
+        </div>
+        <div class="value-card-content">
+            <div class="value-metric primary">
+                <div class="metric-label">Cost Savings</div>
+                <div class="metric-value savings" id="value-cost-savings">$0.00</div>
+                <div class="metric-percent" id="value-cost-percent">0%</div>
+            </div>
+            <div class="value-metric">
+                <div class="metric-label">Token Efficiency</div>
+                <div class="metric-value" id="value-token-savings">0 tokens</div>
+                <div class="metric-desc" id="value-token-desc">0% fewer than baseline</div>
+            </div>
+            <div class="value-metric">
+                <div class="metric-label">Performance</div>
+                <div class="metric-value" id="value-latency">0ms</div>
+                <div class="metric-desc" id="value-latency-desc">0% faster</div>
+            </div>
+            <div class="value-decisions">
+                <div class="decision-item">
+                    <span class="decision-label">Strategy:</span>
+                    <span class="decision-value badge" id="value-strategy">-</span>
+                </div>
+                <div class="decision-item">
+                    <span class="decision-label">Model:</span>
+                    <span class="decision-value" id="value-model">-</span>
+                </div>
+                <div class="decision-item" id="value-cache-item" style="display: none;">
+                    <span class="decision-label">Cache:</span>
+                    <span class="decision-value badge badge-cache">⚡ FROM MEMORY</span>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-link" onclick="toggleDecisionDetails(this)">
+                Show Decision Details
+            </button>
+            <div class="decision-details hidden" id="value-decision-details">
+                <!-- Decision chain will be inserted here -->
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- A/B Comparison Card Template -->
+<template id="ab-card-template">
+    <div class="ab-comparison-card">
+        <div class="ab-header">
+            <h4 class="ab-query-title" id="ab-query">Query</h4>
+        </div>
+        <div class="ab-cards-container">
+            <!-- Baseline Card -->
+            <div class="ab-card baseline-card">
+                <div class="card-header">
+                    <h5>Baseline</h5>
+                    <span class="card-badge">No Optimization</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-response">
+                        <div class="response-label">Response:</div>
+                        <div class="response-text" id="ab-baseline-response">-</div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">Tokens:</span>
+                            <span class="metric-value" id="ab-baseline-tokens">0</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Cost:</span>
+                            <span class="metric-value" id="ab-baseline-cost">$0.00</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Latency:</span>
+                            <span class="metric-value" id="ab-baseline-latency">0ms</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Model:</span>
+                            <span class="metric-value" id="ab-baseline-model">gpt-4o</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-link" onclick="toggleCardDetails(this, 'baseline')">
+                        Show Details
+                    </button>
+                    <div class="card-details hidden" id="ab-baseline-details">
+                        <!-- Details will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comparison Bar -->
+            <div class="ab-comparison-bar">
+                <div class="comparison-metric">
+                    <div class="comparison-label">Token Savings</div>
+                    <div class="comparison-value savings" id="ab-token-savings">-0</div>
+                    <div class="comparison-percent" id="ab-token-percent">0%</div>
+                </div>
+                <div class="comparison-metric">
+                    <div class="comparison-label">Cost Savings</div>
+                    <div class="comparison-value savings" id="ab-cost-savings">-$0.00</div>
+                    <div class="comparison-percent" id="ab-cost-percent">0%</div>
+                </div>
+                <div class="comparison-metric">
+                    <div class="comparison-label">Latency</div>
+                    <div class="comparison-value" id="ab-latency-reduction">-0ms</div>
+                    <div class="comparison-percent" id="ab-latency-percent">0%</div>
+                </div>
+            </div>
+            
+            <!-- Tokenomics Card -->
+            <div class="ab-card tokenomics-card">
+                <div class="card-header">
+                    <h5>Tokenomics</h5>
+                    <span class="card-badge optimized">Optimized</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-response">
+                        <div class="response-label">Response:</div>
+                        <div class="response-text" id="ab-tokenomics-response">-</div>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric-row">
+                            <span class="metric-label">Tokens:</span>
+                            <span class="metric-value" id="ab-tokenomics-tokens">0</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Cost:</span>
+                            <span class="metric-value" id="ab-tokenomics-cost">$0.00</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Latency:</span>
+                            <span class="metric-value" id="ab-tokenomics-latency">0ms</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Model:</span>
+                            <span class="metric-value" id="ab-tokenomics-model">-</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Strategy:</span>
+                            <span class="metric-value badge" id="ab-tokenomics-strategy">-</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-link" onclick="toggleCardDetails(this, 'tokenomics')">
+                        Show Decision Chain
+                    </button>
+                    <div class="card-details hidden" id="ab-tokenomics-details">
+                        <!-- Decision chain will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/playground.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+

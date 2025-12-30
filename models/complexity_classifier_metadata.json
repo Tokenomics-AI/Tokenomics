@@ -1,0 +1,11 @@
+{
+  "model_type": "XGBoost Multi-Class Classifier",
+  "trained_at": "2025-12-29T12:27:00.037459",
+  "model_trained": true,
+  "num_classes": 2,
+  "class_to_complexity": {
+    "0": "simple",
+    "1": "medium"
+  },
+  "feature_count": 14
+}

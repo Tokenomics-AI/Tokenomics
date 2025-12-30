@@ -1,0 +1,637 @@
+﻿python : `torch_dtype` is deprecated! Use `dtype` instead!
+At C:\Users\HOME\AppData\Local\Temp\ps-script-31c21cdb-3772-4139-a386-73c94d3278e5.ps1:7 char:35
++ ... mics\Prototype; python test_comprehensive_diagnostics.py 2>&1 | Out-F ...
++                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (`torch_dtype` i...dtype` instead!:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+================================================================================
+COMPREHENSIVE DIAGNOSTIC TEST SUITE
+================================================================================
+Start Time: 2025-12-13T09:55:52.010191
+
+================================================================================
+INITIALIZING PLATFORM
+================================================================================
+[OK] API key found: sk-proj-Rk...
+[OK] Configuration loaded:
+  - LLM Provider: openai
+  - LLM Model: gpt-4o-mini
+  - Cache Size: 1000
+  - LLMLingua Enabled: True
+  - Quality Judge Enabled: True
+{"error": "Failed to initialize LLMLingua-2: Using a `device_map`, `tp_plan`, `torch.device` context manager or setting `torch.set_default_device(device)` requires `accelerate`. You can install it with `pip install accelerate`", "model": "NousResearch/Llama-2-7b-hf", "event": "Failed to initialize LLMLingua-2"}
+{"event": "LLMLingua-2 initialization failed, falling back to simple compression"}
+[OK] Platform initialized successfully
+
+Component Status:
+  - Memory Layer: [OK]
+  - Orchestrator: [OK]
+  - Bandit: [OK]
+  - Quality Judge: [OK]
+  - LLMLingua: [FAIL]
+
+================================================================================
+CREATING TEST DATASET
+================================================================================
+[OK] Created 18 test queries
+  - Short: 3
+  - Medium: 3
+  - Long: 2
+  - Repeated: 3
+  - Similar: 3
+  - Complex: 2
+  - Simple: 2
+
+================================================================================
+TESTING COMPONENT HEALTH
+================================================================================
+[OK] Memory Layer: Healthy
+[OK] Orchestrator: Healthy
+[OK] Bandit Optimizer: Healthy (3 strategies)
+[OK] Quality Judge: Healthy
+[WARN] LLMLingua: Not available (using fallback)
+
+================================================================================
+TESTING COMPONENT FUNCTIONALITY
+================================================================================
+
+[Memory Layer] Testing Exact Cache...
+  [OK] Exact cache storage and retrieval working
+
+[Orchestrator] Testing Complexity Analysis...
+  [OK] Simple query complexity: simple
+  [OK] Complex query complexity: medium
+  [WARN] Complexity analysis may need adjustment
+
+[Bandit] Testing Strategy Selection...
+  [OK] Available strategies: 3
+    - cheap: gpt-4o-mini, max_tokens=300
+    - balanced: gpt-4o-mini, max_tokens=600
+    - premium: gpt-4o, max_tokens=1000
+  [OK] Strategy selection working: balanced
+
+[LLMLingua] Testing Compression...
+  [WARN] LLMLingua not available (using fallback)
+
+================================================================================
+RUNNING QUERY TESTS - USE CASE SCENARIOS
+================================================================================
+
+Test Groups:
+  - short: 3 queries
+  - medium: 3 queries
+  - long: 2 queries
+  - repeated: 3 queries
+  - similar: 3 queries
+  - complex: 2 queries
+  - simple: 2 queries
+
+[1/18] Query Test - SHORT
+
+  Testing: What is Python?...
+    Type: short
+    Baseline: 314 tokens, 5899ms
+    Optimized: 311 tokens, 18159ms
+    Savings: 3 tokens (1.0%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search
+    Preferences Applied: No (insufficient confidence or not enabled)
+    Preferences Applied: No (insufficient confidence or not enabled)
+    Operations: exact lookup, semantic search
+    [OK] Expected: Cheap strategy for simple query
+
+[2/18] Query Test - SHORT
+
+  Testing: Explain AI...
+    Type: short
+    Baseline: 521 tokens, 9125ms
+    Optimized: 309 tokens, 21420ms
+    Savings: 212 tokens (40.7%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search
+    Preferences Applied: No (insufficient confidence or not enabled)
+    Preferences Applied: No (insufficient confidence or not enabled)
+    Operations: exact lookup, semantic search
+    [OK] Expected: Cheap strategy for simple query
+
+[3/18] Query Test - SHORT
+
+  Testing: What is machine learning?...
+    Type: short
+    Baseline: 416 tokens, 7272ms
+    Optimized: 312 tokens, 12863ms
+    Savings: 104 tokens (25.0%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.50
+      Learned From: 3 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.50
+      Learned From: 3 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Cheap strategy for simple query
+
+[4/18] Query Test - MEDIUM
+
+  Testing: Explain how neural networks work in machine learning...
+    Type: medium
+    Baseline: 527 tokens, 8784ms
+    Optimized: 315 tokens, 17982ms
+    Savings: 212 tokens (40.2%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.60
+      Learned From: 4 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.60
+      Learned From: 4 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+
+[5/18] Query Test - MEDIUM
+
+  Testing: What are the main differences between supervised and unsuper...
+    Type: medium
+    Baseline: 532 tokens, 13614ms
+    Optimized: 320 tokens, 16744ms
+    Savings: 212 tokens (39.8%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.60
+      Learned From: 5 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.60
+      Learned From: 5 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+
+[6/18] Query Test - MEDIUM
+
+  Testing: Describe the process of training a deep learning model...
+    Type: medium
+    Baseline: 528 tokens, 8548ms
+    Optimized: 316 tokens, 18613ms
+    Savings: 212 tokens (40.2%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.60
+      Learned From: 6 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: paragraph
+      Confidence: 0.60
+      Learned From: 6 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+
+[7/18] Query Test - LONG
+
+  Testing: I need a comprehensive explanation of how transformer archit...
+    Type: long
+    Baseline: 598 tokens, 9633ms
+    Optimized: 386 tokens, 16533ms
+    Savings: 212 tokens (35.5%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.55
+      Learned From: 7 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.55
+      Learned From: 7 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [WARN] NOTE: Query compression not triggered (may be below threshold)
+
+[8/18] Query Test - LONG
+
+  Testing: Can you provide a detailed comparison between different clou...
+    Type: long
+    Baseline: 589 tokens, 11903ms
+    Optimized: 377 tokens, 18583ms
+    Savings: 212 tokens (36.0%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.55
+      Learned From: 8 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.55
+      Learned From: 8 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [WARN] NOTE: Query compression not triggered (may be below threshold)
+
+[9/18] Query Test - REPEATED
+
+  Testing: What is Python?...
+    Type: repeated
+    Baseline: 355 tokens, 8087ms
+    Optimized: 0 tokens, 1ms
+    Savings: 355 tokens (100.0%), 8086ms (100.0%)
+    Cache: exact hit
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache Hit: exact
+      Type: Exact match (no similarity needed)
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.65
+      Learned From: 9 interactions
+    Cache Type: Exact Match (direct retrieval)
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.65
+      Learned From: 9 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Exact cache hit confirmed
+
+[10/18] Query Test - REPEATED
+
+  Testing: What is Python?...
+    Type: repeated
+    Baseline: 373 tokens, 6590ms
+    Optimized: 0 tokens, 0ms
+    Savings: 373 tokens (100.0%), 6590ms (100.0%)
+    Cache: exact hit
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache Hit: exact
+      Type: Exact match (no similarity needed)
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.75
+      Learned From: 10 interactions
+    Cache Type: Exact Match (direct retrieval)
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.75
+      Learned From: 10 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Exact cache hit confirmed
+
+[11/18] Query Test - REPEATED
+
+  Testing: Explain AI...
+    Type: repeated
+    Baseline: 521 tokens, 13417ms
+    Optimized: 0 tokens, 0ms
+    Savings: 521 tokens (100.0%), 13417ms (100.0%)
+    Cache: exact hit
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache Hit: exact
+      Type: Exact match (no similarity needed)
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.85
+      Learned From: 11 interactions
+    Cache Type: Exact Match (direct retrieval)
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.85
+      Learned From: 11 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Exact cache hit confirmed
+
+[12/18] Query Test - SIMILAR
+
+  Testing: What is the Python programming language?...
+    Type: similar
+    Baseline: 372 tokens, 10829ms
+    Optimized: 0 tokens, 15ms
+    Savings: 372 tokens (100.0%), 10815ms (99.9%)
+    Cache: semantic_direct hit
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache Hit: semantic_direct
+      Type: Semantic direct return
+      Similarity: 0.900
+    Context Injected: No
+    Semantic Matches Found: 1
+      Top Similarity: 0.900
+    Operations: exact_lookup, semantic_search, semantic_matches_found, top_similarity, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.95
+      Learned From: 12 interactions
+    Cache Type: Semantic Direct (high similarity, direct return)
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.95
+      Learned From: 12 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Semantic cache working
+
+[13/18] Query Test - SIMILAR
+
+  Testing: Tell me about Python...
+    Type: similar
+    Baseline: 523 tokens, 11132ms
+    Optimized: 0 tokens, 13ms
+    Savings: 523 tokens (100.0%), 11119ms (99.9%)
+    Cache: semantic_direct hit
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache Hit: semantic_direct
+      Type: Semantic direct return
+      Similarity: 0.888
+    Context Injected: No
+    Semantic Matches Found: 1
+      Top Similarity: 0.888
+    Operations: exact_lookup, semantic_search, semantic_matches_found, top_similarity, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.95
+      Learned From: 13 interactions
+    Cache Type: Semantic Direct (high similarity, direct return)
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.95
+      Learned From: 13 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Semantic cache working
+
+[14/18] Query Test - SIMILAR
+
+  Testing: Can you explain what Python is?...
+    Type: similar
+    Baseline: 425 tokens, 11309ms
+    Optimized: 0 tokens, 9ms
+    Savings: 425 tokens (100.0%), 11301ms (99.9%)
+    Cache: semantic_direct hit
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache Hit: semantic_direct
+      Type: Semantic direct return
+      Similarity: 0.922
+    Context Injected: No
+    Semantic Matches Found: 1
+      Top Similarity: 0.922
+    Operations: exact_lookup, semantic_search, semantic_matches_found, top_similarity, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 1.00
+      Learned From: 14 interactions
+    Cache Type: Semantic Direct (high similarity, direct return)
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 1.00
+      Learned From: 14 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Semantic cache working
+
+[15/18] Query Test - COMPLEX
+
+  Testing: How does gradient descent work in machine learning, and what...
+    Type: complex
+    Baseline: 545 tokens, 11433ms
+    Optimized: 333 tokens, 18482ms
+    Savings: 212 tokens (38.9%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 1.00
+      Learned From: 15 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+Traceback (most recent call last):
+  File "D:\Nayan\Tokenomics\Prototype\test_comprehensive_diagnostics.py", line 1430, in <module>
+      Confidence: 1.00
+      Learned From: 15 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+
+[16/18] Query Test - COMPLEX
+
+  Testing: Explain the trade-offs between using a microservices archite...
+    Type: complex
+    Baseline: 543 tokens, 12848ms
+    Optimized: 331 tokens, 21407ms
+    Savings: 212 tokens (39.0%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+    main()
+  File "D:\Nayan\Tokenomics\Prototype\test_comprehensive_diagnostics.py", line 1407, in main
+      Tone: simple
+      Format: code
+      Confidence: 0.95
+      Learned From: 16 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.95
+      Learned From: 16 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+
+[17/18] Query Test - SIMPLE
+
+  Testing: What is the capital of France?...
+    Type: simple
+    Baseline: 21 tokens, 531ms
+    Optimized: 21 tokens, 2627ms
+    Savings: 0 tokens (0.0%), 0ms (0.0%)
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.90
+      Learned From: 17 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.90
+      Learned From: 17 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Cheap strategy for simple query
+
+[18/18] Query Test - SIMPLE
+
+  Testing: Who invented the telephone?...
+    Type: simple
+    Baseline: 105 tokens, 2104ms
+    Optimized: 82 tokens, 6121ms
+    Savings: 23 tokens (21.9%), 0ms (0.0%)
+    suite.save_report(report)
+  File "D:\Nayan\Tokenomics\Prototype\test_comprehensive_diagnostics.py", line 1097, in save_report
+    json.dump(report_dict, f, indent=2)
+  File "C:\Users\HOME\anaconda3\Lib\json\__init__.py", line 179, in dump
+    Strategy: cheap
+
+  [Memory Layer Analysis]
+    Cache: Miss
+    Semantic Search: No matches found
+    Context Injected: No
+    Operations: exact_lookup, semantic_search, preference_retrieval
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+      Confidence: 0.90
+      Learned From: 18 interactions
+    Preferences Applied: Yes
+      Tone: simple
+      Format: code
+    for chunk in iterable:
+      Confidence: 0.90
+      Learned From: 18 interactions
+    Operations: exact lookup, semantic search, preference retrieval
+    [OK] Expected: Cheap strategy for simple query
+
+================================================================================
+AGGREGATING METRICS
+================================================================================
+Total Queries: 18
+Successful: 18
+Failed: 0
+
+Token Savings: 4395 tokens (56.3%)
+Latency Reduction: -26512ms (-16.3%)
+
+Component Savings:
+  Memory Layer: 1864 tokens
+  Orchestrator: 1898 tokens
+  Bandit: 0 tokens
+  Compression: 0 tokens
+
+Cache Hit Rate: 33.3% (6/18)
+  Exact: 3, Semantic: 3
+
+Memory Layer Statistics:
+  Exact Cache Hits: 3
+  Semantic Direct Hits: 3
+  Context Injections: 0
+  Cache Misses: 12
+  Total Semantic Matches Found: 3
+  Average Similarity: 0.904
+  Context Tokens Injected: 0
+  Context Tokens Saved: 0
+  Preferences Used: 16 queries
+    Average Confidence: 0.77
+    Total Interactions Learned: 18
+    Tone Distribution: {'simple': 16}
+    Format Distribution: {'paragraph': 4, 'code': 12}
+
+================================================================================
+GENERATING DIAGNOSTICS
+================================================================================
+  File "C:\Users\HOME\anaconda3\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\HOME\anaconda3\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\HOME\anaconda3\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\HOME\anaconda3\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\HOME\anaconda3\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\HOME\anaconda3\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\HOME\anaconda3\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type BanditAlgorithm is not JSON serializable

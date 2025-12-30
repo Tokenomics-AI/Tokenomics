@@ -1,0 +1,48 @@
+flowchart TD
+    Start[User Query] --> CheckCache{Check Memory Layer}
+    
+    CheckCache -->|Exact Match| ExactHit[Exact Cache Hit<br/>Return Cached Response]
+    CheckCache -->|Semantic Match| SemanticHit[Semantic Cache Hit<br/>Context Injection]
+    CheckCache -->|Cache Miss| ProcessQuery[Process Query]
+    
+    SemanticHit --> CompressContext[Compress Context<br/>LLMLingua-2]
+    CompressContext --> ProcessQuery
+    
+    ProcessQuery --> AnalyzeComplexity[Analyze Query Complexity<br/>Simple/Medium/Complex]
+    
+    AnalyzeComplexity --> SelectStrategy[Bandit: Select Strategy<br/>RouterBench Cost-Aware]
+    
+    SelectStrategy --> CreatePlan[Orchestrator: Create Query Plan<br/>Token Allocation]
+    
+    CreatePlan --> CompressQuery{Query Length<br/>> Threshold?}
+    CompressQuery -->|Yes| CompressQueryLLM[Compress Query<br/>LLMLingua-2]
+    CompressQuery -->|No| BuildPrompt[Build Prompt]
+    CompressQueryLLM --> BuildPrompt
+    
+    BuildPrompt --> CallLLM[Call LLM Provider<br/>Selected Model]
+    
+    CallLLM --> GetResponse[Get Response]
+    
+    GetResponse --> JudgeQuality[Quality Judge<br/>Evaluate Response]
+    
+    JudgeQuality --> StoreResult[Store in Memory Layer]
+    JudgeQuality --> UpdateBandit[Update Bandit Rewards]
+    
+    StoreResult --> ReturnResponse[Return Response to User]
+    UpdateBandit --> ReturnResponse
+    ExactHit --> ReturnResponse
+    
+    style Start fill:#e1f5ff
+    style ExactHit fill:#d4edda
+    style SemanticHit fill:#d1ecf1
+    style ProcessQuery fill:#fff3cd
+    style CallLLM fill:#f8d7da
+    style ReturnResponse fill:#d4edda
+
+
+
+
+
+
+
+

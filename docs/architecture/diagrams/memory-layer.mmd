@@ -1,0 +1,49 @@
+graph TB
+    Query[User Query] --> MemoryLayer[Smart Memory Layer]
+    
+    MemoryLayer --> ExactCache[Exact Cache<br/>Hash-based Lookup<br/>O(1) Retrieval]
+    MemoryLayer --> SemanticCache[Semantic Cache<br/>Vector Similarity<br/>FAISS/ChromaDB]
+    
+    ExactCache --> ExactHit{Exact Match?}
+    ExactHit -->|Yes| ReturnExact[Return Cached Response<br/>0 tokens used]
+    ExactHit -->|No| SemanticSearch[Semantic Search]
+    
+    SemanticSearch --> EmbedQuery[Embed Query<br/>Sentence Transformers]
+    EmbedQuery --> VectorSearch[Vector Similarity Search<br/>Cosine Similarity]
+    
+    VectorSearch --> SimilarityCheck{Similarity<br/>> Threshold?}
+    
+    SimilarityCheck -->|High Similarity| DirectHit[Semantic Direct Hit<br/>Return Similar Response]
+    SimilarityCheck -->|Medium Similarity| ContextInjection[Context Injection<br/>Add to Prompt]
+    SimilarityCheck -->|Low Similarity| CacheMiss[Cache Miss<br/>Proceed to LLM]
+    
+    ContextInjection --> CompressContext[Compress Context<br/>LLMLingua-2]
+    CompressContext --> CacheMiss
+    
+    CacheMiss --> LLMCall[Call LLM]
+    LLMCall --> StoreResult[Store Result]
+    
+    StoreResult --> UpdateExact[Update Exact Cache]
+    StoreResult --> UpdateSemantic[Update Vector Store]
+    
+    UpdateExact --> Eviction{LRU Eviction<br/>if needed}
+    UpdateSemantic --> Eviction
+    
+    ReturnExact --> End[Return Response]
+    DirectHit --> End
+    CacheMiss --> End
+    
+    style MemoryLayer fill:#e1f5ff
+    style ExactCache fill:#d4edda
+    style SemanticCache fill:#d1ecf1
+    style ReturnExact fill:#d4edda
+    style DirectHit fill:#d1ecf1
+    style CacheMiss fill:#fff3cd
+
+
+
+
+
+
+
+

@@ -1,0 +1,1070 @@
+{
+  "test_start": "2025-11-23T11:27:51.739238",
+  "test_configuration": {
+    "memory_cache_size": 50,
+    "default_token_budget": 3000,
+    "bandit_algorithm": "ucb",
+    "bandit_strategies": 3,
+    "use_semantic_cache": false
+  },
+  "queries": [
+    {
+      "query_num": 1,
+      "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and reinforcement learning. Provide examples of each and explain when to use which approach.",
+      "cache_hit": false,
+      "tokens_used": 282,
+      "latency_ms": 2564,
+      "strategy": "fast"
+    },
+    {
+      "query_num": 2,
+      "query": "What is Python programming language?",
+      "cache_hit": false,
+      "tokens_used": 120,
+      "latency_ms": 2240,
+      "strategy": "balanced"
+    },
+    {
+      "query_num": 3,
+      "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and reinforcement learning. Provide examples of each and explain when to use which approach.",
+      "cache_hit": true,
+      "tokens_used": 0,
+      "latency_ms": 0
+    },
+    {
+      "query_num": 4,
+      "query": "Compare and contrast neural networks and decision trees. Include their advantages, disadvantages, and use cases.",
+      "cache_hit": false,
+      "tokens_used": 205,
+      "latency_ms": 2410,
+      "strategy": "powerful"
+    },
+    {
+      "query_num": 5,
+      "query": "What is Python programming language?",
+      "cache_hit": true,
+      "tokens_used": 0,
+      "latency_ms": 0
+    }
+  ],
+  "step_by_step": [
+    {
+      "step_number": 1,
+      "step_name": "Cache Check",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:51.983718",
+      "details": {
+        "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and reinforcement learning. Provide examples of each and explain when to use which approach.",
+        "cache_hit": false,
+        "cache_type": "miss",
+        "tokens_saved_if_hit": 0,
+        "cache_size_before": 0
+      }
+    },
+    {
+      "step_number": 2,
+      "step_name": "Bandit Strategy Selection",
+      "component": "Bandit Optimizer",
+      "timestamp": "2025-11-23T11:27:51.983718",
+      "details": {
+        "strategy_selected": "fast",
+        "strategy_configuration": {
+          "model": "model-fast",
+          "max_tokens": 500,
+          "temperature": 0.5,
+          "memory_mode": "light"
+        },
+        "bandit_state": {
+          "total_pulls": 0,
+          "algorithm": "ucb"
+        }
+      }
+    },
+    {
+      "step_number": 3,
+      "step_name": "Orchestrator Query Planning",
+      "component": "Token Orchestrator",
+      "timestamp": "2025-11-23T11:27:52.000781",
+      "details": {
+        "query_complexity": "medium",
+        "token_budget": 3000,
+        "model_selected": "gemini-flash",
+        "use_retrieval": false,
+        "num_allocations": 3
+      }
+    },
+    {
+      "step_number": 4,
+      "step_name": "LLM Response Generation",
+      "component": "LLM Provider",
+      "timestamp": "2025-11-23T11:27:52.000781",
+      "details": {
+        "prompt_length": 195,
+        "prompt_tokens": 35,
+        "response_length": 937,
+        "tokens_used": 282,
+        "latency_ms": 2564,
+        "model": "mock-model"
+      }
+    },
+    {
+      "step_number": 5,
+      "step_name": "Store in Cache",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:52.001778",
+      "details": {
+        "cached": true,
+        "tokens_saved_for_future": 282,
+        "cache_size_after": 1
+      }
+    },
+    {
+      "step_number": 6,
+      "step_name": "Update Bandit Statistics",
+      "component": "Bandit Optimizer",
+      "timestamp": "2025-11-23T11:27:52.001778",
+      "details": {
+        "strategy_updated": "fast",
+        "reward_calculation": {
+          "quality_score": 0.9,
+          "tokens_used": 282,
+          "latency_ms": 2564,
+          "lambda": 0.001,
+          "reward": 0.59236
+        },
+        "bandit_state_after": {
+          "total_pulls": 1,
+          "best_strategy": "fast"
+        }
+      }
+    },
+    {
+      "step_number": 7,
+      "step_name": "Cache Check",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:52.001778",
+      "details": {
+        "query": "What is Python programming language?",
+        "cache_hit": false,
+        "cache_type": "miss",
+        "tokens_saved_if_hit": 0,
+        "cache_size_before": 1
+      }
+    },
+    {
+      "step_number": 8,
+      "step_name": "Bandit Strategy Selection",
+      "component": "Bandit Optimizer",
+      "timestamp": "2025-11-23T11:27:52.001778",
+      "details": {
+        "strategy_selected": "balanced",
+        "strategy_configuration": {
+          "model": "model-balanced",
+          "max_tokens": 1000,
+          "temperature": 0.7,
+          "memory_mode": "light"
+        },
+        "bandit_state": {
+          "total_pulls": 1,
+          "algorithm": "ucb"
+        }
+      }
+    },
+    {
+      "step_number": 9,
+      "step_name": "Orchestrator Query Planning",
+      "component": "Token Orchestrator",
+      "timestamp": "2025-11-23T11:27:52.001778",
+      "details": {
+        "query_complexity": "simple",
+        "token_budget": 3000,
+        "model_selected": "gemini-flash",
+        "use_retrieval": false,
+        "num_allocations": 3
+      }
+    },
+    {
+      "step_number": 10,
+      "step_name": "LLM Response Generation",
+      "component": "LLM Provider",
+      "timestamp": "2025-11-23T11:27:52.001778",
+      "details": {
+        "prompt_length": 44,
+        "prompt_tokens": 8,
+        "response_length": 437,
+        "tokens_used": 120,
+        "latency_ms": 2240,
+        "model": "mock-model"
+      }
+    },
+    {
+      "step_number": 11,
+      "step_name": "Store in Cache",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:52.002778",
+      "details": {
+        "cached": true,
+        "tokens_saved_for_future": 120,
+        "cache_size_after": 2
+      }
+    },
+    {
+      "step_number": 12,
+      "step_name": "Update Bandit Statistics",
+      "component": "Bandit Optimizer",
+      "timestamp": "2025-11-23T11:27:52.002778",
+      "details": {
+        "strategy_updated": "balanced",
+        "reward_calculation": {
+          "quality_score": 0.9,
+          "tokens_used": 120,
+          "latency_ms": 2240,
+          "lambda": 0.001,
+          "reward": 0.7576
+        },
+        "bandit_state_after": {
+          "total_pulls": 2,
+          "best_strategy": "balanced"
+        }
+      }
+    },
+    {
+      "step_number": 13,
+      "step_name": "Cache Check",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:52.002778",
+      "details": {
+        "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and reinforcement learning. Provide examples of each and explain when to use which approach.",
+        "cache_hit": true,
+        "cache_type": "exact",
+        "tokens_saved_if_hit": 282,
+        "cache_size_before": 2
+      }
+    },
+    {
+      "step_number": 14,
+      "step_name": "Cache Check",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:52.002778",
+      "details": {
+        "query": "Compare and contrast neural networks and decision trees. Include their advantages, disadvantages, and use cases.",
+        "cache_hit": false,
+        "cache_type": "miss",
+        "tokens_saved_if_hit": 0,
+        "cache_size_before": 2
+      }
+    },
+    {
+      "step_number": 15,
+      "step_name": "Bandit Strategy Selection",
+      "component": "Bandit Optimizer",
+      "timestamp": "2025-11-23T11:27:52.002778",
+      "details": {
+        "strategy_selected": "powerful",
+        "strategy_configuration": {
+          "model": "model-powerful",
+          "max_tokens": 2000,
+          "temperature": 0.9,
+          "memory_mode": "light"
+        },
+        "bandit_state": {
+          "total_pulls": 2,
+          "algorithm": "ucb"
+        }
+      }
+    },
+    {
+      "step_number": 16,
+      "step_name": "Orchestrator Query Planning",
+      "component": "Token Orchestrator",
+      "timestamp": "2025-11-23T11:27:52.003776",
+      "details": {
+        "query_complexity": "medium",
+        "token_budget": 3000,
+        "model_selected": "gemini-flash",
+        "use_retrieval": false,
+        "num_allocations": 3
+      }
+    },
+    {
+      "step_number": 17,
+      "step_name": "LLM Response Generation",
+      "component": "LLM Provider",
+      "timestamp": "2025-11-23T11:27:52.003776",
+      "details": {
+        "prompt_length": 120,
+        "prompt_tokens": 21,
+        "response_length": 700,
+        "tokens_used": 205,
+        "latency_ms": 2410,
+        "model": "mock-model"
+      }
+    },
+    {
+      "step_number": 18,
+      "step_name": "Store in Cache",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:52.003776",
+      "details": {
+        "cached": true,
+        "tokens_saved_for_future": 205,
+        "cache_size_after": 3
+      }
+    },
+    {
+      "step_number": 19,
+      "step_name": "Update Bandit Statistics",
+      "component": "Bandit Optimizer",
+      "timestamp": "2025-11-23T11:27:52.003776",
+      "details": {
+        "strategy_updated": "powerful",
+        "reward_calculation": {
+          "quality_score": 0.9,
+          "tokens_used": 205,
+          "latency_ms": 2410,
+          "lambda": 0.001,
+          "reward": 0.6709
+        },
+        "bandit_state_after": {
+          "total_pulls": 3,
+          "best_strategy": "balanced"
+        }
+      }
+    },
+    {
+      "step_number": 20,
+      "step_name": "Cache Check",
+      "component": "Memory Layer",
+      "timestamp": "2025-11-23T11:27:52.003776",
+      "details": {
+        "query": "What is Python programming language?",
+        "cache_hit": true,
+        "cache_type": "exact",
+        "tokens_saved_if_hit": 120,
+        "cache_size_before": 3
+      }
+    },
+    {
+      "step_number": 21,
+      "step_name": "Final Summary",
+      "component": "Platform",
+      "timestamp": "2025-11-23T11:27:52.003776",
+      "details": {
+        "total_queries": 5,
+        "cache_hits": 2,
+        "cache_hit_rate": 40.0,
+        "token_optimization": {
+          "baseline_tokens": 7100,
+          "optimized_tokens": 607,
+          "tokens_saved": 6493,
+          "savings_percent": 91.45
+        },
+        "latency_optimization": {
+          "baseline_latency_ms": 32000,
+          "optimized_latency_ms": 7214,
+          "latency_reduction_ms": 24786,
+          "reduction_percent": 77.46
+        },
+        "cache_performance": {
+          "cache_size": 3,
+          "total_tokens_saved": 607
+        },
+        "bandit_performance": {
+          "total_pulls": 3,
+          "best_strategy": "balanced",
+          "arms_tested": 3
+        },
+        "overall_optimization": {
+          "token_savings": 91.45,
+          "latency_reduction": 77.46,
+          "cache_efficiency": 40.0,
+          "overall_score": 84.45
+        }
+      }
+    }
+  ],
+  "token_allocations": [
+    {
+      "step": 3,
+      "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and r",
+      "query_complexity": "medium",
+      "total_budget": 3000,
+      "allocations": [
+        {
+          "component": "user_query",
+          "tokens_allocated": 33,
+          "utility_score": 1.0,
+          "priority": 0,
+          "utility_density": 0.030303,
+          "percentage_of_budget": 1.1
+        },
+        {
+          "component": "system_prompt",
+          "tokens_allocated": 100,
+          "utility_score": 1.0,
+          "priority": 0,
+          "utility_density": 0.01,
+          "percentage_of_budget": 3.33
+        },
+        {
+          "component": "response",
+          "tokens_allocated": 2867,
+          "utility_score": 0.9,
+          "priority": 0,
+          "utility_density": 0.000314,
+          "percentage_of_budget": 95.57
+        }
+      ],
+      "allocation_strategy": "greedy_knapsack",
+      "marginal_utility_calculation": {
+        "allocation_order": [
+          "user_query",
+          "system_prompt",
+          "response"
+        ],
+        "rationale": "Components allocated by utility density (marginal utility per token)",
+        "highest_utility_density": 0.030303,
+        "lowest_utility_density": 0.000314
+      },
+      "summary": {
+        "total_allocated": 3000,
+        "budget_utilization_percent": 100.0,
+        "total_utility": 2.9,
+        "average_utility_density": 0.013539
+      }
+    },
+    {
+      "step": 9,
+      "query": "What is Python programming language?",
+      "query_complexity": "simple",
+      "total_budget": 3000,
+      "allocations": [
+        {
+          "component": "user_query",
+          "tokens_allocated": 6,
+          "utility_score": 1.0,
+          "priority": 0,
+          "utility_density": 0.166667,
+          "percentage_of_budget": 0.2
+        },
+        {
+          "component": "system_prompt",
+          "tokens_allocated": 100,
+          "utility_score": 1.0,
+          "priority": 0,
+          "utility_density": 0.01,
+          "percentage_of_budget": 3.33
+        },
+        {
+          "component": "response",
+          "tokens_allocated": 2894,
+          "utility_score": 0.9,
+          "priority": 0,
+          "utility_density": 0.000311,
+          "percentage_of_budget": 96.47
+        }
+      ],
+      "allocation_strategy": "greedy_knapsack",
+      "marginal_utility_calculation": {
+        "allocation_order": [
+          "user_query",
+          "system_prompt",
+          "response"
+        ],
+        "rationale": "Components allocated by utility density (marginal utility per token)",
+        "highest_utility_density": 0.166667,
+        "lowest_utility_density": 0.000311
+      },
+      "summary": {
+        "total_allocated": 3000,
+        "budget_utilization_percent": 100.0,
+        "total_utility": 2.9,
+        "average_utility_density": 0.05899266666666667
+      }
+    },
+    {
+      "step": 16,
+      "query": "Compare and contrast neural networks and decision trees. Include their advantages, disadvantages, an",
+      "query_complexity": "medium",
+      "total_budget": 3000,
+      "allocations": [
+        {
+          "component": "user_query",
+          "tokens_allocated": 19,
+          "utility_score": 1.0,
+          "priority": 0,
+          "utility_density": 0.052632,
+          "percentage_of_budget": 0.63
+        },
+        {
+          "component": "system_prompt",
+          "tokens_allocated": 100,
+          "utility_score": 1.0,
+          "priority": 0,
+          "utility_density": 0.01,
+          "percentage_of_budget": 3.33
+        },
+        {
+          "component": "response",
+          "tokens_allocated": 2881,
+          "utility_score": 0.9,
+          "priority": 0,
+          "utility_density": 0.000312,
+          "percentage_of_budget": 96.03
+        }
+      ],
+      "allocation_strategy": "greedy_knapsack",
+      "marginal_utility_calculation": {
+        "allocation_order": [
+          "user_query",
+          "system_prompt",
+          "response"
+        ],
+        "rationale": "Components allocated by utility density (marginal utility per token)",
+        "highest_utility_density": 0.052632,
+        "lowest_utility_density": 0.000312
+      },
+      "summary": {
+        "total_allocated": 3000,
+        "budget_utilization_percent": 100.0,
+        "total_utility": 2.9,
+        "average_utility_density": 0.020981333333333334
+      }
+    }
+  ],
+  "marginal_utility_analysis": [],
+  "quality_improvements": [
+    {
+      "step": 6,
+      "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and r",
+      "complexity": "medium",
+      "response_metrics": {
+        "length_characters": 937,
+        "length_words": 119,
+        "length_sentences": 8,
+        "tokens_used": 282
+      },
+      "quality_indicators": {
+        "has_definition": true,
+        "has_explanation": false,
+        "has_examples": true,
+        "has_structure": true,
+        "has_details": true
+      },
+      "quality_score": 0.8,
+      "quality_per_token": 0.002837,
+      "orchestrator_contribution": {
+        "complexity_detection": "Correctly identified as medium",
+        "budget_allocation": "Allocated 3000 tokens appropriately",
+        "component_optimization": "Allocated tokens to high-utility components",
+        "quality_impact": "Orchestrator ensured sufficient tokens for comprehensive response"
+      }
+    },
+    {
+      "step": 12,
+      "query": "What is Python programming language?",
+      "complexity": "simple",
+      "response_metrics": {
+        "length_characters": 437,
+        "length_words": 61,
+        "length_sentences": 2,
+        "tokens_used": 120
+      },
+      "quality_indicators": {
+        "has_definition": true,
+        "has_explanation": false,
+        "has_examples": false,
+        "has_structure": true,
+        "has_details": false
+      },
+      "quality_score": 0.4,
+      "quality_per_token": 0.003333,
+      "orchestrator_contribution": {
+        "complexity_detection": "Correctly identified as simple",
+        "budget_allocation": "Allocated 3000 tokens appropriately",
+        "component_optimization": "Allocated tokens to high-utility components",
+        "quality_impact": "Orchestrator ensured sufficient tokens for comprehensive response"
+      }
+    },
+    {
+      "step": 19,
+      "query": "Compare and contrast neural networks and decision trees. Include their advantages, disadvantages, an",
+      "complexity": "medium",
+      "response_metrics": {
+        "length_characters": 700,
+        "length_words": 86,
+        "length_sentences": 2,
+        "tokens_used": 205
+      },
+      "quality_indicators": {
+        "has_definition": true,
+        "has_explanation": true,
+        "has_examples": false,
+        "has_structure": true,
+        "has_details": false
+      },
+      "quality_score": 0.6,
+      "quality_per_token": 0.002927,
+      "orchestrator_contribution": {
+        "complexity_detection": "Correctly identified as medium",
+        "budget_allocation": "Allocated 3000 tokens appropriately",
+        "component_optimization": "Allocated tokens to high-utility components",
+        "quality_impact": "Orchestrator ensured sufficient tokens for comprehensive response"
+      }
+    }
+  ],
+  "bandit_performance": [
+    {
+      "step": 6,
+      "strategy_selected": "fast",
+      "reward_calculation": {
+        "quality_score": 0.9,
+        "tokens_used": 282,
+        "lambda": 0.001,
+        "reward": 0.59236,
+        "formula": "reward = quality_score - 0.001 * tokens_used"
+      },
+      "bandit_state": {
+        "total_pulls": 1,
+        "algorithm": "ucb",
+        "exploration_rate": 0.1
+      },
+      "arms_performance": {
+        "fast": {
+          "pulls": 1,
+          "average_reward": 0.5924,
+          "total_reward": 0.5924,
+          "exploration_status": "exploring"
+        },
+        "balanced": {
+          "pulls": 0,
+          "average_reward": 0.0,
+          "total_reward": 0.0,
+          "exploration_status": "exploring"
+        },
+        "powerful": {
+          "pulls": 0,
+          "average_reward": 0.0,
+          "total_reward": 0.0,
+          "exploration_status": "exploring"
+        }
+      },
+      "learning_analysis": {
+        "best_strategy": "fast",
+        "best_strategy_reward": 0.59236,
+        "learning_progress": "1 queries processed",
+        "convergence": "exploring",
+        "exploration_vs_exploitation": "exploring"
+      }
+    },
+    {
+      "step": 12,
+      "strategy_selected": "balanced",
+      "reward_calculation": {
+        "quality_score": 0.9,
+        "tokens_used": 120,
+        "lambda": 0.001,
+        "reward": 0.7576,
+        "formula": "reward = quality_score - 0.001 * tokens_used"
+      },
+      "bandit_state": {
+        "total_pulls": 2,
+        "algorithm": "ucb",
+        "exploration_rate": 0.1
+      },
+      "arms_performance": {
+        "fast": {
+          "pulls": 1,
+          "average_reward": 0.5924,
+          "total_reward": 0.5924,
+          "exploration_status": "exploring"
+        },
+        "balanced": {
+          "pulls": 1,
+          "average_reward": 0.7576,
+          "total_reward": 0.7576,
+          "exploration_status": "exploring"
+        },
+        "powerful": {
+          "pulls": 0,
+          "average_reward": 0.0,
+          "total_reward": 0.0,
+          "exploration_status": "exploring"
+        }
+      },
+      "learning_analysis": {
+        "best_strategy": "balanced",
+        "best_strategy_reward": 0.7576,
+        "learning_progress": "2 queries processed",
+        "convergence": "exploring",
+        "exploration_vs_exploitation": "exploring"
+      }
+    },
+    {
+      "step": 19,
+      "strategy_selected": "powerful",
+      "reward_calculation": {
+        "quality_score": 0.9,
+        "tokens_used": 205,
+        "lambda": 0.001,
+        "reward": 0.6709,
+        "formula": "reward = quality_score - 0.001 * tokens_used"
+      },
+      "bandit_state": {
+        "total_pulls": 3,
+        "algorithm": "ucb",
+        "exploration_rate": 0.1
+      },
+      "arms_performance": {
+        "fast": {
+          "pulls": 1,
+          "average_reward": 0.5924,
+          "total_reward": 0.5924,
+          "exploration_status": "exploring"
+        },
+        "balanced": {
+          "pulls": 1,
+          "average_reward": 0.7576,
+          "total_reward": 0.7576,
+          "exploration_status": "exploring"
+        },
+        "powerful": {
+          "pulls": 1,
+          "average_reward": 0.6709,
+          "total_reward": 0.6709,
+          "exploration_status": "exploring"
+        }
+      },
+      "learning_analysis": {
+        "best_strategy": "balanced",
+        "best_strategy_reward": 0.7576,
+        "learning_progress": "3 queries processed",
+        "convergence": "exploring",
+        "exploration_vs_exploitation": "exploring"
+      }
+    }
+  ],
+  "cache_performance": [
+    {
+      "step": 6,
+      "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and r",
+      "cache_result": {
+        "hit": false,
+        "type": "miss",
+        "tokens_saved": 0
+      },
+      "cache_state": {
+        "size": 1,
+        "max_size": 50,
+        "total_tokens_saved": 282,
+        "utilization_percent": 2.0
+      },
+      "cache_efficiency": {
+        "hit_rate": 0.0,
+        "tokens_saved_rate": 0.0
+      }
+    },
+    {
+      "step": 12,
+      "query": "What is Python programming language?",
+      "cache_result": {
+        "hit": false,
+        "type": "miss",
+        "tokens_saved": 0
+      },
+      "cache_state": {
+        "size": 2,
+        "max_size": 50,
+        "total_tokens_saved": 402,
+        "utilization_percent": 4.0
+      },
+      "cache_efficiency": {
+        "hit_rate": 0.0,
+        "tokens_saved_rate": 0.0
+      }
+    },
+    {
+      "step": 13,
+      "query": "Explain the concept of machine learning, including supervised learning, unsupervised learning, and r",
+      "cache_result": {
+        "hit": true,
+        "type": "exact",
+        "tokens_saved": 282
+      },
+      "cache_state": {
+        "size": 2,
+        "max_size": 50,
+        "total_tokens_saved": 402,
+        "utilization_percent": 4.0
+      },
+      "cache_efficiency": {
+        "hit_rate": 33.33,
+        "tokens_saved_rate": 0.0
+      }
+    },
+    {
+      "step": 19,
+      "query": "Compare and contrast neural networks and decision trees. Include their advantages, disadvantages, an",
+      "cache_result": {
+        "hit": false,
+        "type": "miss",
+        "tokens_saved": 0
+      },
+      "cache_state": {
+        "size": 3,
+        "max_size": 50,
+        "total_tokens_saved": 607,
+        "utilization_percent": 6.0
+      },
+      "cache_efficiency": {
+        "hit_rate": 25.0,
+        "tokens_saved_rate": 0.0
+      }
+    },
+    {
+      "step": 20,
+      "query": "What is Python programming language?",
+      "cache_result": {
+        "hit": true,
+        "type": "exact",
+        "tokens_saved": 120
+      },
+      "cache_state": {
+        "size": 3,
+        "max_size": 50,
+        "total_tokens_saved": 607,
+        "utilization_percent": 6.0
+      },
+      "cache_efficiency": {
+        "hit_rate": 40.0,
+        "tokens_saved_rate": 0.0
+      }
+    }
+  ],
+  "optimization_metrics": [
+    {
+      "step": 6,
+      "baseline": {
+        "tokens": 2500,
+        "latency_ms": 10000,
+        "quality": 0.7
+      },
+      "optimized": {
+        "tokens": 282,
+        "latency_ms": 2564,
+        "quality": 0.9
+      },
+      "improvements": {
+        "tokens": {
+          "savings": 2218,
+          "savings_percent": 88.72,
+          "optimization_source": "caching + orchestrator allocation"
+        },
+        "latency": {
+          "reduction_ms": 7436,
+          "reduction_percent": 74.36,
+          "optimization_source": "caching + efficient allocation"
+        },
+        "quality": {
+          "improvement": 0.2,
+          "improvement_percent": 28.57,
+          "optimization_source": "orchestrator token allocation"
+        },
+        "overall_efficiency": {
+          "score": 63.88,
+          "components": [
+            "caching",
+            "orchestrator",
+            "bandit"
+          ]
+        }
+      }
+    },
+    {
+      "step": 12,
+      "baseline": {
+        "tokens": 600,
+        "latency_ms": 4000,
+        "quality": 0.7
+      },
+      "optimized": {
+        "tokens": 120,
+        "latency_ms": 2240,
+        "quality": 0.9
+      },
+      "improvements": {
+        "tokens": {
+          "savings": 480,
+          "savings_percent": 80.0,
+          "optimization_source": "caching + orchestrator allocation"
+        },
+        "latency": {
+          "reduction_ms": 1760,
+          "reduction_percent": 44.0,
+          "optimization_source": "caching + efficient allocation"
+        },
+        "quality": {
+          "improvement": 0.2,
+          "improvement_percent": 28.57,
+          "optimization_source": "orchestrator token allocation"
+        },
+        "overall_efficiency": {
+          "score": 50.86,
+          "components": [
+            "caching",
+            "orchestrator",
+            "bandit"
+          ]
+        }
+      }
+    },
+    {
+      "step": 13,
+      "baseline": {
+        "tokens": 1000,
+        "latency_ms": 5000,
+        "quality": 0.8
+      },
+      "optimized": {
+        "tokens": 0,
+        "latency_ms": 0,
+        "quality": 0.8
+      },
+      "improvements": {
+        "tokens": {
+          "savings": 1000,
+          "savings_percent": 100.0,
+          "optimization_source": "caching + orchestrator allocation"
+        },
+        "latency": {
+          "reduction_ms": 5000,
+          "reduction_percent": 100.0,
+          "optimization_source": "caching + efficient allocation"
+        },
+        "quality": {
+          "improvement": 0.0,
+          "improvement_percent": 0.0,
+          "optimization_source": "orchestrator token allocation"
+        },
+        "overall_efficiency": {
+          "score": 66.67,
+          "components": [
+            "caching",
+            "orchestrator",
+            "bandit"
+          ]
+        }
+      }
+    },
+    {
+      "step": 19,
+      "baseline": {
+        "tokens": 2000,
+        "latency_ms": 8000,
+        "quality": 0.7
+      },
+      "optimized": {
+        "tokens": 205,
+        "latency_ms": 2410,
+        "quality": 0.9
+      },
+      "improvements": {
+        "tokens": {
+          "savings": 1795,
+          "savings_percent": 89.75,
+          "optimization_source": "caching + orchestrator allocation"
+        },
+        "latency": {
+          "reduction_ms": 5590,
+          "reduction_percent": 69.88,
+          "optimization_source": "caching + efficient allocation"
+        },
+        "quality": {
+          "improvement": 0.2,
+          "improvement_percent": 28.57,
+          "optimization_source": "orchestrator token allocation"
+        },
+        "overall_efficiency": {
+          "score": 62.73,
+          "components": [
+            "caching",
+            "orchestrator",
+            "bandit"
+          ]
+        }
+      }
+    },
+    {
+      "step": 20,
+      "baseline": {
+        "tokens": 1000,
+        "latency_ms": 5000,
+        "quality": 0.8
+      },
+      "optimized": {
+        "tokens": 0,
+        "latency_ms": 0,
+        "quality": 0.8
+      },
+      "improvements": {
+        "tokens": {
+          "savings": 1000,
+          "savings_percent": 100.0,
+          "optimization_source": "caching + orchestrator allocation"
+        },
+        "latency": {
+          "reduction_ms": 5000,
+          "reduction_percent": 100.0,
+          "optimization_source": "caching + efficient allocation"
+        },
+        "quality": {
+          "improvement": 0.0,
+          "improvement_percent": 0.0,
+          "optimization_source": "orchestrator token allocation"
+        },
+        "overall_efficiency": {
+          "score": 66.67,
+          "components": [
+            "caching",
+            "orchestrator",
+            "bandit"
+          ]
+        }
+      }
+    }
+  ],
+  "final_results": {
+    "total_queries": 5,
+    "cache_hits": 2,
+    "cache_hit_rate": 40.0,
+    "token_optimization": {
+      "baseline_tokens": 7100,
+      "optimized_tokens": 607,
+      "tokens_saved": 6493,
+      "savings_percent": 91.45
+    },
+    "latency_optimization": {
+      "baseline_latency_ms": 32000,
+      "optimized_latency_ms": 7214,
+      "latency_reduction_ms": 24786,
+      "reduction_percent": 77.46
+    },
+    "cache_performance": {
+      "cache_size": 3,
+      "total_tokens_saved": 607
+    },
+    "bandit_performance": {
+      "total_pulls": 3,
+      "best_strategy": "balanced",
+      "arms_tested": 3
+    },
+    "overall_optimization": {
+      "token_savings": 91.45,
+      "latency_reduction": 77.46,
+      "cache_efficiency": 40.0,
+      "overall_score": 84.45
+    }
+  },
+  "test_end": "2025-11-23T11:27:52.003776",
+  "total_steps": 21
+}

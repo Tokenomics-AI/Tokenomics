@@ -1,0 +1,374 @@
+{
+  "test_start": "2025-12-30T13:39:16.234666",
+  "tests": [
+    {
+      "name": "API Key Format",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:16.234791",
+      "details": {
+        "key_prefix": "sk-proj-H_..."
+      }
+    },
+    {
+      "name": ".env File Exists",
+      "status": "fail",
+      "timestamp": "2025-12-30T13:39:16.234885",
+      "details": {},
+      "error": ".env file not found at /Users/nayankanaparthi/Desktop/Nayan/Tokenomics/tests/integration/.env"
+    },
+    {
+      "name": "Config Loading",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:16.235714",
+      "details": {
+        "llm_provider": "openai",
+        "llm_model": "gpt-4o-mini",
+        "cache_size": 1000,
+        "similarity_threshold": 0.7
+      }
+    },
+    {
+      "name": "Platform Initialization",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:24.815723",
+      "details": {
+        "Memory Layer": true,
+        "Orchestrator": true,
+        "Bandit Optimizer": true,
+        "LLM Provider": true
+      }
+    },
+    {
+      "name": "Memory Layer Stats",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:24.815830",
+      "details": {
+        "exact_cache_enabled": true,
+        "semantic_cache_enabled": true,
+        "compression_enabled": true,
+        "preferences_enabled": true,
+        "size": 44,
+        "max_size": 100,
+        "eviction_policy": "lru",
+        "total_tokens_saved": 24049,
+        "preferences": {
+          "tone": "neutral",
+          "format": "paragraph",
+          "confidence": 0.5,
+          "interactions": 0
+        }
+      }
+    },
+    {
+      "name": "First Query (Cache Miss Expected)",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:32.845923",
+      "details": {
+        "cache_hit": false,
+        "tokens_used": 403
+      }
+    },
+    {
+      "name": "Second Query (Exact Cache Hit Expected)",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:32.852504",
+      "details": {
+        "cache_hit": true,
+        "cache_type": "exact",
+        "tokens_used": 0,
+        "tokens_saved": 403
+      }
+    },
+    {
+      "name": "Response Consistency",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:32.852607",
+      "details": {
+        "responses_match": true
+      }
+    },
+    {
+      "name": "Query 1 (Store in Cache)",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:42.863719",
+      "details": {
+        "query": "how is chicken biryani made?",
+        "cache_hit": false,
+        "tokens_used": 387
+      }
+    },
+    {
+      "name": "Query 2 (Semantic Cache Hit Expected)",
+      "status": "fail",
+      "timestamp": "2025-12-30T13:39:47.594600",
+      "details": {
+        "query": "what is the main component or technique or ingredi",
+        "cache_hit": false,
+        "cache_type": null,
+        "similarity": null,
+        "tokens_used": 232,
+        "expected": "semantic_direct or context"
+      }
+    },
+    {
+      "name": "Query Plan Creation",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:53.792441",
+      "details": {
+        "complexity": "medium",
+        "token_budget": 4000,
+        "num_allocations": 3
+      }
+    },
+    {
+      "name": "Token Allocations",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:53.792662",
+      "details": {
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 6,
+            "utility": 1.0
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100,
+            "utility": 1.0
+          },
+          {
+            "component": "response",
+            "tokens": 3894,
+            "utility": 0.9
+          }
+        ]
+      }
+    },
+    {
+      "name": "Token Usage Tracking",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:53.792793",
+      "details": {
+        "total_tokens": 328,
+        "input_tokens": 12,
+        "output_tokens": 316
+      }
+    },
+    {
+      "name": "Bandit Strategies",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:39:53.792969",
+      "details": {
+        "num_strategies": 3,
+        "strategies": [
+          "cheap",
+          "balanced",
+          "premium"
+        ]
+      }
+    },
+    {
+      "name": "Strategy Selection",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:00.242232",
+      "details": {
+        "selected_strategy": "cheap",
+        "tokens_used": 304
+      }
+    },
+    {
+      "name": "Bandit Learning",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:04.306936",
+      "details": {
+        "total_pulls": 3228,
+        "best_strategy": null
+      }
+    },
+    {
+      "name": "Full Integration",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:08.633411",
+      "details": {
+        "Response Generated": true,
+        "Tokens Tracked": true,
+        "Plan Created": true,
+        "Strategy Selected": true
+      }
+    },
+    {
+      "name": "Component Savings Tracking",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:08.633519",
+      "details": {
+        "memory_layer": 0,
+        "orchestrator": 1793,
+        "bandit": 1793,
+        "total_savings": 3586
+      }
+    },
+    {
+      "name": "Query 1",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:08.641321",
+      "details": {
+        "query": "how is chicken biryani made?",
+        "cache_hit": true,
+        "cache_type": "semantic_direct",
+        "similarity": 0.6691415905952454,
+        "tokens_used": 0
+      }
+    },
+    {
+      "name": "Query 2",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:08.657174",
+      "details": {
+        "query": "what ingredients are needed for biryani?",
+        "cache_hit": true,
+        "cache_type": "semantic_direct",
+        "similarity": 0.8171563148498535,
+        "tokens_used": 0
+      }
+    },
+    {
+      "name": "Query 3",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:08.664000",
+      "details": {
+        "query": "what is the main component or technique or ingredi",
+        "cache_hit": true,
+        "cache_type": "semantic_direct",
+        "similarity": 0.8171563148498535,
+        "tokens_used": 0
+      }
+    },
+    {
+      "name": "Cache Accumulation",
+      "status": "warning",
+      "timestamp": "2025-12-30T13:40:08.664218",
+      "details": {
+        "first_query_cache_hit": true,
+        "subsequent_queries_hit_cache": true,
+        "cache_hits": [
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "name": "Memory Stats After Multiple Queries",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:08.664335",
+      "details": {
+        "exact_cache_enabled": true,
+        "semantic_cache_enabled": true,
+        "compression_enabled": true,
+        "preferences_enabled": true,
+        "size": 48,
+        "max_size": 100,
+        "eviction_policy": "lru",
+        "total_tokens_saved": 25297,
+        "preferences": {
+          "tone": "simple",
+          "format": "paragraph",
+          "confidence": 0.7,
+          "interactions": 8
+        }
+      }
+    },
+    {
+      "name": "Memory Layer Savings (Cache Hit)",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:08.695141",
+      "details": {
+        "memory_savings": 403,
+        "cache_hit": true,
+        "all_savings": {
+          "memory_layer": 403,
+          "orchestrator": 0,
+          "bandit": 0,
+          "total_savings": 403
+        }
+      }
+    },
+    {
+      "name": "Orchestrator & Bandit Savings",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:17.098516",
+      "details": {
+        "orchestrator_savings": 1606,
+        "bandit_savings": 1606,
+        "all_savings": {
+          "memory_layer": 0,
+          "orchestrator": 1606,
+          "bandit": 1606,
+          "total_savings": 3212
+        }
+      }
+    },
+    {
+      "name": "A/B Comparison",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:23.699041",
+      "details": {
+        "baseline_tokens": 357,
+        "optimized_tokens": 0,
+        "token_savings": 357,
+        "savings_percent": 100.0,
+        "optimized_better": true
+      }
+    },
+    {
+      "name": "A/B Component Savings",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:23.699167",
+      "details": {
+        "memory_layer": 229,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 229
+      }
+    },
+    {
+      "name": "Empty Query",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:23.699313",
+      "details": {
+        "error_handled": "Query cannot be empty"
+      }
+    },
+    {
+      "name": "Very Long Query",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:38.441545",
+      "details": {
+        "query_length": 1709,
+        "tokens_used": 561
+      }
+    },
+    {
+      "name": "Special Characters",
+      "status": "pass",
+      "timestamp": "2025-12-30T13:40:42.436712",
+      "details": {
+        "tokens_used": 168
+      }
+    }
+  ],
+  "summary": {
+    "total_tests": 30,
+    "passed": 27,
+    "failed": 2,
+    "warnings": 1,
+    "pass_rate": 90.0,
+    "test_end": "2025-12-30T13:40:42.436833"
+  },
+  "errors": [
+    {
+      "test": ".env File Exists",
+      "error": ".env file not found at /Users/nayankanaparthi/Desktop/Nayan/Tokenomics/tests/integration/.env"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}Live Dashboard - Tokenomics Platform{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="container">
+        <h1 class="page-title">Live Dashboard</h1>
+        <p class="page-subtitle">Run experiments and visualize Tokenomics optimization in real-time</p>
+
+        <!-- Control Panel -->
+        <div class="control-panel" id="control-panel">
+            <div class="control-group">
+                <label for="query-input">Enter Query</label>
+                <textarea id="query-input" rows="3" placeholder="Enter your query here..."></textarea>
+            </div>
+            
+            <!-- Query Generation Mode -->
+            <div class="control-group">
+                <label>Query Generation Mode:</label>
+                <div class="radio-group" id="query-mode-group">
+                    <label class="radio-label">
+                        <input type="radio" name="query-mode" value="same" checked>
+                        <span>Same Query (Repeat)</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="query-mode" value="similar">
+                        <span>Generate Similar Queries</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="query-mode" value="manual">
+                        <span>Manual Input (Multiple Queries)</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Manual Query Input (hidden by default) -->
+            <div class="control-group hidden" id="manual-queries-group">
+                <label for="manual-queries-input">Enter Multiple Queries (one per line):</label>
+                <textarea id="manual-queries-input" rows="5" placeholder="Enter queries, one per line..."></textarea>
+            </div>
+            
+            <!-- Query Preview (hidden by default) -->
+            <div class="control-group hidden" id="query-preview-group">
+                <label>Query Preview:</label>
+                <div id="query-preview" class="query-preview"></div>
+            </div>
+            
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="mode-select">Mode:</label>
+                    <select id="mode-select">
+                        <option value="tokenomics">Tokenomics Optimized</option>
+                        <option value="baseline">Baseline (No Optimization)</option>
+                        <option value="ab">A/B Comparison</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="num-queries">Number of Queries:</label>
+                    <input type="number" id="num-queries" value="1" min="1" max="10">
+                </div>
+                
+                <div class="control-group">
+                    <button id="run-btn" class="btn btn-primary">Run Experiment</button>
+                    <button id="clear-btn" class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- API Status Indicator -->
+        <div id="api-status-indicator" class="api-status hidden"></div>
+
+        <!-- Status Indicator -->
+        <div id="status-indicator" class="status-indicator hidden">
+            <div class="spinner"></div>
+            <span>Running experiment...</span>
+        </div>
+
+        <!-- Summary Metrics -->
+        <div id="summary-section" class="summary-section hidden">
+            <h2>Summary Metrics</h2>
+            <div class="metrics-grid" id="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Tokens</div>
+                    <div class="metric-value" id="total-tokens">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Average Tokens</div>
+                    <div class="metric-value" id="avg-tokens">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Total Latency</div>
+                    <div class="metric-value" id="total-latency">0 ms</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Average Latency</div>
+                    <div class="metric-value" id="avg-latency">0 ms</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Cache Hit Rate</div>
+                    <div class="metric-value" id="cache-hit-rate">0%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Cache Hits</div>
+                    <div class="metric-value" id="cache-hits">0</div>
+                </div>
+            </div>
+            
+            <!-- Component-Level Savings Breakdown (A/B mode only) -->
+            <div id="component-breakdown-section" class="hidden" style="margin-top: 2rem;">
+                <h3 style="color: var(--accent-secondary);">Component-Level Savings Breakdown</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                    See how each component contributes to token optimization:
+                </p>
+                <div class="metrics-grid component-metrics" id="component-metrics-grid">
+                    <div class="metric-card component">
+                        <div class="metric-label">Smart Memory Layer</div>
+                        <div class="metric-value" id="memory-savings">0</div>
+                        <div class="metric-desc" id="memory-desc">Tokens saved from cache hits</div>
+                        <div class="metric-percentage" id="memory-percentage">0%</div>
+                    </div>
+                    <div class="metric-card component">
+                        <div class="metric-label">Token Orchestrator</div>
+                        <div class="metric-value" id="orchestrator-savings">0</div>
+                        <div class="metric-desc" id="orchestrator-desc">Tokens saved from allocation & compression</div>
+                        <div class="metric-percentage" id="orchestrator-percentage">0%</div>
+                    </div>
+                    <div class="metric-card component">
+                        <div class="metric-label">Bandit Optimizer</div>
+                        <div class="metric-value" id="bandit-savings">0</div>
+                        <div class="metric-desc" id="bandit-desc">Tokens saved from strategy selection</div>
+                        <div class="metric-percentage" id="bandit-percentage">0%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Semantic Cache Metrics -->
+            <h3 style="margin-top: 2rem; color: var(--accent-secondary);">Semantic Cache Breakdown</h3>
+            <div class="metrics-grid semantic-metrics" id="semantic-metrics-grid">
+                <div class="metric-card semantic">
+                    <div class="metric-label">Exact Hits</div>
+                    <div class="metric-value" id="exact-hits">0</div>
+                    <div class="metric-desc">Identical queries</div>
+                </div>
+                <div class="metric-card semantic">
+                    <div class="metric-label">Semantic Hits</div>
+                    <div class="metric-value" id="semantic-hits">0</div>
+                    <div class="metric-desc">Similar queries (>0.75)</div>
+                </div>
+                <div class="metric-card semantic">
+                    <div class="metric-label">Context Enhanced</div>
+                    <div class="metric-value" id="context-hits">0</div>
+                    <div class="metric-desc">Used cached context</div>
+                </div>
+                <div class="metric-card semantic">
+                    <div class="metric-label">Avg Similarity</div>
+                    <div class="metric-value" id="avg-similarity">-</div>
+                    <div class="metric-desc">Semantic match score</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div id="charts-section" class="charts-section hidden">
+            <h2>Visualizations</h2>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Token Usage per Query</h3>
+                    <canvas id="tokens-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Latency per Query</h3>
+                    <canvas id="latency-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Cache Hits vs Misses</h3>
+                    <canvas id="cache-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Strategy Distribution</h3>
+                    <canvas id="strategy-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Results Table -->
+        <div id="results-section" class="results-section hidden">
+            <h2>Detailed Results</h2>
+            <div class="table-container">
+                <table id="results-table" class="results-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Query</th>
+                            <th>Response</th>
+                            <th>Tokens</th>
+                            <th>Latency</th>
+                            <th>Cache Type</th>
+                            <th>Similarity</th>
+                            <th>Strategy</th>
+                            <th>Model</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

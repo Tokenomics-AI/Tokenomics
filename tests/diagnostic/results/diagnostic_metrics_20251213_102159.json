@@ -1,0 +1,73 @@
+{
+  "total_queries": 18,
+  "successful_queries": 18,
+  "failed_queries": 0,
+  "tokens": {
+    "baseline_total": 7681,
+    "optimized_total": 3414,
+    "total_savings": 4267,
+    "savings_percent": 55.55266241374821,
+    "average_baseline": 426.72222222222223,
+    "average_optimized": 189.66666666666666
+  },
+  "latency": {
+    "baseline_total_ms": 147382.63130187988,
+    "optimized_total_ms": 169618.62444877625,
+    "total_reduction_ms": -22235.993146896362,
+    "reduction_percent": -15.08725482133032,
+    "average_baseline_ms": 8187.923961215549,
+    "average_optimized_ms": 9423.256913820902
+  },
+  "component_savings": {
+    "memory_layer": 1864,
+    "orchestrator": 1836,
+    "bandit": 0,
+    "compression": 0,
+    "total": 3700
+  },
+  "cache": {
+    "hit_rate_percent": 33.33333333333333,
+    "total_hits": 6,
+    "exact_hits": 3,
+    "semantic_hits": 3,
+    "misses": 12
+  },
+  "strategy_distribution": {
+    "cheap": 18
+  },
+  "quality_judge": {
+    "total_evaluations": 12,
+    "optimized_wins": 4,
+    "baseline_wins": 1,
+    "equivalent": 7,
+    "average_confidence": 0.8624999999999999
+  },
+  "compression": {
+    "context_compressed_count": 0,
+    "query_compressed_count": 0,
+    "total_compression_savings": 0
+  },
+  "memory_layer": {
+    "exact_cache_hits": 3,
+    "semantic_direct_hits": 3,
+    "semantic_context_hits": 0,
+    "context_injections": 0,
+    "cache_misses": 12,
+    "total_semantic_matches_found": 3,
+    "avg_similarity": 0.9035698374112447,
+    "total_context_tokens_injected": 0,
+    "total_context_tokens_saved": 0,
+    "preferences_learned": {
+      "preferences_used_count": 16,
+      "tone_distribution": {
+        "simple": 16
+      },
+      "format_distribution": {
+        "paragraph": 4,
+        "code": 12
+      },
+      "avg_confidence": 0.76875,
+      "total_interactions": 18
+    }
+  }
+}

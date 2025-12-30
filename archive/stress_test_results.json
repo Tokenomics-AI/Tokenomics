@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-11-30T17:23:56.885799",
+  "results": [
+    {
+      "query": "What is AGI?",
+      "baseline_tokens": 284,
+      "optimized_tokens": 235,
+      "savings_pct": 17.253521126760564,
+      "cache_hit": false,
+      "cache_type": null,
+      "context_used": false
+    },
+    {
+      "query": "What is artificial general intelligence?",
+      "baseline_tokens": 343,
+      "optimized_tokens": 315,
+      "savings_pct": 8.16326530612245,
+      "cache_hit": false,
+      "cache_type": null,
+      "context_used": false
+    },
+    {
+      "query": "Explain AGI to me",
+      "baseline_tokens": 324,
+      "optimized_tokens": 0,
+      "savings_pct": 100.0,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "context_used": false
+    },
+    {
+      "query": "Tell me about AGI",
+      "baseline_tokens": 513,
+      "optimized_tokens": 0,
+      "savings_pct": 100.0,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "context_used": false
+    }
+  ],
+  "total_baseline": 1464,
+  "total_optimized": 550,
+  "overall_savings_pct": 62.431693989071036,
+  "issues": []
+}

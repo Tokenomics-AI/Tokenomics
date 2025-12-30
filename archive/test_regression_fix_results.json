@@ -1,0 +1,47 @@
+[
+  {
+    "query": "What is the refund policy?",
+    "baseline_tokens": 191,
+    "optimized_tokens": 191,
+    "baseline_output": 176,
+    "optimized_output": 176,
+    "has_regression": false,
+    "max_response_tokens": 176
+  },
+  {
+    "query": "Can I customize the dashboard?",
+    "baseline_tokens": 112,
+    "optimized_tokens": 112,
+    "baseline_output": 97,
+    "optimized_output": 97,
+    "has_regression": false,
+    "max_response_tokens": 97
+  },
+  {
+    "query": "What is your privacy policy?",
+    "baseline_tokens": 81,
+    "optimized_tokens": 81,
+    "baseline_output": 66,
+    "optimized_output": 66,
+    "has_regression": false,
+    "max_response_tokens": 66
+  },
+  {
+    "query": "Why did my upload fail?",
+    "baseline_tokens": 299,
+    "optimized_tokens": 279,
+    "baseline_output": 284,
+    "optimized_output": 264,
+    "has_regression": false,
+    "max_response_tokens": 284
+  },
+  {
+    "query": "How do I contact support?",
+    "baseline_tokens": 261,
+    "optimized_tokens": 259,
+    "baseline_output": 246,
+    "optimized_output": 244,
+    "has_regression": false,
+    "max_response_tokens": 246
+  }
+]

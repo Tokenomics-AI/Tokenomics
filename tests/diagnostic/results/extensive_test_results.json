@@ -1,0 +1,189 @@
+{
+  "timestamp": "2025-11-30T18:18:20.978413",
+  "tests": [
+    {
+      "test_name": "Component Status",
+      "passed": true,
+      "details": {
+        "memory": {
+          "exact_cache": true,
+          "semantic_cache": true,
+          "compression": true,
+          "preferences": true
+        },
+        "semantic_cache": {
+          "enabled": true,
+          "working": true,
+          "embedding_model_loaded": true,
+          "vector_store_ready": true,
+          "init_error": null
+        },
+        "bandit": {
+          "algorithm": "ucb",
+          "num_arms": 3,
+          "arms": [
+            "fast",
+            "balanced",
+            "powerful"
+          ]
+        }
+      }
+    },
+    {
+      "test_name": "Exact Cache",
+      "passed": true,
+      "details": {
+        "first_call": {
+          "tokens": 23,
+          "cache_hit": false,
+          "latency_ms": 1255.1460266113281
+        },
+        "second_call": {
+          "tokens": 0,
+          "cache_hit": true,
+          "cache_type": "exact",
+          "latency_ms": 0
+        }
+      }
+    },
+    {
+      "test_name": "Semantic Cache",
+      "passed": true,
+      "details": {},
+      "pairs": [
+        {
+          "original": "What is machine learning?",
+          "similar": "Explain machine learning",
+          "original_tokens": 314,
+          "similarity": 0.8413084580220936,
+          "similar_tokens": 615,
+          "cache_hit": true,
+          "cache_type": "context",
+          "savings_percent": -95.85987261146497
+        },
+        {
+          "original": "How does photosynthesis work?",
+          "similar": "Describe the process of photosynthesis",
+          "original_tokens": 315,
+          "similarity": 0.8622904005507869,
+          "similar_tokens": 315,
+          "cache_hit": false,
+          "cache_type": null,
+          "savings_percent": 0.0
+        },
+        {
+          "original": "What is the meaning of life?",
+          "similar": "Explain life's purpose",
+          "original_tokens": 269,
+          "similarity": 0.7335587854849601,
+          "similar_tokens": 312,
+          "cache_hit": false,
+          "cache_type": null,
+          "savings_percent": -15.985130111524162
+        }
+      ]
+    },
+    {
+      "test_name": "A/B Comparison",
+      "passed": false,
+      "queries": [
+        {
+          "query": "What is artificial intelligence?",
+          "baseline_tokens": 279,
+          "optimized_tokens": 255,
+          "savings": 24,
+          "savings_percent": 8.60215053763441,
+          "cache_hit": false,
+          "cache_type": null
+        },
+        {
+          "query": "Explain AI to me",
+          "baseline_tokens": 437,
+          "optimized_tokens": 580,
+          "savings": -143,
+          "savings_percent": -32.723112128146454,
+          "cache_hit": true,
+          "cache_type": "context"
+        },
+        {
+          "query": "How do computers learn?",
+          "baseline_tokens": 554,
+          "optimized_tokens": 314,
+          "savings": 240,
+          "savings_percent": 43.32129963898917,
+          "cache_hit": false,
+          "cache_type": null
+        }
+      ],
+      "total_baseline": 1270,
+      "total_optimized": 1149,
+      "total_savings": 121,
+      "total_savings_percent": 9.527559055118111
+    },
+    {
+      "test_name": "Quality Preservation",
+      "passed": true,
+      "tests": [
+        {
+          "setup_query": "What is the recipe for chocolate cake?",
+          "test_query": "What are the key ingredients in chocolate cake?",
+          "should_match": false,
+          "similarity": 0.8440771431472062,
+          "cache_hit": false,
+          "cache_type": null,
+          "issue": null
+        },
+        {
+          "setup_query": "Who is the president of the United States?",
+          "test_query": "Who is the vice president of the United States?",
+          "should_match": false,
+          "similarity": 0.7690982869499973,
+          "cache_hit": true,
+          "cache_type": "context",
+          "issue": null
+        },
+        {
+          "setup_query": "What is Python programming?",
+          "test_query": "Explain Python programming",
+          "should_match": true,
+          "similarity": 0.8931002450562665,
+          "cache_hit": false,
+          "cache_type": null,
+          "issue": "false_negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Strategy Selection",
+      "passed": true,
+      "queries": [
+        {
+          "query": "What is 2+2?",
+          "expected_complexity": "simple",
+          "actual_complexity": "simple",
+          "strategy": "fast",
+          "model": "gpt-4o-mini"
+        },
+        {
+          "query": "Explain the concept of machine learning including supervised, unsupervised, and reinforcement learning approaches.",
+          "expected_complexity": "complex",
+          "actual_complexity": "medium",
+          "strategy": "fast",
+          "model": "gpt-4o-mini"
+        },
+        {
+          "query": "What is the weather?",
+          "expected_complexity": "simple",
+          "actual_complexity": "simple",
+          "strategy": "fast",
+          "model": "gpt-4o-mini"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "tests_passed": 5,
+    "tests_total": 6,
+    "pass_rate": 83.33333333333334
+  }
+}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Test Results - Tokenomics Platform{% endblock %}
+
+{% block content %}
+<div class="results-container">
+    <div class="container">
+        <h1 class="page-title">Test Results</h1>
+        <p class="page-subtitle">Historical experiments and performance evidence</p>
+
+        <!-- Aggregated Stats -->
+        <div class="aggregated-stats">
+            <h2>Overall Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-runs">0</div>
+                    <div class="stat-label">Total Runs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-token-savings">0%</div>
+                    <div class="stat-label">Avg Token Savings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-latency-reduction">0%</div>
+                    <div class="stat-label">Avg Latency Reduction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-cache-hit-rate">0%</div>
+                    <div class="stat-label">Avg Cache Hit Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+            <h2>Filter Runs</h2>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="filter-mode">Mode:</label>
+                    <select id="filter-mode">
+                        <option value="all">All Modes</option>
+                        <option value="tokenomics">Tokenomics</option>
+                        <option value="baseline">Baseline</option>
+                        <option value="ab">A/B</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sort-by">Sort By:</label>
+                    <select id="sort-by">
+                        <option value="date">Date (Newest)</option>
+                        <option value="tokens">Token Savings</option>
+                        <option value="latency">Latency Reduction</option>
+                        <option value="cache">Cache Hit Rate</option>
+                    </select>
+                </div>
+                <button id="apply-filters" class="btn btn-primary">Apply Filters</button>
+            </div>
+        </div>
+
+        <!-- Runs List -->
+        <div class="runs-list">
+            <h2>Historical Runs</h2>
+            <div id="runs-container" class="runs-container">
+                <div class="loading">Loading runs...</div>
+            </div>
+        </div>
+
+        <!-- Run Detail Modal -->
+        <div id="run-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="modal-title">Run Details</h2>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/results.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

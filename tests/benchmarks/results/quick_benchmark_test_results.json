@@ -1,0 +1,92 @@
+[
+  {
+    "query": "What is the refund policy?",
+    "baseline_tokens": 256,
+    "optimized_tokens": 256,
+    "baseline_latency": 5843.831300735474,
+    "optimized_latency": 5586.178302764893,
+    "token_regression": false,
+    "latency_regression": false
+  },
+  {
+    "query": "How do I cancel my subscription?",
+    "baseline_tokens": 206,
+    "optimized_tokens": 206,
+    "baseline_latency": 4677.908897399902,
+    "optimized_latency": 3735.240697860718,
+    "token_regression": false,
+    "latency_regression": false
+  },
+  {
+    "query": "Can I customize the dashboard?",
+    "baseline_tokens": 170,
+    "optimized_tokens": 170,
+    "baseline_latency": 4640.573263168335,
+    "optimized_latency": 3150.057792663574,
+    "token_regression": false,
+    "latency_regression": false
+  },
+  {
+    "query": "What payment methods do you accept?",
+    "baseline_tokens": 68,
+    "optimized_tokens": 68,
+    "baseline_latency": 1800.9169101715088,
+    "optimized_latency": 1905.364751815796,
+    "token_regression": false,
+    "latency_regression": true
+  },
+  {
+    "query": "Why is my account locked?",
+    "baseline_tokens": 285,
+    "optimized_tokens": 204,
+    "baseline_latency": 6021.735906600952,
+    "optimized_latency": 3624.769687652588,
+    "token_regression": false,
+    "latency_regression": false
+  },
+  {
+    "query": "How do I contact support?",
+    "baseline_tokens": 217,
+    "optimized_tokens": 217,
+    "baseline_latency": 4309.703588485718,
+    "optimized_latency": 4087.907552719116,
+    "token_regression": false,
+    "latency_regression": false
+  },
+  {
+    "query": "What is your privacy policy?",
+    "baseline_tokens": 72,
+    "optimized_tokens": 72,
+    "baseline_latency": 1588.1972312927246,
+    "optimized_latency": 2049.5145320892334,
+    "token_regression": false,
+    "latency_regression": true
+  },
+  {
+    "query": "Why did my upload fail?",
+    "baseline_tokens": 276,
+    "optimized_tokens": 276,
+    "baseline_latency": 6183.579683303833,
+    "optimized_latency": 4382.220029830933,
+    "token_regression": false,
+    "latency_regression": false
+  },
+  {
+    "query": "How do I enable two-factor authentication?",
+    "baseline_tokens": 567,
+    "optimized_tokens": 317,
+    "baseline_latency": 9623.173713684082,
+    "optimized_latency": 6212.159633636475,
+    "token_regression": false,
+    "latency_regression": false
+  },
+  {
+    "query": "What languages are supported?",
+    "baseline_tokens": 102,
+    "optimized_tokens": 101,
+    "baseline_latency": 2715.7461643218994,
+    "optimized_latency": 2152.404546737671,
+    "token_regression": false,
+    "latency_regression": false
+  }
+]

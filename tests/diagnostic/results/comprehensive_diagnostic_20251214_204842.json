@@ -1,0 +1,3578 @@
+{
+  "test_metadata": {
+    "timestamp": "2025-12-14T20:41:52.327231",
+    "config": {
+      "llm_provider": "openai",
+      "llm_model": "gpt-4o-mini",
+      "memory_exact_cache": true,
+      "memory_semantic_cache": true,
+      "memory_llmlingua": true,
+      "orchestrator_knapsack": true,
+      "bandit_algorithm": "ucb",
+      "bandit_cost_aware": true,
+      "quality_judge": true
+    }
+  },
+  "test_cases": [
+    {
+      "test_id": "exact_cache_1",
+      "category": "exact_cache",
+      "description": "Simple query for exact cache test - first call",
+      "query": "What is Python?",
+      "status": "success",
+      "elapsed_ms": 16588.802099227905,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 311,
+      "input_tokens": 11,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 35,
+        "bandit": 0,
+        "total_savings": 35
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ],
+        "input_tokens": 11,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 27.272727272727273
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9413877432346344,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 4.665e-05,
+          "total_tokens": 311,
+          "total_latency_ms": 8593.940734863281,
+          "total_quality": 1.0,
+          "query_count": 1,
+          "avg_cost_per_query": 4.665e-05,
+          "avg_tokens": 311.0,
+          "avg_latency": 8593.940734863281,
+          "avg_quality": 1.0,
+          "cost_quality_ratio": 21.436227224008572,
+          "efficiency_score": 0.8721691845872752
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer is more concise and focuses on readability, which is a key feature of Python, while the baseline answer is cut off mid-sentence.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 346,
+        "input_tokens": 11,
+        "output_tokens": 335,
+        "latency_ms": 6293.810129165649,
+        "model": "gpt-4o-mini",
+        "response": "Python is a high-level, interpreted programming language known for its simplicity and readability. It was created by Guido van Rossum and first released in 1991. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming, making it versatile for various applications.\n\nKey features of Python include:\n\n1. **Easy to Learn and Use**: Python has a clear and straightforward syntax, which makes it accessible for beginners and allows developers to write code more quickly.\n\n2. **Extensive Libraries and Frameworks**: Python has a rich ecosystem of libraries and frameworks that facilitate tasks in web development (e.g., Django, Flask), data analysis (e.g., Pandas, NumPy), machine learning (e.g., TensorFlow, scikit-learn), and more.\n\n3. **Cross-Platform Compatibility**: Python can run on various operating systems, including Windows, macOS, and Linux, making it a flexible choice for developers.\n\n4. **Strong Community Support**: Python has a large and active community, which means that developers can find a wealth of resources, tutorials, and third-party modules to help with their projects.\n\n5. **Interpreted Language**: Python code is executed line by line, which can make debugging easier and allows for interactive programming.\n\n6. **Dynamic Typing**: Python uses dynamic typing, meaning that variable types are determined at runtime, which can simplify coding but may lead to runtime errors if not managed carefully.\n\nPython is widely used in various fields, including web development, data science, artificial intelligence, scientific computing, automation, and more, making it one of the most popular programming languages in the world."
+      },
+      "cache_validation": {
+        "expected": "miss",
+        "actual": null,
+        "passed": true
+      }
+    },
+    {
+      "test_id": "exact_cache_2",
+      "category": "exact_cache",
+      "description": "Same query - should hit exact cache",
+      "query": "What is Python?",
+      "status": "success",
+      "elapsed_ms": 0.0,
+      "cache_hit": true,
+      "cache_type": "exact",
+      "cache_tier": "exact",
+      "similarity": null,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "max_response_tokens": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {},
+      "component_savings": {
+        "memory_layer": 311,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 311
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 1,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {},
+      "bandit_metrics": {},
+      "quality_judge": null,
+      "baseline_comparison": null,
+      "cache_validation": {
+        "expected": "exact",
+        "actual": "exact",
+        "passed": true
+      }
+    },
+    {
+      "test_id": "semantic_direct_1",
+      "category": "semantic_cache_direct",
+      "description": "High similarity to 'What is Python?' - should return directly",
+      "query": "Explain Python programming language",
+      "status": "success",
+      "elapsed_ms": 19714.035511016846,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 311,
+      "input_tokens": 11,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 3,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ],
+        "input_tokens": 11,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 27.272727272727273
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9539148935801562,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00013995000000000001,
+          "total_tokens": 933,
+          "total_latency_ms": 23900.116205215454,
+          "total_quality": 3.0,
+          "query_count": 3,
+          "avg_cost_per_query": 4.665e-05,
+          "avg_tokens": 311.0,
+          "avg_latency": 7966.705401738484,
+          "avg_quality": 1.0,
+          "cost_quality_ratio": 21.436227224008572,
+          "efficiency_score": 0.8757275905939433
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide similar information about Python's readability, simplicity, and history, with only minor differences in wording.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 523,
+        "input_tokens": 11,
+        "output_tokens": 512,
+        "latency_ms": 12081.812858581543,
+        "model": "gpt-4o-mini",
+        "response": "Python is a high-level, interpreted programming language known for its readability and simplicity. It was created by Guido van Rossum and first released in 1991. Python emphasizes code readability, allowing developers to express concepts in fewer lines of code compared to other programming languages. Here are some key features and aspects of Python:\n\n### Key Features\n\n1. **Readability**: Python's syntax is clear and intuitive, which makes it easy to learn and use. The use of indentation to define code blocks enhances readability.\n\n2. **Interpreted Language**: Python is an interpreted language, meaning that code is executed line by line, which makes debugging easier and allows for interactive programming.\n\n3. **Dynamic Typing**: Variables in Python do not require explicit declaration of their data types. The type is determined at runtime, which provides flexibility but can also lead to runtime errors if not managed carefully.\n\n4. **Extensive Libraries**: Python has a rich standard library and a vast ecosystem of third-party packages available through the Python Package Index (PyPI). This makes it suitable for a wide range of applications, from web development to data analysis and machine learning.\n\n5. **Cross-Platform**: Python is cross-platform, meaning that Python programs can run on various operating systems, including Windows, macOS, and Linux, with little to no modification.\n\n6. **Object-Oriented and Functional**: Python supports multiple programming paradigms, including object-oriented programming (OOP) and functional programming, allowing developers to choose the best approach for their projects.\n\n7. **Community and Support**: Python has a large and active community, which means there are plenty of resources, tutorials, and forums available for learners and developers.\n\n### Common Uses\n\n- **Web Development**: Frameworks like Django and Flask make it easy to build web applications.\n- **Data Science and Machine Learning**: Libraries such as NumPy, pandas, Matplotlib, and scikit-learn are widely used for data analysis and machine learning tasks.\n- **Automation and Scripting**: Python is often used for writing scripts to automate mundane tasks, such as file manipulation and data entry.\n- **Game Development**: Libraries like Pygame allow for the development of simple games.\n- **Scientific Computing**: Python is used in scientific research and engineering for simulations and data analysis.\n\n### Example Code\n\nHere\u2019s a simple example of Python code that demonstrates its syntax:\n\n```python\ndef greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Alice\")\n``"
+      },
+      "cache_validation": {
+        "expected": "semantic_direct",
+        "actual": null,
+        "passed": false
+      }
+    },
+    {
+      "test_id": "semantic_direct_2",
+      "category": "semantic_cache_direct",
+      "description": "Another high similarity query",
+      "query": "Tell me about Python",
+      "status": "success",
+      "elapsed_ms": 19221.823692321777,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 311,
+      "input_tokens": 11,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 4,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ],
+        "input_tokens": 11,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 27.272727272727273
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9541195545452349,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00023325,
+          "total_tokens": 1555,
+          "total_latency_ms": 37293.84350776672,
+          "total_quality": 4.9,
+          "query_count": 5,
+          "avg_cost_per_query": 4.665e-05,
+          "avg_tokens": 311.0,
+          "avg_latency": 7458.768701553345,
+          "avg_quality": 0.9800000000000001,
+          "cost_quality_ratio": 21.007502679528404,
+          "efficiency_score": 0.8688717519535218
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide similar information about Python's readability and simplicity, with minor differences in phrasing and detail.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 523,
+        "input_tokens": 11,
+        "output_tokens": 512,
+        "latency_ms": 11673.846006393433,
+        "model": "gpt-4o-mini",
+        "response": "Python is a high-level, interpreted programming language known for its readability, simplicity, and versatility. Created by Guido van Rossum and first released in 1991, Python has since become one of the most popular programming languages in the world. Here are some key features and aspects of Python:\n\n### Key Features\n\n1. **Readability**: Python's syntax is designed to be clear and intuitive, which makes it easy to read and write. This is often cited as one of its biggest advantages.\n\n2. **Interpreted Language**: Python is an interpreted language, meaning that code is executed line by line, which can make debugging easier.\n\n3. **Dynamic Typing**: Python uses dynamic typing, which allows you to assign variables without explicitly declaring their data types. This can speed up development but may lead to runtime errors if not managed carefully.\n\n4. **Extensive Libraries**: Python boasts a rich ecosystem of libraries and frameworks, such as NumPy for numerical computing, Pandas for data manipulation, Matplotlib for data visualization, and Django and Flask for web development.\n\n5. **Cross-Platform**: Python runs on various operating systems, including Windows, macOS, and Linux, making it a versatile choice for developers.\n\n6. **Community Support**: Python has a large and active community, which contributes to a wealth of resources, tutorials, and third-party modules.\n\n7. **Multi-Paradigm**: Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming.\n\n### Common Use Cases\n\n1. **Web Development**: Frameworks like Django and Flask make it easy to build web applications.\n\n2. **Data Science and Machine Learning**: Python is widely used in data analysis, machine learning, and artificial intelligence, thanks to libraries like TensorFlow, Keras, and Scikit-learn.\n\n3. **Automation and Scripting**: Python is often used for writing scripts to automate repetitive tasks.\n\n4. **Game Development**: Libraries like Pygame allow for game development in Python.\n\n5. **Scientific Computing**: Python is used in scientific research for simulations, data analysis, and visualization.\n\n6. **Education**: Due to its simplicity, Python is often the first programming language taught in schools and universities.\n\n### Popular Versions\n\n- **Python 2**: The legacy version of Python, which was officially discontinued in January 2020.\n- **Python 3**: The current and actively developed version, which includes many improvements and new features over Python 2.\n\n"
+      },
+      "cache_validation": {
+        "expected": "semantic_direct",
+        "actual": null,
+        "passed": false
+      }
+    },
+    {
+      "test_id": "context_injection_1",
+      "category": "context_injection",
+      "description": "Medium similarity - should inject context about Python",
+      "query": "How do I install Python packages?",
+      "status": "success",
+      "elapsed_ms": 18326.857566833496,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 314,
+      "input_tokens": 14,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 5,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 7
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3893
+          }
+        ],
+        "input_tokens": 14,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 21.428571428571427
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9469809628468975,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00032700000000000003,
+          "total_tokens": 2180,
+          "total_latency_ms": 51727.19502449036,
+          "total_quality": 6.800000000000001,
+          "query_count": 7,
+          "avg_cost_per_query": 4.671428571428572e-05,
+          "avg_tokens": 311.42857142857144,
+          "avg_latency": 7389.599289212908,
+          "avg_quality": 0.9714285714285715,
+          "cost_quality_ratio": 20.79510703363914,
+          "efficiency_score": 0.8650322339503718
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer includes a step to ensure Python is installed, which is a prerequisite for using pip, making it more comprehensive.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 526,
+        "input_tokens": 14,
+        "output_tokens": 512,
+        "latency_ms": 8197.307825088501,
+        "model": "gpt-4o-mini",
+        "response": "Installing Python packages can be done in several ways, but the most common method is using the Python package manager called `pip`. Below are the steps to install Python packages using `pip`, as well as some alternative methods.\n\n### Using pip\n\n1. **Ensure pip is installed**: Most Python installations come with `pip` pre-installed. You can check if you have `pip` by running the following command in your terminal or command prompt:\n\n   ```bash\n   pip --version\n   ```\n\n   If `pip` is not installed, you can install it by following the instructions on the [official pip installation page](https://pip.pypa.io/en/stable/installation/).\n\n2. **Install a package**: To install a package, use the following command:\n\n   ```bash\n   pip install package_name\n   ```\n\n   Replace `package_name` with the name of the package you want to install. For example, to install the `requests` library, you would run:\n\n   ```bash\n   pip install requests\n   ```\n\n3. **Upgrade a package**: To upgrade an already installed package to the latest version, use:\n\n   ```bash\n   pip install --upgrade package_name\n   ```\n\n4. **Uninstall a package**: If you want to remove a package, you can do so with:\n\n   ```bash\n   pip uninstall package_name\n   ```\n\n5. **List installed packages**: To see a list of all installed packages, you can run:\n\n   ```bash\n   pip list\n   ```\n\n### Using a Requirements File\n\nIf you have multiple packages to install, you can create a `requirements.txt` file that lists all the packages and their versions. You can then install all the packages in one command:\n\n1. Create a `requirements.txt` file with the following format:\n\n   ```\n   package_name1==version\n   package_name2==version\n   ```\n\n2. Install all packages listed in the file:\n\n   ```bash\n   pip install -r requirements.txt\n   ```\n\n### Using Conda (if you are using Anaconda)\n\nIf you are using Anaconda, you can use the `conda` package manager to install packages:\n\n1. **Install a package**:\n\n   ```bash\n   conda install package_name\n   ```\n\n2. **Update a package**:\n\n   ```bash\n   conda update package_name\n   ```\n\n3. **Remove a package**:\n\n   ```bash\n   conda"
+      },
+      "cache_validation": {
+        "expected": "context",
+        "actual": null,
+        "passed": false
+      }
+    },
+    {
+      "test_id": "context_injection_2",
+      "category": "context_injection",
+      "description": "Another context injection case",
+      "query": "What are Python libraries used for?",
+      "status": "success",
+      "elapsed_ms": 17564.005851745605,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 314,
+      "input_tokens": 14,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 6,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 7
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3893
+          }
+        ],
+        "input_tokens": 14,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 21.428571428571427
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9529782518204021,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00042120000000000005,
+          "total_tokens": 2808,
+          "total_latency_ms": 66330.04665374756,
+          "total_quality": 8.8,
+          "query_count": 9,
+          "avg_cost_per_query": 4.6800000000000006e-05,
+          "avg_tokens": 312.0,
+          "avg_latency": 7370.0051837497285,
+          "avg_quality": 0.9777777777777779,
+          "cost_quality_ratio": 20.892687559354226,
+          "efficiency_score": 0.8683321388590448
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer is more concise and includes an additional example (NumPy) for data analysis, providing a slightly more comprehensive overview.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 526,
+        "input_tokens": 14,
+        "output_tokens": 512,
+        "latency_ms": 9703.35078239441,
+        "model": "gpt-4o-mini",
+        "response": "Python libraries are collections of pre-written code that provide specific functionalities and can be reused in various applications. They help streamline the development process by allowing developers to leverage existing solutions rather than writing code from scratch. Here are some common categories of Python libraries and their uses:\n\n1. **Data Analysis and Manipulation**:\n   - **Pandas**: Used for data manipulation and analysis, providing data structures like DataFrames for handling structured data.\n   - **NumPy**: Provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays.\n\n2. **Data Visualization**:\n   - **Matplotlib**: A plotting library that provides a wide variety of static, animated, and interactive visualizations in Python.\n   - **Seaborn**: Built on top of Matplotlib, it provides a high-level interface for drawing attractive statistical graphics.\n   - **Plotly**: Used for creating interactive plots and dashboards.\n\n3. **Machine Learning and AI**:\n   - **Scikit-learn**: A library for machine learning that provides simple and efficient tools for data mining and data analysis.\n   - **TensorFlow**: An open-source library for deep learning and neural networks.\n   - **Keras**: A high-level neural networks API, running on top of TensorFlow, that simplifies building and training deep learning models.\n\n4. **Web Development**:\n   - **Flask**: A lightweight web framework for building web applications quickly and easily.\n   - **Django**: A high-level web framework that encourages rapid development and clean, pragmatic design.\n\n5. **Scientific Computing**:\n   - **SciPy**: A library used for scientific and technical computing, providing modules for optimization, integration, interpolation, eigenvalue problems, and more.\n   - **SymPy**: A library for symbolic mathematics that enables algebraic computations.\n\n6. **Natural Language Processing (NLP)**:\n   - **NLTK (Natural Language Toolkit)**: A library for working with human language data (text) and provides easy-to-use interfaces to over 50 corpora and lexical resources.\n   - **spaCy**: An NLP library designed for production use, offering fast and efficient processing of large volumes of text.\n\n7. **Image Processing**:\n   - **Pillow**: A fork of the Python Imaging Library (PIL), it adds image processing capabilities to your Python interpreter.\n   - **OpenCV**: A library for computer vision tasks, including image processing, video"
+      },
+      "cache_validation": {
+        "expected": "context",
+        "actual": null,
+        "passed": false
+      }
+    },
+    {
+      "test_id": "llmlingua_query_1",
+      "category": "llmlingua_query",
+      "description": "Long query (>200 tokens) - should trigger query compression",
+      "query": "I need a comprehensive explanation of how machine learning algorithms work, specifically focusing on neural networks, deep learning architectures, backpropagation, gradient descent optimization techni",
+      "status": "success",
+      "elapsed_ms": 16975.426197052002,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 364,
+      "input_tokens": 64,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "medium",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 57
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3843
+          }
+        ],
+        "input_tokens": 64,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 4.6875
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9543121721231937,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0005229000000000001,
+          "total_tokens": 3486,
+          "total_latency_ms": 79799.35431480408,
+          "total_quality": 10.8,
+          "query_count": 11,
+          "avg_cost_per_query": 4.753636363636364e-05,
+          "avg_tokens": 316.90909090909093,
+          "avg_latency": 7254.48675589128,
+          "avg_quality": 0.9818181818181819,
+          "cost_quality_ratio": 20.654044750430295,
+          "efficiency_score": 0.8710925118049714
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers begin similarly, outlining the structure and topics to be covered, with no significant difference in quality or detail at the start.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 576,
+        "input_tokens": 64,
+        "output_tokens": 512,
+        "latency_ms": 9404.834747314453,
+        "model": "gpt-4o-mini",
+        "response": "Certainly! Let's delve into the components of machine learning algorithms, specifically focusing on neural networks and deep learning architectures. We will cover the following topics:\n\n1. **Neural Networks Overview**\n2. **Deep Learning Architectures**\n3. **Backpropagation**\n4. **Gradient Descent Optimization Techniques**\n5. **Activation Functions**\n6. **Interaction of Components in Modern AI Systems**\n\n### 1. Neural Networks Overview\n\nA neural network is a computational model inspired by the way biological neural networks in the human brain process information. It consists of layers of interconnected nodes (neurons), where each connection has an associated weight. The basic structure includes:\n\n- **Input Layer**: Receives input data.\n- **Hidden Layers**: Intermediate layers that transform inputs into outputs through learned weights.\n- **Output Layer**: Produces the final output of the network.\n\nEach neuron applies a weighted sum of its inputs, followed by an activation function to introduce non-linearity.\n\n### 2. Deep Learning Architectures\n\nDeep learning refers to neural networks with multiple hidden layers, allowing them to learn complex patterns in data. Common architectures include:\n\n- **Feedforward Neural Networks (FNN)**: Information moves in one direction\u2014from input to output. No cycles or loops.\n  \n- **Convolutional Neural Networks (CNN)**: Primarily used in image processing, CNNs apply convolutional layers to capture spatial hierarchies in images. They use filters to detect features such as edges and textures.\n\n- **Recurrent Neural Networks (RNN)**: Designed for sequential data (like time series or natural language), RNNs have connections that loop back, allowing them to maintain a memory of previous inputs.\n\n- **Transformers**: A recent architecture that has revolutionized natural language processing (NLP). Transformers use self-attention mechanisms to weigh the significance of different words in a sentence, allowing for parallel processing.\n\n### 3. Backpropagation\n\nBackpropagation is the algorithm used to train neural networks. It involves two main steps:\n\n1. **Forward Pass**: Input data is passed through the network, layer by layer, to compute the output.\n\n2. **Backward Pass**: The error (difference between predicted and actual output) is propagated backward through the network to update weights. This is done using the chain rule of calculus to compute gradients of the loss function with respect to each weight.\n\nThe loss function quantifies how well the network's predictions match the actual labels. Common loss functions include Mean Squared Error (MSE) for"
+      }
+    },
+    {
+      "test_id": "llmlingua_context_1",
+      "category": "llmlingua_context",
+      "description": "Query that should retrieve and compress long context",
+      "query": "Summarize the key points about machine learning",
+      "status": "success",
+      "elapsed_ms": 15458.610534667969,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 316,
+      "input_tokens": 16,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 139,
+        "bandit": 0,
+        "total_savings": 139
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ],
+        "input_tokens": 16,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 18.75
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9598654306487592,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0006249000000000001,
+          "total_tokens": 4166,
+          "total_latency_ms": 92232.82384872437,
+          "total_quality": 12.700000000000001,
+          "query_count": 13,
+          "avg_cost_per_query": 4.8069230769230775e-05,
+          "avg_tokens": 320.46153846153845,
+          "avg_latency": 7094.832603748028,
+          "avg_quality": 0.976923076923077,
+          "cost_quality_ratio": 20.323251720275245,
+          "efficiency_score": 0.8697062975192247
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide similar information about machine learning, with slight wording differences that do not significantly impact the overall content.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 455,
+        "input_tokens": 16,
+        "output_tokens": 439,
+        "latency_ms": 8547.687768936157,
+        "model": "gpt-4o-mini",
+        "response": "Sure! Here are the key points about machine learning:\n\n1. **Definition**: Machine learning (ML) is a subset of artificial intelligence (AI) that focuses on the development of algorithms that enable computers to learn from and make predictions or decisions based on data.\n\n2. **Types of Learning**:\n   - **Supervised Learning**: The model is trained on labeled data, meaning the input comes with the correct output. Common tasks include classification and regression.\n   - **Unsupervised Learning**: The model works with unlabeled data and tries to find patterns or groupings. Common tasks include clustering and dimensionality reduction.\n   - **Semi-Supervised Learning**: Combines both labeled and unlabeled data for training, often improving learning accuracy.\n   - **Reinforcement Learning**: An agent learns to make decisions by taking actions in an environment to maximize cumulative rewards.\n\n3. **Algorithms**: Various algorithms are used in ML, including decision trees, neural networks, support vector machines, and ensemble methods like random forests and boosting.\n\n4. **Applications**: Machine learning is applied in numerous fields, including healthcare (diagnosis and treatment recommendations), finance (fraud detection and algorithmic trading), marketing (customer segmentation and recommendation systems), and autonomous systems (self-driving cars).\n\n5. **Data**: Quality and quantity of data are crucial for effective machine learning. Large datasets help improve model accuracy, while data preprocessing (cleaning and transforming data) is essential for optimal performance.\n\n6. **Evaluation**: Models are evaluated using metrics like accuracy, precision, recall, F1 score, and area under the ROC curve (AUC-ROC) to determine their performance.\n\n7. **Challenges**: Common challenges include overfitting (where a model performs well on training data but poorly on unseen data), bias in data, interpretability of models, and the need for significant computational resources.\n\n8. **Future Trends**: The field of machine learning is rapidly evolving, with trends such as explainable AI, transfer learning, federated learning, and advancements in deep learning architectures.\n\nThese points provide a foundational understanding of machine learning and its significance in various domains."
+      }
+    },
+    {
+      "test_id": "preference_formal_1",
+      "category": "user_preferences",
+      "description": "Formal tone - should learn formal preference",
+      "query": "Could you please provide a detailed explanation of REST APIs?",
+      "status": "success",
+      "elapsed_ms": 17413.18392753601,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 318,
+      "input_tokens": 18,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 11
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3889
+          }
+        ],
+        "input_tokens": 18,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 16.666666666666668
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.959644722428786,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00072,
+          "total_tokens": 4800,
+          "total_latency_ms": 103894.98710632324,
+          "total_quality": 14.600000000000001,
+          "query_count": 15,
+          "avg_cost_per_query": 4.8e-05,
+          "avg_tokens": 320.0,
+          "avg_latency": 6926.332473754883,
+          "avg_quality": 0.9733333333333334,
+          "cost_quality_ratio": 20.27777777777778,
+          "efficiency_score": 0.8690816189928725
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more structured introduction by mentioning the origin of REST and includes best practices, which adds depth to the explanation.",
+        "confidence": 0.85
+      },
+      "baseline_comparison": {
+        "tokens_used": 530,
+        "input_tokens": 18,
+        "output_tokens": 512,
+        "latency_ms": 10516.5376663208,
+        "model": "gpt-4o-mini",
+        "response": "Certainly! REST (Representational State Transfer) APIs are a set of conventions for building and interacting with web services. They are widely used for enabling communication between client and server applications over the internet. Below is a detailed explanation of REST APIs, covering their principles, architecture, methods, and more.\n\n### Key Concepts of REST APIs\n\n1. **Resources**:\n   - In REST, everything is considered a resource. A resource can be any piece of information that can be named, such as a user, a product, or a collection of data.\n   - Each resource is identified by a unique URI (Uniform Resource Identifier). For example, a user resource might be accessed at `https://api.example.com/users/123`.\n\n2. **Representations**:\n   - Resources can have multiple representations, such as JSON, XML, or HTML. When a client requests a resource, the server responds with the resource's representation in the requested format.\n   - JSON is the most commonly used format for REST APIs due to its lightweight nature and ease of use with JavaScript.\n\n3. **Statelessness**:\n   - REST APIs are stateless, meaning that each request from a client to the server must contain all the information needed to understand and process the request. The server does not store any client context between requests.\n   - This statelessness improves scalability and reliability, as each request is independent.\n\n4. **Client-Server Architecture**:\n   - REST follows a client-server architecture where the client and server are separate entities. The client is responsible for the user interface and user experience, while the server handles data processing and storage.\n   - This separation allows for flexibility and scalability, as clients can evolve independently of the server.\n\n5. **Cacheability**:\n   - Responses from the server can be marked as cacheable or non-cacheable. If a response is cacheable, clients can store it and reuse it for subsequent requests, reducing the need for repeated server calls and improving performance.\n\n6. **Layered System**:\n   - REST APIs can be composed of multiple layers, allowing for intermediaries such as proxies, gateways, and load balancers. Each layer can handle different concerns, such as security, caching, or load balancing, without affecting the overall architecture.\n\n7. **Uniform Interface**:\n   - REST APIs have a uniform interface that simplifies and decouples the architecture. This interface is defined by a set of constraints that include:\n     - Resource identification through URIs.\n     - Resource manipulation through standard HTTP methods.\n     -"
+      }
+    },
+    {
+      "test_id": "preference_casual_1",
+      "category": "user_preferences",
+      "description": "Casual tone - should learn casual preference",
+      "query": "Hey, what's up with REST APIs?",
+      "status": "success",
+      "elapsed_ms": 13367.062091827393,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 135,
+        "bandit": 0,
+        "total_savings": 135
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "casual",
+        "preference_format": "code",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 10,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ],
+        "input_tokens": 15,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 20.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9598755209195534,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00081495,
+          "total_tokens": 5433,
+          "total_latency_ms": 115556.28442764282,
+          "total_quality": 16.6,
+          "query_count": 17,
+          "avg_cost_per_query": 4.793823529411765e-05,
+          "avg_tokens": 319.5882352941176,
+          "avg_latency": 6797.428495743696,
+          "avg_quality": 0.9764705882352942,
+          "cost_quality_ratio": 20.36934781274925,
+          "efficiency_score": 0.8715682432705963
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer explanation by specifying the use of standard HTTP methods and clarifies the interaction between client and server.",
+        "confidence": 0.85
+      },
+      "baseline_comparison": {
+        "tokens_used": 450,
+        "input_tokens": 15,
+        "output_tokens": 435,
+        "latency_ms": 6517.804145812988,
+        "model": "gpt-4o-mini",
+        "response": "REST (Representational State Transfer) APIs are a set of conventions for building web services that allow different systems to communicate over the internet. They are widely used due to their simplicity and scalability. Here are some key points about REST APIs:\n\n1. **Statelessness**: Each API call from a client contains all the information needed to process the request. The server does not store any client context between requests, making it easier to scale.\n\n2. **Resource-Based**: REST APIs are centered around resources, which are typically represented by URLs. Each resource can be manipulated using standard HTTP methods:\n   - **GET**: Retrieve data from the server.\n   - **POST**: Create a new resource on the server.\n   - **PUT**: Update an existing resource.\n   - **DELETE**: Remove a resource.\n\n3. **Use of Standard HTTP Protocol**: REST APIs leverage standard HTTP methods and status codes, making them easy to understand and use. For example, a successful request might return a 200 status code, while a not found error would return a 404.\n\n4. **Data Formats**: REST APIs commonly use JSON (JavaScript Object Notation) for data interchange, but they can also support XML or other formats.\n\n5. **HATEOAS**: Hypermedia as the Engine of Application State is a constraint of REST that allows clients to dynamically navigate the API by providing links to related resources in the responses.\n\n6. **Versioning**: REST APIs often implement versioning to manage changes and ensure backward compatibility. This can be done through URL paths (e.g., `/v1/resource`) or request headers.\n\n7. **Security**: REST APIs can implement various authentication and authorization mechanisms, such as OAuth, API keys, or JWT (JSON Web Tokens).\n\n8. **Caching**: REST APIs can take advantage of HTTP caching mechanisms to improve performance and reduce server load.\n\nREST APIs are widely used in web and mobile applications, microservices architectures, and cloud services due to their flexibility and ease of integration. If you have specific questions or need more details about a particular aspect of REST APIs, feel free to ask!"
+      }
+    },
+    {
+      "test_id": "preference_technical_1",
+      "category": "user_preferences",
+      "description": "Technical tone - should learn technical preference",
+      "query": "Explain the implementation details of REST API architecture",
+      "status": "success",
+      "elapsed_ms": 15774.78313446045,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ],
+        "input_tokens": 15,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 20.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9590657690482259,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00090945,
+          "total_tokens": 6063,
+          "total_latency_ms": 127306.4968585968,
+          "total_quality": 18.6,
+          "query_count": 19,
+          "avg_cost_per_query": 4.786578947368421e-05,
+          "avg_tokens": 319.10526315789474,
+          "avg_latency": 6700.3419399261475,
+          "avg_quality": 0.9789473684210527,
+          "cost_quality_ratio": 20.451921491011053,
+          "efficiency_score": 0.8735121388099615
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer introduction to REST principles, emphasizing the architectural style and key principles like statelessness, which are crucial for understanding REST API implementation.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 527,
+        "input_tokens": 15,
+        "output_tokens": 512,
+        "latency_ms": 8173.091650009155,
+        "model": "gpt-4o-mini",
+        "response": "Implementing a REST (Representational State Transfer) API involves several key principles and architectural constraints that guide the design and development of the API. Below are the implementation details and best practices for creating a RESTful API:\n\n### 1. **Resources and URIs**\n   - **Resources**: In REST, everything is considered a resource (e.g., users, products, orders). Each resource should have a unique identifier (URI).\n   - **URIs**: Use nouns to represent resources in the URI. For example:\n     - `/users` for a collection of users\n     - `/users/{id}` for a specific user\n   - **Hierarchical Structure**: Organize URIs hierarchically to represent relationships. For example:\n     - `/users/{id}/orders` for orders belonging to a specific user.\n\n### 2. **HTTP Methods**\n   - Use standard HTTP methods to perform actions on resources:\n     - **GET**: Retrieve a resource or collection of resources.\n     - **POST**: Create a new resource.\n     - **PUT**: Update an existing resource or create it if it does not exist.\n     - **PATCH**: Partially update an existing resource.\n     - **DELETE**: Remove a resource.\n\n### 3. **Statelessness**\n   - Each request from the client to the server must contain all the information needed to understand and process the request. The server should not store any client context between requests.\n   - Use tokens (like JWT) for authentication, which can be sent with each request.\n\n### 4. **Data Formats**\n   - **JSON**: The most common format for data exchange in REST APIs. Use JSON for request and response bodies.\n   - **Content Negotiation**: Allow clients to specify the desired response format using the `Accept` header. The server should respond accordingly.\n\n### 5. **Status Codes**\n   - Use standard HTTP status codes to indicate the outcome of API requests:\n     - `200 OK`: Successful GET, PUT, or PATCH.\n     - `201 Created`: Successful POST.\n     - `204 No Content`: Successful DELETE.\n     - `400 Bad Request`: Invalid request from the client.\n     - `401 Unauthorized`: Authentication required.\n     - `404 Not Found`: Resource not found.\n     - `500 Internal Server Error`: Server error.\n\n### 6. **HATEOAS (Hypermedia as the Engine of Application State)**\n   - Include hypermedia links in responses to guide clients on what"
+      }
+    },
+    {
+      "test_id": "preference_list_1",
+      "category": "user_preferences",
+      "description": "List format preference",
+      "query": "List the steps to implement a REST API",
+      "status": "success",
+      "elapsed_ms": 20200.420379638672,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 8
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3892
+          }
+        ],
+        "input_tokens": 15,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 20.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9572589704556227,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.00100395,
+          "total_tokens": 6693,
+          "total_latency_ms": 139449.74899291992,
+          "total_quality": 20.6,
+          "query_count": 21,
+          "avg_cost_per_query": 4.7807142857142855e-05,
+          "avg_tokens": 318.7142857142857,
+          "avg_latency": 6640.464237758091,
+          "avg_quality": 0.980952380952381,
+          "cost_quality_ratio": 20.51895014691967,
+          "efficiency_score": 0.8749560268215788
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer and more structured approach by combining planning and design into a single step and explicitly mentioning REST conventions for endpoints.",
+        "confidence": 0.85
+      },
+      "baseline_comparison": {
+        "tokens_used": 527,
+        "input_tokens": 15,
+        "output_tokens": 512,
+        "latency_ms": 11617.236137390137,
+        "model": "gpt-4o-mini",
+        "response": "Implementing a REST API involves several steps, from planning and design to deployment and maintenance. Below is a general outline of the steps you might follow:\n\n### 1. **Define the Purpose and Requirements**\n   - Identify the goals of the API.\n   - Determine the resources (data entities) that the API will expose.\n   - Gather requirements from stakeholders.\n\n### 2. **Design the API**\n   - **Resource Identification**: Define the resources (e.g., users, products) and their relationships.\n   - **Endpoint Design**: Create a list of endpoints (URLs) for each resource, following REST conventions (e.g., `/users`, `/products/{id}`).\n   - **HTTP Methods**: Decide which HTTP methods (GET, POST, PUT, DELETE) will be used for each endpoint.\n   - **Data Format**: Choose a data format for requests and responses (commonly JSON or XML).\n   - **Versioning**: Plan for API versioning (e.g., `/v1/users`).\n\n### 3. **Choose Technology Stack**\n   - Select the programming language and framework (e.g., Node.js with Express, Python with Flask/Django, Java with Spring).\n   - Choose a database (SQL or NoSQL) based on the data requirements.\n\n### 4. **Set Up the Development Environment**\n   - Install necessary tools and libraries.\n   - Set up a version control system (e.g., Git).\n   - Create a project structure.\n\n### 5. **Implement the API**\n   - **Routing**: Set up routing for the defined endpoints.\n   - **Controllers**: Implement the logic for handling requests and responses.\n   - **Data Access Layer**: Create a layer to interact with the database (CRUD operations).\n   - **Middleware**: Implement middleware for tasks like authentication, logging, and error handling.\n\n### 6. **Implement Authentication and Authorization**\n   - Choose an authentication method (e.g., OAuth, JWT).\n   - Secure endpoints based on user roles and permissions.\n\n### 7. **Error Handling**\n   - Define a consistent error response format.\n   - Implement error handling for various scenarios (e.g., 404 Not Found, 500 Internal Server Error).\n\n### 8. **Testing**\n   - Write unit tests for individual components.\n   - Write integration tests for the entire API.\n   - Use tools like Postman or Swagger for manual testing.\n   - Consider automated testing frameworks.\n\n### 9. **Documentation**\n   - Create API documentation"
+      }
+    },
+    {
+      "test_id": "complexity_simple_1",
+      "category": "query_complexity",
+      "description": "Simple query - should use cheap strategy",
+      "query": "What is API?",
+      "status": "success",
+      "elapsed_ms": 12189.568519592285,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 262,
+      "input_tokens": 11,
+      "output_tokens": 251,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 30,
+        "bandit": 0,
+        "total_savings": 30
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 13,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ],
+        "input_tokens": 11,
+        "output_tokens": 251,
+        "max_response_tokens": 300,
+        "token_efficiency": 22.818181818181817
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9600195372697751,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0010904999999999999,
+          "total_tokens": 7270,
+          "total_latency_ms": 151484.16686058044,
+          "total_quality": 22.6,
+          "query_count": 23,
+          "avg_cost_per_query": 4.741304347826086e-05,
+          "avg_tokens": 316.0869565217391,
+          "avg_latency": 6586.268124373063,
+          "avg_quality": 0.982608695652174,
+          "cost_quality_ratio": 20.724438331040812,
+          "efficiency_score": 0.8761977363928435
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar explanation of what an API is and mention web APIs, with only slight differences in wording.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 292,
+        "input_tokens": 11,
+        "output_tokens": 281,
+        "latency_ms": 5469.145059585571,
+        "model": "gpt-4o-mini",
+        "response": "API stands for Application Programming Interface. It is a set of rules and protocols that allows different software applications to communicate with each other. APIs define the methods and data formats that applications can use to request and exchange information, enabling developers to integrate different services and functionalities into their own applications.\n\nAPIs can be used for various purposes, such as:\n\n1. **Web APIs**: These allow communication over the internet, often using HTTP requests. They are commonly used to access web services, such as retrieving data from a server or sending data to a server.\n\n2. **Library APIs**: These provide a set of functions and procedures that developers can use to interact with a software library or framework.\n\n3. **Operating System APIs**: These allow applications to interact with the operating system, enabling tasks like file management, memory allocation, and hardware interaction.\n\nAPIs can be categorized into different types, including:\n\n- **REST (Representational State Transfer)**: A popular architectural style for designing networked applications, using standard HTTP methods (GET, POST, PUT, DELETE).\n- **SOAP (Simple Object Access Protocol)**: A protocol for exchanging structured information in web services, using XML.\n- **GraphQL**: A query language for APIs that allows clients to request only the data they need.\n\nOverall, APIs play a crucial role in modern software development, enabling interoperability and enhancing functionality across different platforms and services."
+      },
+      "complexity_validation": {
+        "expected": "simple",
+        "actual": "simple",
+        "passed": true
+      },
+      "strategy_validation": {
+        "expected": "cheap",
+        "actual": "cheap",
+        "passed": true
+      }
+    },
+    {
+      "test_id": "complexity_simple_2",
+      "category": "query_complexity",
+      "description": "Another simple query",
+      "query": "Define REST",
+      "status": "success",
+      "elapsed_ms": 15925.12822151184,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 309,
+      "input_tokens": 9,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 65,
+        "bandit": 0,
+        "total_savings": 65
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 14,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 2
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3898
+          }
+        ],
+        "input_tokens": 9,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 33.333333333333336
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9590652237138352,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0011761499999999997,
+          "total_tokens": 7841,
+          "total_latency_ms": 163251.15728378296,
+          "total_quality": 24.5,
+          "query_count": 25,
+          "avg_cost_per_query": 4.704599999999999e-05,
+          "avg_tokens": 313.64,
+          "avg_latency": 6530.046291351318,
+          "avg_quality": 0.98,
+          "cost_quality_ratio": 20.830676359307915,
+          "efficiency_score": 0.8753251495414096
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more complete context by mentioning web services and APIs, making it slightly more informative.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 374,
+        "input_tokens": 9,
+        "output_tokens": 365,
+        "latency_ms": 9276.349782943726,
+        "model": "gpt-4o-mini",
+        "response": "REST, which stands for Representational State Transfer, is an architectural style for designing networked applications. It was introduced by Roy Fielding in his doctoral dissertation in 2000. REST is based on a set of principles and constraints that allow for the creation of scalable and stateless web services.\n\nKey principles of REST include:\n\n1. **Statelessness**: Each request from a client to a server must contain all the information needed to understand and process the request. The server does not store any client context between requests.\n\n2. **Client-Server Architecture**: REST separates the client and server concerns. The client is responsible for the user interface and user experience, while the server manages data storage and processing.\n\n3. **Uniform Interface**: RESTful services should have a consistent and standardized way of interacting with resources. This typically involves using standard HTTP methods such as GET, POST, PUT, DELETE, etc.\n\n4. **Resource-Based**: In REST, resources (such as data entities) are identified by URIs (Uniform Resource Identifiers). Resources can be represented in various formats, such as JSON, XML, or HTML.\n\n5. **Stateless Communication**: Each interaction between the client and server is independent, and the server does not retain session information.\n\n6. **Cacheability**: Responses from the server can be marked as cacheable or non-cacheable, allowing clients to store responses and improve performance.\n\n7. **Layered System**: A RESTful architecture can be composed of multiple layers, with each layer having its own responsibilities. This allows for scalability and separation of concerns.\n\nREST is widely used in web services and APIs due to its simplicity, scalability, and ease of integration with web technologies. It has become a standard approach for building web applications and services that communicate over the Internet."
+      },
+      "complexity_validation": {
+        "expected": "simple",
+        "actual": "simple",
+        "passed": true
+      }
+    },
+    {
+      "test_id": "complexity_medium_1",
+      "category": "query_complexity",
+      "description": "Medium complexity - should use balanced strategy",
+      "query": "How does authentication work in REST APIs?",
+      "status": "success",
+      "elapsed_ms": 16636.696338653564,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.6,
+        "preference_interaction_count": 15,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 8
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3892
+          }
+        ],
+        "input_tokens": 15,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 20.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9633482569118818,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0012697499999999996,
+          "total_tokens": 8465,
+          "total_latency_ms": 174483.69693756104,
+          "total_quality": 26.5,
+          "query_count": 27,
+          "avg_cost_per_query": 4.7027777777777766e-05,
+          "avg_tokens": 313.51851851851853,
+          "avg_latency": 6462.359145835594,
+          "avg_quality": 0.9814814814814815,
+          "cost_quality_ratio": 20.870250049222292,
+          "efficiency_score": 0.8765785865116695
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar level of detail about Basic Authentication in REST APIs, including how it works and the use of the Authorization header.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 527,
+        "input_tokens": 15,
+        "output_tokens": 512,
+        "latency_ms": 10434.65781211853,
+        "model": "gpt-4o-mini",
+        "response": "Authentication in REST APIs is a critical aspect of securing access to resources and ensuring that only authorized users can perform certain actions. Here are the common methods used for authentication in REST APIs:\n\n### 1. **Basic Authentication**\n- **How it Works**: The client sends the username and password encoded in Base64 as part of the HTTP headers (specifically, the `Authorization` header).\n- **Example**: \n  ```\n  Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=\n  ```\n- **Pros**: Simple to implement.\n- **Cons**: Not secure unless used over HTTPS, as credentials can be easily intercepted.\n\n### 2. **Token-Based Authentication**\n- **How it Works**: After the user logs in with their credentials, the server generates a token (often a JSON Web Token, or JWT) and sends it back to the client. The client includes this token in the `Authorization` header for subsequent requests.\n- **Example**:\n  ```\n  Authorization: Bearer <token>\n  ```\n- **Pros**: Stateless, scalable, and can include user information and expiration time.\n- **Cons**: Requires token management and can be vulnerable if tokens are not properly secured.\n\n### 3. **OAuth 2.0**\n- **How it Works**: OAuth 2.0 is a more complex framework that allows third-party applications to obtain limited access to an HTTP service. It involves obtaining an access token through various flows (e.g., authorization code flow, client credentials flow).\n- **Pros**: Highly secure and allows for delegated access.\n- **Cons**: More complex to implement and understand.\n\n### 4. **API Keys**\n- **How it Works**: The client includes a unique API key in the request, typically as a query parameter or in the headers.\n- **Example**:\n  ```\n  x-api-key: <your_api_key>\n  ```\n- **Pros**: Simple to use and implement.\n- **Cons**: Can be less secure if not managed properly, as keys can be exposed in logs or URLs.\n\n### 5. **HMAC (Hash-Based Message Authentication Code)**\n- **How it Works**: The client generates a hash of the request using a shared secret key and includes it in the request headers. The server can then verify the hash to authenticate the request.\n- **Pros**: Provides integrity and authenticity of the request.\n- **Cons**: More complex to implement and requires careful handling"
+      },
+      "complexity_validation": {
+        "expected": "medium",
+        "actual": "simple",
+        "passed": false
+      },
+      "strategy_validation": {
+        "expected": "balanced",
+        "actual": "cheap",
+        "passed": false
+      }
+    },
+    {
+      "test_id": "complexity_medium_2",
+      "category": "query_complexity",
+      "description": "Another medium complexity query",
+      "query": "Explain the difference between GET and POST methods",
+      "status": "success",
+      "elapsed_ms": 16567.570686340332,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.5499999999999999,
+        "preference_interaction_count": 16,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ],
+        "input_tokens": 15,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 20.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9565272233188827,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0013642499999999996,
+          "total_tokens": 9095,
+          "total_latency_ms": 186093.58191490173,
+          "total_quality": 28.4,
+          "query_count": 29,
+          "avg_cost_per_query": 4.704310344827585e-05,
+          "avg_tokens": 313.62068965517244,
+          "avg_latency": 6417.020066031094,
+          "avg_quality": 0.9793103448275862,
+          "cost_quality_ratio": 20.817298882169695,
+          "efficiency_score": 0.8758390169848899
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide the same information and structure, with only minor formatting differences that do not affect the content.",
+        "confidence": 0.95
+      },
+      "baseline_comparison": {
+        "tokens_used": 527,
+        "input_tokens": 15,
+        "output_tokens": 512,
+        "latency_ms": 9082.595586776733,
+        "model": "gpt-4o-mini",
+        "response": "GET and POST are two of the most commonly used HTTP methods for sending and receiving data between a client (like a web browser) and a server. Here are the key differences between them:\n\n### 1. **Purpose**\n- **GET**: Primarily used to retrieve data from a server. It requests data from a specified resource and should not change the state of the server.\n- **POST**: Used to send data to a server to create or update a resource. It can change the state of the server and is often used for submitting forms.\n\n### 2. **Data Transmission**\n- **GET**: Sends data appended to the URL as query parameters. For example, `http://example.com/page?name=John&age=30`. This makes it visible in the URL.\n- **POST**: Sends data in the body of the request, which is not visible in the URL. This allows for larger amounts of data to be sent and is more secure for sensitive information.\n\n### 3. **Data Length**\n- **GET**: Limited by the maximum URL length, which varies by browser but is generally around 2048 characters. This limits the amount of data that can be sent.\n- **POST**: Can handle much larger amounts of data since it does not have the same restrictions as GET. The limit is usually determined by the server configuration.\n\n### 4. **Caching**\n- **GET**: Responses can be cached by browsers and intermediate proxies since GET requests are idempotent (the same request can be made multiple times without different outcomes).\n- **POST**: Responses are generally not cached because POST requests can change the state of the server.\n\n### 5. **Idempotency**\n- **GET**: Idempotent, meaning that making the same request multiple times will not change the result. It is safe to repeat GET requests.\n- **POST**: Not idempotent. Sending the same POST request multiple times can result in different outcomes (e.g., creating multiple entries in a database).\n\n### 6. **Use Cases**\n- **GET**: Ideal for retrieving data, such as fetching a webpage, searching for items, or getting user information.\n- **POST**: Suitable for submitting forms, uploading files, or sending data that modifies server state (like creating a new user account).\n\n### Summary\nIn summary, use **GET** when you want to retrieve data without affecting the server's state, and use **POST** when you need to send data to the server that"
+      },
+      "complexity_validation": {
+        "expected": "medium",
+        "actual": "simple",
+        "passed": false
+      }
+    },
+    {
+      "test_id": "complexity_complex_1",
+      "category": "query_complexity",
+      "description": "Complex query - should use premium strategy",
+      "query": "Design a comprehensive REST API architecture for an e-commerce platform that handles user authentication, product catalog management, shopping cart operations, payment processing, and order fulfillmen",
+      "status": "success",
+      "elapsed_ms": 17574.206590652466,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 352,
+      "input_tokens": 52,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "medium",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.6499999999999999,
+        "preference_interaction_count": 17,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 45
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3855
+          }
+        ],
+        "input_tokens": 52,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 5.769230769230769
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9564959982598114,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0014642999999999995,
+          "total_tokens": 9762,
+          "total_latency_ms": 198708.80436897278,
+          "total_quality": 30.299999999999997,
+          "query_count": 31,
+          "avg_cost_per_query": 4.7235483870967725e-05,
+          "avg_tokens": 314.9032258064516,
+          "avg_latency": 6409.961431257187,
+          "avg_quality": 0.9774193548387096,
+          "cost_quality_ratio": 20.69248104896538,
+          "efficiency_score": 0.8749419901930087
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer structure with a base URL and main resources, which helps in understanding the API's organization and endpoints more effectively.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 564,
+        "input_tokens": 52,
+        "output_tokens": 512,
+        "latency_ms": 10101.873636245728,
+        "model": "gpt-4o-mini",
+        "response": "Designing a comprehensive REST API architecture for an e-commerce platform involves several components and considerations to ensure security, scalability, and efficiency. Below is a detailed outline of the architecture, including the various services, endpoints, and considerations for security, rate limiting, caching, and scalability.\n\n### 1. Architecture Overview\n\nThe architecture consists of multiple microservices, each responsible for a specific domain:\n\n- **User Service**: Handles user authentication and profile management.\n- **Product Service**: Manages the product catalog.\n- **Cart Service**: Manages shopping cart operations.\n- **Order Service**: Handles order processing and fulfillment.\n- **Payment Service**: Manages payment processing.\n\n### 2. API Endpoints\n\n#### User Service\n- **POST /api/users/register**: Register a new user.\n- **POST /api/users/login**: Authenticate a user and return a JWT token.\n- **GET /api/users/profile**: Retrieve user profile (requires authentication).\n- **PUT /api/users/profile**: Update user profile (requires authentication).\n\n#### Product Service\n- **GET /api/products**: Retrieve a list of products (with optional filters).\n- **GET /api/products/{id}**: Retrieve product details by ID.\n- **POST /api/products**: Create a new product (admin only).\n- **PUT /api/products/{id}**: Update product details (admin only).\n- **DELETE /api/products/{id}**: Delete a product (admin only).\n\n#### Cart Service\n- **GET /api/cart**: Retrieve the user's shopping cart (requires authentication).\n- **POST /api/cart/items**: Add an item to the cart (requires authentication).\n- **PUT /api/cart/items/{id}**: Update item quantity in the cart (requires authentication).\n- **DELETE /api/cart/items/{id}**: Remove an item from the cart (requires authentication).\n\n#### Order Service\n- **POST /api/orders**: Create a new order (requires authentication).\n- **GET /api/orders/{id}**: Retrieve order details (requires authentication).\n- **GET /api/orders**: Retrieve a list of orders for the user (requires authentication).\n\n#### Payment Service\n- **POST /api/payments**: Process a payment for an order (requires authentication).\n\n### 3. Security Considerations\n\n- **Authentication**: Use JWT (JSON Web Tokens) for user authentication. Tokens should be signed and have an expiration time.\n- **Authorization**: Implement role-based access"
+      },
+      "complexity_validation": {
+        "expected": "complex",
+        "actual": "medium",
+        "passed": false
+      },
+      "strategy_validation": {
+        "expected": "premium",
+        "actual": "cheap",
+        "passed": false
+      }
+    },
+    {
+      "test_id": "bandit_cheap_1",
+      "category": "bandit_selection",
+      "description": "Should select cheap strategy for simple query",
+      "query": "What is JSON?",
+      "status": "success",
+      "elapsed_ms": 17596.288919448853,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 311,
+      "input_tokens": 11,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 188,
+        "bandit": 0,
+        "total_savings": 188
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.5999999999999999,
+        "preference_interaction_count": 18,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ],
+        "input_tokens": 11,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 27.272727272727273
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9582471088656275,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0015637499999999996,
+          "total_tokens": 10425,
+          "total_latency_ms": 211068.27235221863,
+          "total_quality": 32.3,
+          "query_count": 33,
+          "avg_cost_per_query": 4.7386363636363625e-05,
+          "avg_tokens": 315.90909090909093,
+          "avg_latency": 6396.008253097534,
+          "avg_quality": 0.9787878787878787,
+          "cost_quality_ratio": 20.6554756195044,
+          "efficiency_score": 0.8757290773170533
+        }
+      },
+      "quality_judge": {
+        "winner": "baseline",
+        "explanation": "The baseline answer is more complete as it provides additional context about JSON's familiarity to C family language programmers.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 499,
+        "input_tokens": 11,
+        "output_tokens": 488,
+        "latency_ms": 10235.03303527832,
+        "model": "gpt-4o-mini",
+        "response": "JSON, which stands for JavaScript Object Notation, is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It is primarily used to transmit data between a server and a web application as an alternative to XML.\n\n### Key Features of JSON:\n\n1. **Text-Based Format**: JSON is a text format that is completely language-independent but uses conventions that are familiar to programmers of the C family of languages, which includes C, C++, Java, JavaScript, Python, and many others.\n\n2. **Data Structures**: JSON supports two primary data structures:\n   - **Objects**: An unordered collection of key/value pairs, where keys are strings and values can be strings, numbers, arrays, objects, booleans, or null. Objects are enclosed in curly braces `{}`.\n   - **Arrays**: An ordered list of values, which can be of any type (including other arrays or objects). Arrays are enclosed in square brackets `[]`.\n\n3. **Syntax**: \n   - A JSON object is written in key/value pairs, with keys and string values enclosed in double quotes.\n   - Example:\n     ```json\n     {\n       \"name\": \"John\",\n       \"age\": 30,\n       \"isStudent\": false,\n       \"courses\": [\"Math\", \"Science\"],\n       \"address\": {\n         \"street\": \"123 Main St\",\n         \"city\": \"Anytown\"\n       }\n     }\n     ```\n\n4. **Data Types**: JSON supports the following data types:\n   - String\n   - Number\n   - Object\n   - Array\n   - Boolean (true/false)\n   - Null\n\n5. **Interoperability**: JSON is widely used in web APIs and is supported by most programming languages, making it a popular choice for data exchange.\n\n6. **Human-Readable**: The format is easy to read and understand, which makes it user-friendly for developers.\n\n### Use Cases:\n- **Web APIs**: JSON is commonly used to send and receive data in web applications.\n- **Configuration Files**: Many applications use JSON for configuration settings.\n- **Data Storage**: Some NoSQL databases, like MongoDB, store data in a JSON-like format.\n\nOverall, JSON's simplicity and ease of use have made it a standard format for data interchange in modern web development."
+      },
+      "strategy_validation": {
+        "expected": "cheap",
+        "actual": "cheap",
+        "passed": true
+      }
+    },
+    {
+      "test_id": "bandit_balanced_1",
+      "category": "bandit_selection",
+      "description": "Should select balanced strategy",
+      "query": "How do I parse JSON in Python?",
+      "status": "success",
+      "elapsed_ms": 14229.34603691101,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.5999999999999999,
+        "preference_interaction_count": 19,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 8
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3892
+          }
+        ],
+        "input_tokens": 15,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 20.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9640809420862675,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0016576499999999997,
+          "total_tokens": 11051,
+          "total_latency_ms": 222312.34407424927,
+          "total_quality": 34.0,
+          "query_count": 35,
+          "avg_cost_per_query": 4.736142857142856e-05,
+          "avg_tokens": 315.74285714285713,
+          "avg_latency": 6351.781259264265,
+          "avg_quality": 0.9714285714285714,
+          "cost_quality_ratio": 20.51096431695473,
+          "efficiency_score": 0.8723920422558702
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more comprehensive guide by mentioning both string and file parsing, making it more informative for users with different needs.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 527,
+        "input_tokens": 15,
+        "output_tokens": 512,
+        "latency_ms": 7936.676502227783,
+        "model": "gpt-4o-mini",
+        "response": "In Python, you can parse JSON using the built-in `json` module. This module provides functions to convert JSON strings into Python objects and vice versa. Here\u2019s how you can parse JSON in Python:\n\n### Step 1: Import the `json` module\n\nFirst, you need to import the `json` module.\n\n```python\nimport json\n```\n\n### Step 2: Parse JSON from a string\n\nIf you have a JSON string, you can use the `json.loads()` function to parse it into a Python dictionary (or list, depending on the structure of the JSON).\n\n```python\n# Example JSON string\njson_string = '{\"name\": \"John\", \"age\": 30, \"city\": \"New York\"}'\n\n# Parse JSON string\ndata = json.loads(json_string)\n\n# Accessing data\nprint(data['name'])  # Output: John\nprint(data['age'])   # Output: 30\n```\n\n### Step 3: Parse JSON from a file\n\nIf you have a JSON file, you can use the `json.load()` function to read and parse the JSON data directly from the file.\n\n```python\n# Assuming you have a file named 'data.json' with valid JSON content\nwith open('data.json', 'r') as file:\n    data = json.load(file)\n\n# Accessing data\nprint(data['name'])\nprint(data['age'])\n```\n\n### Example JSON\n\nHere\u2019s an example of what the JSON content might look like in `data.json`:\n\n```json\n{\n    \"name\": \"John\",\n    \"age\": 30,\n    \"city\": \"New York\"\n}\n```\n\n### Step 4: Convert Python objects to JSON\n\nIf you want to convert a Python object (like a dictionary or list) back to a JSON string, you can use the `json.dumps()` function.\n\n```python\n# Python dictionary\ndata = {\n    \"name\": \"John\",\n    \"age\": 30,\n    \"city\": \"New York\"\n}\n\n# Convert to JSON string\njson_string = json.dumps(data)\n\nprint(json_string)  # Output: {\"name\": \"John\", \"age\": 30, \"city\": \"New York\"}\n```\n\n### Step 5: Write JSON to a file\n\nTo write a Python object to a JSON file, you can use the `json.dump()` function.\n\n```python\n# Python dictionary\ndata = {\n    \"name\": \"John\",\n    \"age\": 30,\n    \"city"
+      },
+      "strategy_validation": {
+        "expected": "balanced",
+        "actual": "cheap",
+        "passed": false
+      }
+    },
+    {
+      "test_id": "bandit_premium_1",
+      "category": "bandit_selection",
+      "description": "Should select premium strategy",
+      "query": "Compare JSON, XML, and YAML formats for API design",
+      "status": "success",
+      "elapsed_ms": 15794.542074203491,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 318,
+      "input_tokens": 18,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.6999999999999998,
+        "preference_interaction_count": 20,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 11
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3889
+          }
+        ],
+        "input_tokens": 18,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 16.666666666666668
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9591802635737308,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0017525999999999996,
+          "total_tokens": 11684,
+          "total_latency_ms": 233411.70144081116,
+          "total_quality": 36.0,
+          "query_count": 37,
+          "avg_cost_per_query": 4.736756756756756e-05,
+          "avg_tokens": 315.7837837837838,
+          "avg_latency": 6308.424363265166,
+          "avg_quality": 0.972972972972973,
+          "cost_quality_ratio": 20.54091064703869,
+          "efficiency_score": 0.8735018080345414
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more precise context by mentioning 'request and response payloads' and offers a clearer structure with bullet points, enhancing readability and comprehension.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 530,
+        "input_tokens": 18,
+        "output_tokens": 512,
+        "latency_ms": 9080.172300338745,
+        "model": "gpt-4o-mini",
+        "response": "When designing APIs, choosing the right data format for data interchange is crucial. JSON (JavaScript Object Notation), XML (eXtensible Markup Language), and YAML (YAML Ain't Markup Language) are three popular formats, each with its own strengths and weaknesses. Here\u2019s a comparison of these formats based on several criteria:\n\n### 1. **Readability**\n- **JSON**: Generally easy to read and write for humans, especially for those familiar with JavaScript. It uses a clear structure with key-value pairs and arrays.\n- **XML**: More verbose than JSON, which can make it harder to read. It uses tags to define data, which can lead to a lot of boilerplate code.\n- **YAML**: Highly readable and designed to be easily understood by humans. It uses indentation to represent structure, which can make it cleaner than both JSON and XML.\n\n### 2. **Data Structure**\n- **JSON**: Supports basic data types like strings, numbers, arrays, booleans, and null. It is well-suited for representing hierarchical data structures.\n- **XML**: More flexible in terms of structure, allowing for mixed content (text and elements) and attributes. It can represent complex data relationships but can become cumbersome.\n- **YAML**: Supports complex data types and structures, including lists, dictionaries, and scalars. It can represent hierarchical data effectively and is often more concise than XML.\n\n### 3. **Serialization and Deserialization**\n- **JSON**: Widely supported across programming languages, making it easy to serialize and deserialize data. Most languages have built-in libraries for handling JSON.\n- **XML**: Also widely supported, but the parsing can be more complex due to its verbose nature and the need to handle namespaces and attributes.\n- **YAML**: Supported in many languages, but not as universally as JSON. Some languages may require additional libraries for parsing YAML.\n\n### 4. **Data Types**\n- **JSON**: Limited to a few data types (strings, numbers, booleans, arrays, objects). It does not support comments.\n- **XML**: Allows for attributes and mixed content, which can be useful for certain applications. It also supports comments.\n- **YAML**: Supports a wide range of data types, including complex structures and comments, making it very flexible.\n\n### 5. **Use Cases**\n- **JSON**: Commonly used in web APIs, especially RESTful services. It is the de facto standard"
+      },
+      "strategy_validation": {
+        "expected": "premium",
+        "actual": "cheap",
+        "passed": false
+      }
+    },
+    {
+      "test_id": "routerbench_1",
+      "category": "routerbench",
+      "description": "Test RouterBench cost-aware routing",
+      "query": "What is a database?",
+      "status": "success",
+      "elapsed_ms": 13516.7555809021,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 312,
+      "input_tokens": 12,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 83,
+        "bandit": 0,
+        "total_savings": 83
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.6499999999999998,
+        "preference_interaction_count": 21,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ],
+        "input_tokens": 12,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 25.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9585828109392548,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0018470999999999995,
+          "total_tokens": 12314,
+          "total_latency_ms": 245338.8957977295,
+          "total_quality": 38.0,
+          "query_count": 39,
+          "avg_cost_per_query": 4.736153846153845e-05,
+          "avg_tokens": 315.7435897435897,
+          "avg_latency": 6290.7409178905,
+          "avg_quality": 0.9743589743589743,
+          "cost_quality_ratio": 20.57278977857182,
+          "efficiency_score": 0.8743334855306569
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a broader overview of database applications and mentions the ability to handle various data formats, making it more comprehensive.",
+        "confidence": 0.85
+      },
+      "baseline_comparison": {
+        "tokens_used": 395,
+        "input_tokens": 12,
+        "output_tokens": 383,
+        "latency_ms": 6451.901912689209,
+        "model": "gpt-4o-mini",
+        "response": "A database is an organized collection of structured information or data, typically stored electronically in a computer system. Databases are managed by Database Management Systems (DBMS), which allow users to create, read, update, and delete data efficiently. \n\nKey characteristics of databases include:\n\n1. **Structured Data**: Data is often organized in tables, which consist of rows and columns. Each table represents a different entity (e.g., customers, products) and the relationships between them can be defined.\n\n2. **Data Integrity**: Databases enforce rules to maintain accuracy and consistency of the data, ensuring that it remains reliable over time.\n\n3. **Querying**: Users can retrieve and manipulate data using query languages, such as SQL (Structured Query Language), which allows for complex searches and operations on the data.\n\n4. **Concurrency**: Databases support multiple users accessing and modifying the data simultaneously while maintaining data integrity.\n\n5. **Security**: Databases provide mechanisms to control access to data, ensuring that only authorized users can perform certain actions.\n\n6. **Scalability**: Databases can handle increasing amounts of data and users, making them suitable for small applications as well as large enterprise systems.\n\nCommon types of databases include:\n\n- **Relational Databases**: Organize data into tables and use relationships between them (e.g., MySQL, PostgreSQL, Oracle).\n- **NoSQL Databases**: Designed for unstructured or semi-structured data, often used for big data applications (e.g., MongoDB, Cassandra).\n- **In-Memory Databases**: Store data in memory for faster access (e.g., Redis, Memcached).\n- **Graph Databases**: Use graph structures to represent and query relationships between data (e.g., Neo4j).\n\nOverall, databases are essential for storing and managing data in various applications, from simple websites to complex enterprise systems."
+      }
+    },
+    {
+      "test_id": "routerbench_2",
+      "category": "routerbench",
+      "description": "Another RouterBench test",
+      "query": "Explain database normalization",
+      "status": "success",
+      "elapsed_ms": 17284.983158111572,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 310,
+      "input_tokens": 10,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.5999999999999998,
+        "preference_interaction_count": 22,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ],
+        "input_tokens": 10,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 30.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.953177197240289,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0019403999999999997,
+          "total_tokens": 12936,
+          "total_latency_ms": 258173.002243042,
+          "total_quality": 40.0,
+          "query_count": 41,
+          "avg_cost_per_query": 4.732682926829267e-05,
+          "avg_tokens": 315.5121951219512,
+          "avg_latency": 6296.902493732731,
+          "avg_quality": 0.975609756097561,
+          "cost_quality_ratio": 20.614306328592047,
+          "efficiency_score": 0.874911600895798
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer includes the concept of improving data integrity, which is a key aspect of normalization, making it slightly more comprehensive.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 522,
+        "input_tokens": 10,
+        "output_tokens": 512,
+        "latency_ms": 9279.44016456604,
+        "model": "gpt-4o-mini",
+        "response": "Database normalization is a systematic approach to organizing data in a relational database to minimize redundancy and dependency. The primary goal of normalization is to ensure that the database structure is efficient, consistent, and easy to maintain. This process involves dividing large tables into smaller, related tables and defining relationships between them.\n\nNormalization is typically carried out in several stages, known as normal forms (NF). Each normal form addresses specific types of redundancy and anomalies. Here are the most commonly referenced normal forms:\n\n1. **First Normal Form (1NF)**:\n   - A table is in 1NF if all its columns contain atomic (indivisible) values, and each entry in a column is of the same data type.\n   - There should be no repeating groups or arrays. Each row must be unique, often achieved by using a primary key.\n\n2. **Second Normal Form (2NF)**:\n   - A table is in 2NF if it is in 1NF and all non-key attributes are fully functionally dependent on the primary key.\n   - This means that there should be no partial dependency of any column on the primary key. If a non-key attribute depends only on part of a composite primary key, the table should be split.\n\n3. **Third Normal Form (3NF)**:\n   - A table is in 3NF if it is in 2NF and all the attributes are functionally dependent only on the primary key.\n   - This means there should be no transitive dependency, where a non-key attribute depends on another non-key attribute. If such dependencies exist, the table should be further decomposed.\n\n4. **Boyce-Codd Normal Form (BCNF)**:\n   - A table is in BCNF if it is in 3NF and every determinant is a candidate key.\n   - This addresses certain types of anomalies that can occur in 3NF.\n\n5. **Fourth Normal Form (4NF)**:\n   - A table is in 4NF if it is in BCNF and has no multi-valued dependencies.\n   - This means that a record should not contain two or more independent multi-valued facts about an entity.\n\n6. **Fifth Normal Form (5NF)**:\n   - A table is in 5NF if it is in 4NF and cannot be decomposed into any smaller tables without losing information.\n   - This often deals with cases where information can be reconstructed from smaller tables.\n\n### Benefits of Normalization:\n- **Reduces Data Redundancy**: By organizing data into related"
+      }
+    },
+    {
+      "test_id": "token_budget_low_1",
+      "category": "token_budget",
+      "description": "Low token budget (1000)",
+      "query": "What is SQL?",
+      "status": "success",
+      "elapsed_ms": 10508.364915847778,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 227,
+      "input_tokens": 11,
+      "output_tokens": 216,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 30,
+        "bandit": 0,
+        "total_savings": 30
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "technical",
+        "preference_format": "list",
+        "preference_confidence": 0.5499999999999997,
+        "preference_interaction_count": 23,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 1000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 896
+          }
+        ],
+        "input_tokens": 11,
+        "output_tokens": 216,
+        "max_response_tokens": 300,
+        "token_efficiency": 19.636363636363637
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9676881182858531,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0020209499999999997,
+          "total_tokens": 13473,
+          "total_latency_ms": 269695.04833221436,
+          "total_quality": 42.0,
+          "query_count": 43,
+          "avg_cost_per_query": 4.699883720930232e-05,
+          "avg_tokens": 313.3255813953488,
+          "avg_latency": 6271.977868191031,
+          "avg_quality": 0.9767441860465116,
+          "cost_quality_ratio": 20.78230535144363,
+          "efficiency_score": 0.8756842987608157
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more comprehensive overview by including data definition operations, making it more informative.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 257,
+        "input_tokens": 11,
+        "output_tokens": 246,
+        "latency_ms": 4684.7333908081055,
+        "model": "gpt-4o-mini",
+        "response": "SQL, or Structured Query Language, is a standardized programming language used for managing and manipulating relational databases. It allows users to perform various operations on the data stored in a database, including:\n\n1. **Querying Data**: Retrieving specific data from one or more tables using the `SELECT` statement.\n2. **Inserting Data**: Adding new records to a table with the `INSERT` statement.\n3. **Updating Data**: Modifying existing records using the `UPDATE` statement.\n4. **Deleting Data**: Removing records from a table with the `DELETE` statement.\n5. **Creating and Modifying Database Structures**: Creating new tables, altering existing tables, and defining relationships between tables using `CREATE`, `ALTER`, and `DROP` statements.\n\nSQL is widely used in various database management systems (DBMS), such as MySQL, PostgreSQL, Microsoft SQL Server, Oracle, and SQLite. It is known for its declarative syntax, which allows users to specify what data they want to retrieve or manipulate without needing to describe how to achieve it.\n\nSQL also includes features for data integrity, security, and transaction management, making it a powerful tool for developers and data analysts working with relational databases."
+      }
+    },
+    {
+      "test_id": "token_budget_medium_1",
+      "category": "token_budget",
+      "description": "Medium token budget (2000)",
+      "query": "Explain SQL joins",
+      "status": "success",
+      "elapsed_ms": 17302.67095565796,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 310,
+      "input_tokens": 10,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 2000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 1896
+          }
+        ],
+        "input_tokens": 10,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 30.0
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9620108983740806,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0021014999999999996,
+          "total_tokens": 14010,
+          "total_latency_ms": 279890.1882171631,
+          "total_quality": 44.0,
+          "query_count": 45,
+          "avg_cost_per_query": 4.669999999999999e-05,
+          "avg_tokens": 311.3333333333333,
+          "avg_latency": 6219.781960381402,
+          "avg_quality": 0.9777777777777777,
+          "cost_quality_ratio": 20.937425648346423,
+          "efficiency_score": 0.8766226929023262
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more complete explanation by including the syntax for INNER JOIN, which is useful for understanding how to implement the join.",
+        "confidence": 0.8
+      },
+      "baseline_comparison": {
+        "tokens_used": 522,
+        "input_tokens": 10,
+        "output_tokens": 512,
+        "latency_ms": 9771.979331970215,
+        "model": "gpt-4o-mini",
+        "response": "SQL joins are used to combine records from two or more tables in a relational database based on related columns between them. Joins allow you to retrieve data that is spread across multiple tables, making it easier to work with complex datasets. Here are the main types of SQL joins:\n\n### 1. INNER JOIN\n- **Definition**: Returns only the rows that have matching values in both tables.\n- **Usage**: Commonly used when you need to retrieve records that have corresponding entries in both tables.\n- **Syntax**:\n  ```sql\n  SELECT columns\n  FROM table1\n  INNER JOIN table2 ON table1.common_column = table2.common_column;\n  ```\n\n### 2. LEFT JOIN (or LEFT OUTER JOIN)\n- **Definition**: Returns all rows from the left table and the matched rows from the right table. If there is no match, NULL values are returned for columns from the right table.\n- **Usage**: Useful when you want to include all records from the left table regardless of whether there is a match in the right table.\n- **Syntax**:\n  ```sql\n  SELECT columns\n  FROM table1\n  LEFT JOIN table2 ON table1.common_column = table2.common_column;\n  ```\n\n### 3. RIGHT JOIN (or RIGHT OUTER JOIN)\n- **Definition**: Returns all rows from the right table and the matched rows from the left table. If there is no match, NULL values are returned for columns from the left table.\n- **Usage**: Similar to LEFT JOIN, but it includes all records from the right table.\n- **Syntax**:\n  ```sql\n  SELECT columns\n  FROM table1\n  RIGHT JOIN table2 ON table1.common_column = table2.common_column;\n  ```\n\n### 4. FULL JOIN (or FULL OUTER JOIN)\n- **Definition**: Returns all rows when there is a match in either left or right table records. If there is no match, NULL values are returned for the columns of the table that does not have a match.\n- **Usage**: Useful when you want to retrieve all records from both tables, regardless of whether there is a match.\n- **Syntax**:\n  ```sql\n  SELECT columns\n  FROM table1\n  FULL JOIN table2 ON table1.common_column = table2.common_column;\n  ```\n\n### 5. CROSS JOIN\n- **Definition**: Returns the Cartesian product of the two tables, meaning it combines every row from the first table"
+      }
+    },
+    {
+      "test_id": "token_budget_high_1",
+      "category": "token_budget",
+      "description": "High token budget (4000)",
+      "query": "Design a database schema for a social media platform",
+      "status": "success",
+      "elapsed_ms": 18345.02148628235,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 316,
+      "input_tokens": 16,
+      "output_tokens": 300,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ],
+        "input_tokens": 16,
+        "output_tokens": 300,
+        "max_response_tokens": 300,
+        "token_efficiency": 18.75
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9557614931750201,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0021953999999999997,
+          "total_tokens": 14636,
+          "total_latency_ms": 291818.5932636261,
+          "total_quality": 46.0,
+          "query_count": 47,
+          "avg_cost_per_query": 4.671063829787233e-05,
+          "avg_tokens": 311.40425531914894,
+          "avg_latency": 6208.906239651619,
+          "avg_quality": 0.9787234042553191,
+          "cost_quality_ratio": 20.952901521362854,
+          "efficiency_score": 0.8771816688997404
+        }
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more comprehensive overview by including additional entities like posts, comments, likes, and friendships, which are crucial for a social media platform.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 528,
+        "input_tokens": 16,
+        "output_tokens": 512,
+        "latency_ms": 10545.828104019165,
+        "model": "gpt-4o-mini",
+        "response": "Designing a database schema for a social media platform involves defining the entities, their attributes, and the relationships between them. Below is a simplified version of a database schema that captures the essential components of a social media platform.\n\n### Entities and Attributes\n\n1. **Users**\n   - `user_id` (Primary Key, INT, Auto Increment)\n   - `username` (VARCHAR, Unique)\n   - `email` (VARCHAR, Unique)\n   - `password_hash` (VARCHAR)\n   - `first_name` (VARCHAR)\n   - `last_name` (VARCHAR)\n   - `profile_picture` (VARCHAR, URL to image)\n   - `bio` (TEXT)\n   - `created_at` (DATETIME)\n   - `updated_at` (DATETIME)\n\n2. **Posts**\n   - `post_id` (Primary Key, INT, Auto Increment)\n   - `user_id` (Foreign Key, INT, references Users(user_id))\n   - `content` (TEXT)\n   - `image_url` (VARCHAR, URL to image, Nullable)\n   - `created_at` (DATETIME)\n   - `updated_at` (DATETIME)\n\n3. **Comments**\n   - `comment_id` (Primary Key, INT, Auto Increment)\n   - `post_id` (Foreign Key, INT, references Posts(post_id))\n   - `user_id` (Foreign Key, INT, references Users(user_id))\n   - `content` (TEXT)\n   - `created_at` (DATETIME)\n\n4. **Likes**\n   - `like_id` (Primary Key, INT, Auto Increment)\n   - `post_id` (Foreign Key, INT, references Posts(post_id))\n   - `user_id` (Foreign Key, INT, references Users(user_id))\n   - `created_at` (DATETIME)\n\n5. **Followers**\n   - `follower_id` (Primary Key, INT, Auto Increment)\n   - `user_id` (Foreign Key, INT, references Users(user_id))\n   - `follower_user_id` (Foreign Key, INT, references Users(user_id))\n   - `created_at` (DATETIME)\n\n6. **Messages**\n   - `message_id` (Primary Key, INT, Auto Increment)\n   - `sender_id` (Foreign Key, INT, references Users(user_id))\n   - `receiver_id` (Foreign Key, INT, references Users(user_id))\n   - `content` (TEXT)\n   - `created_at` (DATETIME)\n"
+      }
+    },
+    {
+      "test_id": "edge_case_empty",
+      "category": "edge_cases",
+      "description": "Empty query",
+      "query": "",
+      "status": "success",
+      "elapsed_ms": 2331.03609085083,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 16,
+      "input_tokens": 7,
+      "output_tokens": 9,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 0
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3900
+          },
+          {
+            "component": "user_query",
+            "tokens": 0
+          }
+        ],
+        "input_tokens": 7,
+        "output_tokens": 9,
+        "max_response_tokens": 300,
+        "token_efficiency": 1.2857142857142858
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9937988617856599,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0022451999999999997,
+          "total_tokens": 14968,
+          "total_latency_ms": 299169.65198516846,
+          "total_quality": 48.0,
+          "query_count": 49,
+          "avg_cost_per_query": 4.5820408163265304e-05,
+          "avg_tokens": 305.46938775510205,
+          "avg_latency": 6105.503101738132,
+          "avg_quality": 0.9795918367346939,
+          "cost_quality_ratio": 21.378941742383752,
+          "efficiency_score": 0.8784730237377583
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers are identical in wording and intent, offering the same level of assistance.",
+        "confidence": 1.0
+      },
+      "baseline_comparison": {
+        "tokens_used": 16,
+        "input_tokens": 7,
+        "output_tokens": 9,
+        "latency_ms": 814.873456954956,
+        "model": "gpt-4o-mini",
+        "response": "Hello! How can I assist you today?"
+      }
+    },
+    {
+      "test_id": "edge_case_very_long",
+      "category": "edge_cases",
+      "description": "Very long query",
+      "query": "What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is What is ",
+      "status": "success",
+      "elapsed_ms": 3966.557025909424,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 2046,
+      "input_tokens": 2007,
+      "output_tokens": 39,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "complex",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 2,
+        "bandit": 0,
+        "total_savings": 2
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "complex",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "user_query",
+            "tokens": 2000
+          },
+          {
+            "component": "response",
+            "tokens": 1900
+          }
+        ],
+        "input_tokens": 2007,
+        "output_tokens": 39,
+        "max_response_tokens": 300,
+        "token_efficiency": 0.01943198804185351
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9838645486173265,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0025545,
+          "total_tokens": 17030,
+          "total_latency_ms": 301138.01407814026,
+          "total_quality": 49.9,
+          "query_count": 51,
+          "avg_cost_per_query": 5.0088235294117644e-05,
+          "avg_tokens": 333.921568627451,
+          "avg_latency": 5904.666942708633,
+          "avg_quality": 0.9784313725490196,
+          "cost_quality_ratio": 19.53415541201801,
+          "efficiency_score": 0.8794243835528479
+        }
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers effectively convey the same message, acknowledging the repetition and inviting the user to ask a specific question.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 2048,
+        "input_tokens": 2007,
+        "output_tokens": 41,
+        "latency_ms": 1913.3901596069336,
+        "model": "gpt-4o-mini",
+        "response": "It seems like your message is repeating the phrase \"What is\" multiple times. If you have a specific question or topic you'd like to discuss, please let me know, and I'll be happy to help!"
+      }
+    },
+    {
+      "test_id": "edge_case_special_chars",
+      "category": "edge_cases",
+      "description": "Special characters",
+      "query": "What is @#$%^&*()?",
+      "status": "success",
+      "elapsed_ms": 6987.558841705322,
+      "cache_hit": false,
+      "cache_type": null,
+      "cache_tier": "none",
+      "similarity": null,
+      "tokens_used": 152,
+      "input_tokens": 15,
+      "output_tokens": 137,
+      "max_response_tokens": 300,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "query_complexity": "simple",
+      "compression": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 0
+      },
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 28,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": false,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 8
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3892
+          }
+        ],
+        "input_tokens": 15,
+        "output_tokens": 137,
+        "max_response_tokens": 300,
+        "token_efficiency": 9.133333333333333
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini",
+        "max_tokens": 300,
+        "temperature": 0.2,
+        "reward": 0.9806545616585922,
+        "use_cost_aware_routing": true,
+        "routerbench": {
+          "total_cost": 0.0028842,
+          "total_tokens": 19228,
+          "total_latency_ms": 304988.07096481323,
+          "total_quality": 51.8,
+          "query_count": 53,
+          "avg_cost_per_query": 5.44188679245283e-05,
+          "avg_tokens": 362.79245283018867,
+          "avg_latency": 5754.4919049964765,
+          "avg_quality": 0.9773584905660376,
+          "cost_quality_ratio": 17.959919561750223,
+          "efficiency_score": 0.8800399175296747
+        }
+      },
+      "quality_judge": {
+        "winner": "baseline",
+        "explanation": "The baseline answer directly addresses the question by explaining the common use of the sequence as a placeholder for profanity, which is likely the intended context. The optimized answer provides broader contexts that may not be relevant.",
+        "confidence": 0.9
+      },
+      "baseline_comparison": {
+        "tokens_used": 96,
+        "input_tokens": 15,
+        "output_tokens": 81,
+        "latency_ms": 2718.3163166046143,
+        "model": "gpt-4o-mini",
+        "response": "The sequence \"@#$%^&*()\" is often used as a placeholder or representation of profanity or strong emotions in text, especially in comic strips, cartoons, or informal writing. Each symbol typically corresponds to a letter or sound in a curse word, allowing the writer to convey the sentiment without explicitly stating the offensive language. If you have a specific context in mind or need further information, feel free to share!"
+      }
+    }
+  ],
+  "component_tests": {
+    "memory_layer": {
+      "exact_cache_enabled": true,
+      "semantic_cache_enabled": true,
+      "llmlingua_enabled": true,
+      "preferences_enabled": true,
+      "stats": {
+        "exact_cache_enabled": true,
+        "semantic_cache_enabled": false,
+        "compression_enabled": true,
+        "preferences_enabled": true,
+        "size": 27,
+        "max_size": 1000,
+        "eviction_policy": "lru",
+        "total_tokens_saved": 9690,
+        "preferences": {
+          "tone": "simple",
+          "format": "list",
+          "confidence": 0.5,
+          "interactions": 28
+        }
+      },
+      "exact_cache_test": {
+        "first_call_cache_hit": false,
+        "second_call_cache_hit": true,
+        "first_tokens": 74,
+        "second_tokens": 0,
+        "passed": true
+      }
+    },
+    "orchestrator": {
+      "knapsack_optimization": true,
+      "multi_model_routing": true,
+      "default_token_budget": 4000,
+      "complexity_analysis": [
+        {
+          "query": "What is X?",
+          "expected": "simple",
+          "actual": "simple",
+          "passed": true
+        },
+        {
+          "query": "How does X work?",
+          "expected": "medium",
+          "actual": "simple",
+          "passed": false
+        },
+        {
+          "query": "Design a comprehensive system for X",
+          "expected": "complex",
+          "actual": "simple",
+          "passed": false
+        }
+      ],
+      "token_allocation": {
+        "budget": 2000,
+        "complexity": "simple",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 1895
+          }
+        ]
+      }
+    },
+    "bandit_optimizer": {
+      "algorithm": "ucb",
+      "exploration_rate": 0.1,
+      "reward_lambda": 0.001,
+      "stats": {
+        "algorithm": "ucb",
+        "total_pulls": 54,
+        "num_arms": 3,
+        "arms": {
+          "cheap": {
+            "pulls": 54,
+            "average_reward": 0.9335956763410622,
+            "total_reward": 50.41416652241736,
+            "routing": {
+              "queries": 54,
+              "avg_cost": 5.383333333333333e-05,
+              "avg_tokens": 358.8888888888889,
+              "efficiency": 0.877964449042108
+            }
+          },
+          "balanced": {
+            "pulls": 0,
+            "average_reward": 0.0,
+            "total_reward": 0.0,
+            "routing": null
+          },
+          "premium": {
+            "pulls": 0,
+            "average_reward": 0.0,
+            "total_reward": 0.0,
+            "routing": null
+          }
+        },
+        "routing_summary": {
+          "total_cost": 0.002907,
+          "total_tokens": 19380,
+          "best_arm": "cheap"
+        }
+      },
+      "available_strategies": [
+        "cheap",
+        "balanced",
+        "premium"
+      ],
+      "routerbench_stats": {
+        "total_queries": 54,
+        "total_cost": 0.002907,
+        "total_tokens": 19380,
+        "arms": {
+          "cheap": {
+            "queries": 54,
+            "avg_cost": 5.383333333333333e-05,
+            "avg_tokens": 358.8888888888889,
+            "avg_latency_ms": 5699.80004981712,
+            "avg_quality": 0.9722222222222222,
+            "cost_quality_ratio": 18.059855521155832,
+            "efficiency_score": 0.877964449042108
+          },
+          "balanced": {
+            "queries": 0,
+            "avg_cost": 0.0,
+            "avg_tokens": 0.0,
+            "avg_latency_ms": 0.0,
+            "avg_quality": 0.0,
+            "cost_quality_ratio": 0.0,
+            "efficiency_score": 0.5
+          },
+          "premium": {
+            "queries": 0,
+            "avg_cost": 0.0,
+            "avg_tokens": 0.0,
+            "avg_latency_ms": 0.0,
+            "avg_quality": 0.0,
+            "cost_quality_ratio": 0.0,
+            "efficiency_score": 0.5
+          }
+        },
+        "best_efficiency_arm": "cheap",
+        "best_efficiency_score": 0.877964449042108
+      }
+    },
+    "llmlingua": {
+      "enabled": true,
+      "available": false
+    }
+  },
+  "summary": {
+    "test_execution": {
+      "total_tests": 28,
+      "successful_tests": 28,
+      "failed_tests": 0,
+      "elapsed_seconds": 409.9678199291229
+    },
+    "cache_performance": {
+      "total_queries": 28,
+      "cache_hits": 1,
+      "cache_hit_rate": 0.03571428571428571,
+      "exact_hits": 1,
+      "semantic_direct_hits": 0,
+      "context_hits": 0
+    },
+    "token_usage": {
+      "total_tokens": 9690,
+      "total_input_tokens": 2438,
+      "total_output_tokens": 7252,
+      "avg_tokens_per_query": 346.07142857142856
+    },
+    "savings": {
+      "total_savings": 4410,
+      "memory_layer_savings": 311,
+      "orchestrator_savings": 4099,
+      "bandit_savings": 0,
+      "compression_savings": 0,
+      "savings_percentage": 31.27659574468085
+    },
+    "compression": {
+      "compression_tests": 0,
+      "total_compression_savings": 0
+    },
+    "strategy_distribution": {
+      "cheap": 28
+    },
+    "complexity_distribution": {
+      "simple": 25,
+      "medium": 2,
+      "complex": 1
+    },
+    "latency": {
+      "avg_latency_ms": 14548.618086746761,
+      "min_latency_ms": 0.0,
+      "max_latency_ms": 20200.420379638672
+    }
+  }
+}

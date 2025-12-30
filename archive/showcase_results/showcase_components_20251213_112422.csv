@@ -1,0 +1,6 @@
+Component,Status,Details
+Memory Layer,failed,
+Orchestrator,healthy,"{""default_budget"": 4000, ""max_context_tokens"": 8000}"
+Bandit Optimizer,healthy,"{""algorithm"": ""ucb"", ""num_strategies"": 3, ""strategies"": [""cheap"", ""balanced"", ""premium""]}"
+Quality Judge,healthy,"{""enabled"": true, ""model"": ""gpt-4o"", ""provider"": ""openai""}"
+LLMLingua Compression,degraded,

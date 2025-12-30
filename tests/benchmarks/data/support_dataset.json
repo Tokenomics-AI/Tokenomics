@@ -1,0 +1,2177 @@
+{
+  "metadata": {
+    "generated_at": "2025-12-01T21:27:56.107459",
+    "total_queries": 360,
+    "num_duplicates": 50,
+    "num_paraphrases": 150,
+    "num_longtail": 200,
+    "categories": [
+      "billing",
+      "features",
+      "troubleshooting",
+      "general"
+    ]
+  },
+  "queries": [
+    {
+      "id": 101,
+      "text": "Why is my account locked?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 158,
+      "text": "What is your privacy policy?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 66,
+      "text": "Where can I find my invoice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 79,
+      "text": "How do I share files with my team?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 29,
+      "text": "The page won't load, what's wrong?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 176,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 336,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 25,
+      "text": "What is your privacy policy?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 19,
+      "text": "How do I share files with my team?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 314,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 47,
+      "text": "How can I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 130,
+      "text": "How do I report a bug?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 192,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 60,
+      "text": "What payment methods do you accept?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 125,
+      "text": "Why did my upload fail?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 23,
+      "text": "What is the file size limit?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 37,
+      "text": "Why did my upload fail?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 340,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 54,
+      "text": "How do I view my billing history?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 152,
+      "text": "What languages are supported?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 356,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 317,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 17,
+      "text": "Can I get a discount?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 203,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 211,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 321,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 282,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 233,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 283,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 231,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 63,
+      "text": "How do I change my billing cycle?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 56,
+      "text": "Can I get a discount?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 89,
+      "text": "How can I create a backup?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 331,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 162,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 188,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 339,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 175,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 88,
+      "text": "Can I customize the dashboard?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 168,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 164,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 198,
+      "text": "What's the best way to handle troubleshooting for my use case?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 118,
+      "text": "Why isn't my data syncing?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 133,
+      "text": "What is this service?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 78,
+      "text": "How do I share files with my team?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 139,
+      "text": "Is there a free trial?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 115,
+      "text": "I'm getting an error message, what does it mean?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 50,
+      "text": "Why was I charged twice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 252,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 109,
+      "text": "Why can't I log in?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 274,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 248,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 212,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 187,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 82,
+      "text": "What is the file size limit?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 269,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 114,
+      "text": "I'm getting an error message, what does it mean?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 129,
+      "text": "How do I report a bug?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 61,
+      "text": "What payment methods do you accept?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 94,
+      "text": "What integrations are available?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 140,
+      "text": "What are your business hours?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 44,
+      "text": "What is the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 3,
+      "text": "I forgot my password, how do I reset it?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 325,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 128,
+      "text": "How can I report a bug?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 167,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 241,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 172,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 249,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 236,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 112,
+      "text": "The app is running slowly, what should I do?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 300,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 275,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 2,
+      "text": "How do I enable two-factor authentication?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 74,
+      "text": "Can I export my data?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 68,
+      "text": "What happens if my payment fails?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 244,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 266,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 72,
+      "text": "How do I enable two-factor authentication?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 49,
+      "text": "How do I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 178,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 234,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 222,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 230,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 143,
+      "text": "How can I contact support?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 20,
+      "text": "How do I view my billing history?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 159,
+      "text": "Can you explain what your privacy policy?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 97,
+      "text": "How do I change my password?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 104,
+      "text": "I forgot my password, how do I reset it?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 355,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 142,
+      "text": "What are your business hours?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 46,
+      "text": "What is the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 121,
+      "text": "How do I clear my cache?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 297,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 239,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 326,
+      "text": "I'm having trouble with troubleshooting when I try to...",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 135,
+      "text": "How do I get started?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 141,
+      "text": "What are your business hours?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 126,
+      "text": "Why did my upload fail?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 217,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 206,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 333,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 341,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 149,
+      "text": "Do you offer training?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 111,
+      "text": "The app is running slowly, what should I do?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 45,
+      "text": "Can you explain what the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 197,
+      "text": "Can you help me understand troubleshooting better?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 359,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 232,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 306,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 145,
+      "text": "How do I contact support?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 31,
+      "text": "How do I set up notifications?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 83,
+      "text": "How can I set up notifications?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 334,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 92,
+      "text": "What integrations are available?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 98,
+      "text": "Can I use this on mobile?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 150,
+      "text": "Do you offer training?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 258,
+      "text": "What's the best way to handle troubleshooting for my use case?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 257,
+      "text": "Can you help me understand troubleshooting better?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 16,
+      "text": "How do I create a backup?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 224,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 165,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 214,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 338,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 153,
+      "text": "What languages are supported?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 51,
+      "text": "Why was I charged twice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 240,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 276,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 228,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 286,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 84,
+      "text": "How do I set up notifications?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 14,
+      "text": "Why is my account locked?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 238,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 182,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 65,
+      "text": "Where can I find my invoice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 1,
+      "text": "What languages are supported?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 357,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 136,
+      "text": "How do I get started?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 250,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 268,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 199,
+      "text": "I need to troubleshooting but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 237,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 144,
+      "text": "How do I contact support?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 293,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 328,
+      "text": "What's the best way to handle troubleshooting for my use case?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 272,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 57,
+      "text": "Can I get a discount?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 260,
+      "text": "Is there a way to customize troubleshooting settings?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 310,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 315,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 348,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 80,
+      "text": "What is the file size limit?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 277,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 40,
+      "text": "Why isn't my data syncing?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 335,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 169,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 353,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 220,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 105,
+      "text": "I forgot my password, how do I reset it?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 193,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 106,
+      "text": "I forgot my password, how do I reset it?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 138,
+      "text": "Is there a free trial?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 53,
+      "text": "How can I view my billing history?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 77,
+      "text": "How can I share files with my team?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 354,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 259,
+      "text": "I need to troubleshooting but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 284,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 301,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 215,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 342,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 38,
+      "text": "What is the refund policy?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 303,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 225,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 324,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 307,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 294,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 280,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 219,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 166,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 161,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 313,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 28,
+      "text": "What payment methods do you accept?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 347,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 27,
+      "text": "Is my data secure?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 93,
+      "text": "What integrations are available?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 311,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 279,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 226,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 131,
+      "text": "What is this service?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 253,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 177,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 278,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 281,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 52,
+      "text": "Why was I charged twice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 305,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 267,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 292,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 96,
+      "text": "How do I change my password?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 4,
+      "text": "How do I cancel my subscription?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 343,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 179,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 55,
+      "text": "How do I view my billing history?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 71,
+      "text": "How can I enable two-factor authentication?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 91,
+      "text": "How do I create a backup?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 196,
+      "text": "I'm having trouble with troubleshooting when I try to...",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 42,
+      "text": "How do I update my payment method?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 157,
+      "text": "Is my data secure?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 148,
+      "text": "Where can I find documentation?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 58,
+      "text": "Can I get a discount?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 246,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 332,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 299,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 15,
+      "text": "How do I change my billing cycle?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 122,
+      "text": "The page won't load, what's wrong?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 62,
+      "text": "How can I change my billing cycle?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 327,
+      "text": "Can you help me understand troubleshooting better?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 265,
+      "text": "Is there a way to customize troubleshooting settings?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 10,
+      "text": "What is this service?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 262,
+      "text": "Can you help me understand troubleshooting better?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 32,
+      "text": "I'm getting an error message, what does it mean?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 12,
+      "text": "Can I customize the dashboard?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 304,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 218,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 205,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 243,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 160,
+      "text": "What is your privacy policy?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 11,
+      "text": "How do I change my password?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 113,
+      "text": "I'm getting an error message, what does it mean?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 64,
+      "text": "How do I change my billing cycle?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 30,
+      "text": "Where can I find documentation?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 289,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 119,
+      "text": "How can I clear my cache?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 322,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 287,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 95,
+      "text": "How can I change my password?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 67,
+      "text": "Where can I find my invoice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 256,
+      "text": "I'm having trouble with troubleshooting when I try to...",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 207,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 123,
+      "text": "The page won't load, what's wrong?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 154,
+      "text": "What languages are supported?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 102,
+      "text": "Why is my account locked?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 210,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 156,
+      "text": "Is my data secure?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 208,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 271,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 235,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 120,
+      "text": "How do I clear my cache?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 202,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 7,
+      "text": "Why can't I log in?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 103,
+      "text": "Why is my account locked?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 296,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 34,
+      "text": "What integrations are available?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 349,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 107,
+      "text": "Why can't I log in?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 75,
+      "text": "Can I export my data?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 190,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 69,
+      "text": "What happens if my payment fails?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 319,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 6,
+      "text": "Can I export my data?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 81,
+      "text": "Can you explain what the file size limit?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 24,
+      "text": "How do I contact support?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 227,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 171,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 127,
+      "text": "Why did my upload fail?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 59,
+      "text": "What payment methods do you accept?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 330,
+      "text": "Is there a way to customize troubleshooting settings?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 295,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 185,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 201,
+      "text": "I'm having trouble with features when I try to...",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 242,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 320,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 316,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 48,
+      "text": "How do I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 291,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 183,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 117,
+      "text": "Why isn't my data syncing?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 163,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 155,
+      "text": "Is my data secure?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 329,
+      "text": "I need to troubleshooting but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 151,
+      "text": "Do you offer training?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 134,
+      "text": "How can I get started?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 76,
+      "text": "Can I export my data?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 36,
+      "text": "How do I get started?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 229,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 312,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 323,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 290,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 213,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 181,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 247,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 100,
+      "text": "Can I use this on mobile?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 344,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 41,
+      "text": "How can I update my payment method?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 302,
+      "text": "Can you help me understand features better?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 191,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 70,
+      "text": "What happens if my payment fails?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 308,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 255,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 43,
+      "text": "How do I update my payment method?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 147,
+      "text": "Where can I find documentation?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 189,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 180,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 245,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 174,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 263,
+      "text": "What's the best way to handle troubleshooting for my use case?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 223,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 194,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 358,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 33,
+      "text": "What happens if my payment fails?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 22,
+      "text": "Where can I find my invoice?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 288,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 170,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 73,
+      "text": "How do I enable two-factor authentication?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 345,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 137,
+      "text": "Is there a free trial?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 195,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 13,
+      "text": "What are your business hours?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 18,
+      "text": "Is there a free trial?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 221,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 346,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 39,
+      "text": "Do you offer training?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 337,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 26,
+      "text": "How do I clear my cache?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 298,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 8,
+      "text": "Can I use this on mobile?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 86,
+      "text": "Can I customize the dashboard?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 5,
+      "text": "The app is running slowly, what should I do?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 124,
+      "text": "The page won't load, what's wrong?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 209,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 116,
+      "text": "Why isn't my data syncing?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 261,
+      "text": "I'm having trouble with troubleshooting when I try to...",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 251,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 285,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 9,
+      "text": "Why was I charged twice?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 216,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 132,
+      "text": "Can you explain what this service?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 173,
+      "text": "What's the best way to handle features for my use case?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 351,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 264,
+      "text": "I need to troubleshooting but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 186,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 350,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 254,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 108,
+      "text": "Why can't I log in?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 85,
+      "text": "How do I set up notifications?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 87,
+      "text": "Can I customize the dashboard?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 90,
+      "text": "How do I create a backup?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 99,
+      "text": "Can I use this on mobile?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 146,
+      "text": "Where can I find documentation?",
+      "type": "paraphrase",
+      "category": "general"
+    },
+    {
+      "id": 35,
+      "text": "How do I update my payment method?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 200,
+      "text": "Is there a way to customize troubleshooting settings?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 309,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 273,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 110,
+      "text": "The app is running slowly, what should I do?",
+      "type": "paraphrase",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 360,
+      "text": "Is there a way to customize features settings?",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 318,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 204,
+      "text": "I need to features but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "features"
+    },
+    {
+      "id": 352,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 270,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 184,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 21,
+      "text": "How do I report a bug?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    }
+  ]
+}

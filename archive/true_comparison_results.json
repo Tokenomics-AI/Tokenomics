@@ -1,0 +1,185 @@
+{
+  "timestamp": "2025-12-07T10:19:15.614000",
+  "config": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "num_queries": 15
+  },
+  "summary": {
+    "total_queries": 15,
+    "successful": 15,
+    "cache_hits": 4,
+    "token_regressions": 0,
+    "total_baseline_tokens": 3269,
+    "total_optimized_tokens": 1803,
+    "total_savings_tokens": 1466,
+    "total_savings_percent": 44.84551850718874
+  },
+  "results": [
+    {
+      "query": "What is the refund policy?",
+      "baseline_tokens": 264,
+      "optimized_tokens": 60,
+      "baseline_latency": 5855.2727699279785,
+      "optimized_latency": 2247.607707977295,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "cheap",
+      "regression": false
+    },
+    {
+      "query": "How do I cancel my subscription?",
+      "baseline_tokens": 223,
+      "optimized_tokens": 128,
+      "baseline_latency": 5472.025156021118,
+      "optimized_latency": 2078.085422515869,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "What payment methods do you accept?",
+      "baseline_tokens": 131,
+      "optimized_tokens": 33,
+      "baseline_latency": 2598.7584590911865,
+      "optimized_latency": 762.1665000915527,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "cheap",
+      "regression": false
+    },
+    {
+      "query": "How do I contact support?",
+      "baseline_tokens": 251,
+      "optimized_tokens": 218,
+      "baseline_latency": 4211.844682693481,
+      "optimized_latency": 4000.6473064422607,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "premium",
+      "regression": false
+    },
+    {
+      "query": "Can you explain the refund policy?",
+      "baseline_tokens": 0,
+      "optimized_tokens": 0,
+      "baseline_latency": 0,
+      "optimized_latency": 0,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "How can I cancel my subscription?",
+      "baseline_tokens": 0,
+      "optimized_tokens": 0,
+      "baseline_latency": 0,
+      "optimized_latency": 0,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "Why is my account locked?",
+      "baseline_tokens": 229,
+      "optimized_tokens": 158,
+      "baseline_latency": 4117.886781692505,
+      "optimized_latency": 3563.0109310150146,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "Why did my upload fail?",
+      "baseline_tokens": 226,
+      "optimized_tokens": 179,
+      "baseline_latency": 4285.414695739746,
+      "optimized_latency": 3013.4239196777344,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "How do I enable two-factor authentication?",
+      "baseline_tokens": 701,
+      "optimized_tokens": 322,
+      "baseline_latency": 13526.618003845215,
+      "optimized_latency": 5954.472064971924,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "I'm having trouble with billing when I try to update my payment method",
+      "baseline_tokens": 300,
+      "optimized_tokens": 199,
+      "baseline_latency": 5130.965232849121,
+      "optimized_latency": 3894.1903114318848,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "What's the best way to handle billing for my use case?",
+      "baseline_tokens": 295,
+      "optimized_tokens": 184,
+      "baseline_latency": 6096.32682800293,
+      "optimized_latency": 3262.5629901885986,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "Can you help me understand billing better?",
+      "baseline_tokens": 542,
+      "optimized_tokens": 250,
+      "baseline_latency": 8664.095163345337,
+      "optimized_latency": 4558.644771575928,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "What is the refund policy?",
+      "baseline_tokens": 0,
+      "optimized_tokens": 0,
+      "baseline_latency": 0,
+      "optimized_latency": 0,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "How do I contact support?",
+      "baseline_tokens": 0,
+      "optimized_tokens": 0,
+      "baseline_latency": 0,
+      "optimized_latency": 0,
+      "cache_hit": true,
+      "cache_type": "exact",
+      "strategy": "balanced",
+      "regression": false
+    },
+    {
+      "query": "What languages are supported?",
+      "baseline_tokens": 107,
+      "optimized_tokens": 72,
+      "baseline_latency": 2335.603952407837,
+      "optimized_latency": 1464.1928672790527,
+      "cache_hit": false,
+      "cache_type": null,
+      "strategy": "balanced",
+      "regression": false
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+graph TB
+    User[User Query] --> Platform[Tokenomics Platform]
+    
+    Platform --> Memory[Smart Memory Layer]
+    Memory --> ExactCache[Exact Cache]
+    Memory --> SemanticCache[Semantic Cache]
+    Memory --> VectorStore[Vector Store<br/>FAISS/ChromaDB]
+    
+    Platform --> Orchestrator[Token-Aware Orchestrator]
+    Orchestrator --> Complexity[Complexity Analysis]
+    Orchestrator --> TokenAlloc[Token Allocation<br/>Knapsack Optimization]
+    Orchestrator --> Compression[LLMLingua Compression]
+    
+    Platform --> Bandit[Bandit Optimizer]
+    Bandit --> Strategy[Strategy Selection<br/>RouterBench]
+    Bandit --> Learning[UCB Learning]
+    
+    Platform --> Judge[Quality Judge]
+    Judge --> QualityScore[Quality Assessment]
+    
+    Platform --> LLMProvider[LLM Provider]
+    LLMProvider --> OpenAI[OpenAI API]
+    LLMProvider --> Gemini[Gemini API]
+    LLMProvider --> VLLM[vLLM]
+    
+    LLMProvider --> Response[Response]
+    Response --> Memory
+    Response --> Bandit
+    Response --> User
+    
+    style Platform fill:#e1f5ff
+    style Memory fill:#fff4e1
+    style Orchestrator fill:#e1ffe1
+    style Bandit fill:#ffe1f5
+    style Judge fill:#f5e1ff
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+flowchart LR
+    Start[Query Arrives] --> SelectArm[Select Arm<br/>UCB Algorithm]
+    
+    SelectArm --> Exploration{Exploration<br/>Phase?}
+    Exploration -->|Yes| TryAll[Try All Arms<br/>At Least Twice]
+    Exploration -->|No| ExploitBest[Exploit Best<br/>Based on UCB]
+    
+    TryAll --> Execute1[Execute Strategy 1]
+    TryAll --> Execute2[Execute Strategy 2]
+    TryAll --> Execute3[Execute Strategy 3]
+    
+    ExploitBest --> ExecuteBest[Execute Best Strategy]
+    
+    Execute1 --> GetReward1[Get Reward<br/>Quality × Cost × Latency]
+    Execute2 --> GetReward2[Get Reward]
+    Execute3 --> GetReward3[Get Reward]
+    ExecuteBest --> GetRewardBest[Get Reward]
+    
+    GetReward1 --> UpdateMetrics1[Update Metrics<br/>Average Reward<br/>Pull Count<br/>Efficiency Score]
+    GetReward2 --> UpdateMetrics2[Update Metrics]
+    GetReward3 --> UpdateMetrics3[Update Metrics]
+    GetRewardBest --> UpdateMetricsBest[Update Metrics]
+    
+    UpdateMetrics1 --> UCBUpdate[Update UCB Values<br/>μ + c × √ln(N)/n]
+    UpdateMetrics2 --> UCBUpdate
+    UpdateMetrics3 --> UCBUpdate
+    UpdateMetricsBest --> UCBUpdate
+    
+    UCBUpdate --> NextQuery[Next Query]
+    NextQuery --> SelectArm
+    
+    style Start fill:#e1f5ff
+    style SelectArm fill:#fff3cd
+    style ExecuteBest fill:#d4edda
+    style UCBUpdate fill:#d1ecf1
+
+
+
+
+
+
+
+

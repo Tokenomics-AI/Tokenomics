@@ -1,0 +1,74 @@
+{
+  "total_queries": 46,
+  "successful_queries": 35,
+  "failed_queries": 11,
+  "tokens": {
+    "baseline_total": 16645,
+    "optimized_total": 12144,
+    "total_savings": 4501,
+    "savings_percent": 27.041153499549413,
+    "average_baseline": 475.57142857142856,
+    "average_optimized": 346.9714285714286
+  },
+  "latency": {
+    "baseline_total_ms": 325108.7441444397,
+    "optimized_total_ms": 619766.4499282837,
+    "total_reduction_ms": -294657.705783844,
+    "reduction_percent": -90.63358371343378,
+    "average_baseline_ms": 9288.821261269706,
+    "average_optimized_ms": 17707.61285509382
+  },
+  "component_savings": {
+    "memory_layer": 0,
+    "orchestrator": 5252,
+    "bandit": 0,
+    "compression": 0,
+    "total": 5252
+  },
+  "cache": {
+    "hit_rate_percent": 0.0,
+    "total_hits": 0,
+    "exact_hits": 0,
+    "semantic_direct_hits": 0,
+    "context_hits": 0,
+    "misses": 46
+  },
+  "memory_layer": {
+    "exact_cache_hits": 0,
+    "semantic_direct_hits": 0,
+    "context_injections": 0,
+    "total_context_tokens_injected": 0,
+    "total_context_tokens_saved": 0,
+    "total_semantic_matches_found": 0,
+    "avg_similarity": 0.0,
+    "preferences_used": 34,
+    "preference_tones": {
+      "simple": 34
+    },
+    "preference_formats": {
+      "paragraph": 8,
+      "code": 16,
+      "list": 10
+    }
+  },
+  "compression": {
+    "context_compressed_count": 0,
+    "query_compressed_count": 0,
+    "llmlingua_context_compressions": 0,
+    "total_compression_savings": 0
+  },
+  "bandit": {
+    "strategy_distribution": {
+      "cheap": 33,
+      "premium": 2
+    },
+    "total_strategies_used": 2
+  },
+  "quality_judge": {
+    "total_evaluations": 35,
+    "optimized_wins": 16,
+    "baseline_wins": 2,
+    "equivalent": 17,
+    "average_confidence": 0.8628571428571427
+  }
+}

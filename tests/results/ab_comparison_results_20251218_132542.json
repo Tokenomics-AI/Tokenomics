@@ -1,0 +1,44 @@
+{
+  "metadata": {
+    "generated_at": "2025-12-18T13:25:42.361772",
+    "total_queries": 55,
+    "successful_queries": 55,
+    "failed_queries": 0
+  },
+  "summary": {
+    "total_token_savings": 2386,
+    "total_token_savings_percent": 12.870859855432085,
+    "total_cost_savings": 0.0019275000000000021,
+    "total_cost_savings_percent": 18.324159370276377,
+    "avg_latency_improvement_ms": -6716.676703366366,
+    "avg_latency_improvement_percent": -107.50960226462618
+  },
+  "aggregated_metrics": {
+    "total_queries": 55,
+    "successful_queries": 55,
+    "failed_queries": 0,
+    "total_baseline_tokens": 18538,
+    "total_optimized_tokens": 16152,
+    "total_token_savings": 2386,
+    "total_token_savings_percent": 12.870859855432085,
+    "total_baseline_cost": 0.010518900000000001,
+    "total_optimized_cost": 0.008591399999999999,
+    "total_cost_savings": 0.0019275000000000021,
+    "total_cost_savings_percent": 18.324159370276377,
+    "avg_baseline_latency_ms": 6247.513302889737,
+    "avg_optimized_latency_ms": 12964.190006256104,
+    "avg_latency_improvement_ms": -6716.676703366366,
+    "avg_latency_improvement_percent": -107.50960226462618,
+    "cache_metrics": {
+      "exact_cache_hits": 5,
+      "semantic_cache_hits": 6,
+      "cache_misses": 44,
+      "cache_hit_rate": 20.0
+    },
+    "memory_metrics": {
+      "context_injection_count": 4,
+      "preferences_used_count": 52
+    },
+    "orchestrator_metrics": {
+      "complexity_distribution": {
+        

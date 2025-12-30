@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment
+.env
+.venv
+.venv-wsl/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.cursor/
+
+# Data and Databases
+*.db
+*.sqlite
+*.faiss
+chroma_db/
+cache/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test Artifacts - Intermediate Results
+*_intermediate_*.json
+training_data_export_*.json
+runs_history.json
+
+# Model State (can be regenerated)
+bandit_state.json.backup
+
+# Archive folder (keep for history but don't track all contents)
+archive/intermediate/
+archive/logs/
+
+# Validation and test output
+validation_results/
+test_results/
+
+# Training data (large files)
+training_data/*.json
+
+# ML Model Training dataset (large CSVs)
+ML Model Training dataset/
+
+# Docker volumes
+docker-data/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/

@@ -1,0 +1,145 @@
+{
+  "queries": [
+    {
+      "query_num": 1,
+      "query": "What is machine learning?",
+      "complexity": "simple",
+      "cache_hit": false,
+      "tokens_used": 314,
+      "latency_ms": 5882.9286098480225,
+      "strategy": "fast",
+      "max_response_tokens": 300,
+      "response_length": 1644
+    },
+    {
+      "query_num": 2,
+      "query": "Explain neural networks briefly",
+      "complexity": "simple",
+      "cache_hit": false,
+      "tokens_used": 268,
+      "latency_ms": 5545.8667278289795,
+      "strategy": "fast",
+      "max_response_tokens": 300,
+      "response_length": 1345
+    },
+    {
+      "query_num": 3,
+      "query": "How to optimize Python code?",
+      "complexity": "medium",
+      "cache_hit": false,
+      "tokens_used": 315,
+      "latency_ms": 7233.4959506988525,
+      "strategy": "fast",
+      "max_response_tokens": 300,
+      "response_length": 1418
+    },
+    {
+      "query_num": 4,
+      "query": "What is machine learning?",
+      "complexity": "simple",
+      "cache_hit": true,
+      "tokens_used": 0,
+      "latency_ms": 0,
+      "strategy": "fast",
+      "max_response_tokens": 0,
+      "response_length": 1644
+    },
+    {
+      "query_num": 5,
+      "query": "How to optimize Python code?",
+      "complexity": "medium",
+      "cache_hit": true,
+      "tokens_used": 0,
+      "latency_ms": 0,
+      "strategy": "fast",
+      "max_response_tokens": 0,
+      "response_length": 1418
+    },
+    {
+      "query_num": 6,
+      "query": "What are best practices for API design?",
+      "complexity": "medium",
+      "cache_hit": false,
+      "tokens_used": 317,
+      "latency_ms": 9162.38522529602,
+      "strategy": "fast",
+      "max_response_tokens": 300,
+      "response_length": 1340
+    },
+    {
+      "query_num": 7,
+      "query": "What is machine learning?",
+      "complexity": "simple",
+      "cache_hit": true,
+      "tokens_used": 0,
+      "latency_ms": 0,
+      "strategy": "fast",
+      "max_response_tokens": 0,
+      "response_length": 1644
+    }
+  ],
+  "summary": {
+    "total_queries": 7,
+    "cache_hits": 3,
+    "cache_hit_rate": 42.857142857142854,
+    "baseline_tokens_estimate": 4200,
+    "actual_tokens": 1214,
+    "token_savings": 2986,
+    "token_savings_percent": 71.0952380952381,
+    "total_latency_ms": 27824.676513671875,
+    "avg_latency_ms": 6956.169128417969,
+    "routing": {
+      "total_queries": 4,
+      "total_cost": 0.0001821,
+      "total_tokens": 1214,
+      "arms": {
+        "fast": {
+          "queries": 4,
+          "avg_cost": 4.5525e-05,
+          "avg_tokens": 303.5,
+          "avg_latency_ms": 6956.169128417969,
+          "avg_quality": 1.0,
+          "cost_quality_ratio": 21.965952773201536,
+          "efficiency_score": 0.8822792696352438
+        },
+        "balanced": {
+          "queries": 0,
+          "avg_cost": 0.0,
+          "avg_tokens": 0.0,
+          "avg_latency_ms": 0.0,
+          "avg_quality": 0.0,
+          "cost_quality_ratio": 0.0,
+          "efficiency_score": 0.5
+        },
+        "powerful": {
+          "queries": 0,
+          "avg_cost": 0.0,
+          "avg_tokens": 0.0,
+          "avg_latency_ms": 0.0,
+          "avg_quality": 0.0,
+          "cost_quality_ratio": 0.0,
+          "efficiency_score": 0.5
+        }
+      },
+      "best_efficiency_arm": "fast",
+      "best_efficiency_score": 0.8822792696352438
+    },
+    "memory": {
+      "exact_cache_enabled": true,
+      "semantic_cache_enabled": false,
+      "compression_enabled": true,
+      "preferences_enabled": true,
+      "size": 4,
+      "max_size": 100,
+      "eviction_policy": "lru",
+      "total_tokens_saved": 1214,
+      "preferences": {
+        "tone": "technical",
+        "format": "list",
+        "confidence": 0.6,
+        "interactions": 7
+      }
+    }
+  },
+  "test_date": "2025-11-24T19:41:31.354766"
+}

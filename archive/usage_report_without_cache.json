@@ -1,0 +1,105 @@
+{
+  "summary": {
+    "start_time": "2025-11-23T10:54:37.519271",
+    "end_time": "2025-11-23T10:55:32.494787",
+    "total_queries": 7,
+    "cache_hits": 0,
+    "cache_misses": 7,
+    "cache_hit_rate_percent": 0.0,
+    "total_tokens_used": 8969,
+    "tokens_with_cache": 8969,
+    "tokens_saved": 0,
+    "token_savings_rate_percent": 0.0,
+    "total_latency_ms": 54969.34,
+    "average_latency_ms": 7852.76,
+    "total_cost_estimate_usd": 0.0,
+    "cost_saved_usd": 0,
+    "cost_savings_rate_percent": 0
+  },
+  "records": [
+    {
+      "timestamp": "2025-11-23T10:54:40.989774",
+      "query": "What is Python?",
+      "response_length": 2328,
+      "tokens_used": 587,
+      "latency_ms": 3470.5026149749756,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:54:53.246517",
+      "query": "Explain recursion",
+      "response_length": 7106,
+      "tokens_used": 1782,
+      "latency_ms": 12255.683660507202,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:54:57.672824",
+      "query": "What is Python?",
+      "response_length": 2537,
+      "tokens_used": 639,
+      "latency_ms": 4425.286054611206,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:55:09.954413",
+      "query": "How does HTTP work?",
+      "response_length": 7889,
+      "tokens_used": 1978,
+      "latency_ms": 12279.666185379028,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:55:13.412036",
+      "query": "What is Python?",
+      "response_length": 2645,
+      "tokens_used": 666,
+      "latency_ms": 3456.566095352173,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:55:24.434776",
+      "query": "Explain machine learning",
+      "response_length": 8009,
+      "tokens_used": 2010,
+      "latency_ms": 11022.740125656128,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:55:32.494787",
+      "query": "What is recursion?",
+      "response_length": 5205,
+      "tokens_used": 1307,
+      "latency_ms": 8058.897495269775,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    }
+  ]
+}

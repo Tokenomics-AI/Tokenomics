@@ -1,0 +1,404 @@
+{
+  "test_start": "2025-12-01T21:54:36.728657",
+  "tests": [
+    {
+      "name": "API Key Format",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:54:36.728657",
+      "details": {
+        "key_prefix": "sk-proj-Rk..."
+      }
+    },
+    {
+      "name": ".env File Exists",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:54:36.728657",
+      "details": {
+        "path": "D:\\Nayan\\Tokenomics\\Prototype\\.env"
+      }
+    },
+    {
+      "name": "Config Loading",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:54:36.728657",
+      "details": {
+        "llm_provider": "openai",
+        "llm_model": "gpt-4o-mini",
+        "cache_size": 1000,
+        "similarity_threshold": 0.5
+      }
+    },
+    {
+      "name": "Platform Initialization",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:54:51.493383",
+      "details": {
+        "Memory Layer": true,
+        "Orchestrator": true,
+        "Bandit Optimizer": true,
+        "LLM Provider": true
+      }
+    },
+    {
+      "name": "Memory Layer Stats",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:54:51.493383",
+      "details": {
+        "exact_cache_enabled": true,
+        "semantic_cache_enabled": true,
+        "semantic_cache_working": true,
+        "compression_enabled": true,
+        "preferences_enabled": true,
+        "similarity_threshold": 0.65,
+        "direct_return_threshold": 0.75,
+        "size": 0,
+        "max_size": 100,
+        "eviction_policy": "lru",
+        "total_tokens_saved": 0,
+        "semantic_status": {
+          "enabled": true,
+          "working": true,
+          "embedding_model_loaded": true,
+          "vector_store_ready": true,
+          "init_error": null,
+          "similarity_threshold": 0.65,
+          "direct_return_threshold": 0.75,
+          "vector_store_stats": {
+            "total_vectors": 0,
+            "dimension": 384,
+            "id_count": 0
+          }
+        },
+        "preferences": {
+          "tone": "neutral",
+          "format": "paragraph",
+          "confidence": 0.5,
+          "interactions": 0
+        }
+      }
+    },
+    {
+      "name": "First Query (Cache Miss Expected)",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:00.119001",
+      "details": {
+        "cache_hit": false,
+        "tokens_used": 352
+      }
+    },
+    {
+      "name": "Second Query (Exact Cache Hit Expected)",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:00.120333",
+      "details": {
+        "cache_hit": true,
+        "cache_type": "exact",
+        "tokens_used": 0,
+        "tokens_saved": 352
+      }
+    },
+    {
+      "name": "Response Consistency",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:00.120333",
+      "details": {
+        "responses_match": true
+      }
+    },
+    {
+      "name": "Query 1 (Store in Cache)",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:16.028128",
+      "details": {
+        "query": "how is chicken biryani made?",
+        "cache_hit": false,
+        "tokens_used": 760
+      }
+    },
+    {
+      "name": "Query 2 (Semantic Cache Hit Expected)",
+      "status": "fail",
+      "timestamp": "2025-12-01T21:55:20.231486",
+      "details": {
+        "query": "what is the main component or technique or ingredi",
+        "cache_hit": false,
+        "cache_type": null,
+        "similarity": null,
+        "tokens_used": 221,
+        "expected": "semantic_direct or context"
+      }
+    },
+    {
+      "name": "Query Plan Creation",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:41.141602",
+      "details": {
+        "complexity": "simple",
+        "token_budget": 4000,
+        "num_allocations": 3
+      }
+    },
+    {
+      "name": "Token Allocations",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:41.141602",
+      "details": {
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 6,
+            "utility": 1.0
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100,
+            "utility": 1.0
+          },
+          {
+            "component": "response",
+            "tokens": 3894,
+            "utility": 0.9
+          }
+        ]
+      }
+    },
+    {
+      "name": "Token Usage Tracking",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:41.141602",
+      "details": {
+        "total_tokens": 1005,
+        "input_tokens": 14,
+        "output_tokens": 991
+      }
+    },
+    {
+      "name": "Bandit Strategies",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:41.141602",
+      "details": {
+        "num_strategies": 3,
+        "strategies": [
+          "cheap",
+          "balanced",
+          "premium"
+        ]
+      }
+    },
+    {
+      "name": "Strategy Selection",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:46.172613",
+      "details": {
+        "selected_strategy": "cheap",
+        "tokens_used": 254
+      }
+    },
+    {
+      "name": "Bandit Learning",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:50.148132",
+      "details": {
+        "total_pulls": 4,
+        "best_strategy": null
+      }
+    },
+    {
+      "name": "Full Integration",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:56.347433",
+      "details": {
+        "Response Generated": true,
+        "Tokens Tracked": true,
+        "Plan Created": true,
+        "Strategy Selected": true
+      }
+    },
+    {
+      "name": "Component Savings Tracking",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:55:56.347433",
+      "details": {
+        "memory_layer": 0,
+        "orchestrator": 1700,
+        "bandit": 1700,
+        "total_savings": 3400
+      }
+    },
+    {
+      "name": "Query 1",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:04.472534",
+      "details": {
+        "query": "how is chicken biryani made?",
+        "cache_hit": false,
+        "cache_type": null,
+        "similarity": null,
+        "tokens_used": 317
+      }
+    },
+    {
+      "name": "Query 2",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:11.201606",
+      "details": {
+        "query": "what ingredients are needed for biryani?",
+        "cache_hit": false,
+        "cache_type": null,
+        "similarity": null,
+        "tokens_used": 302
+      }
+    },
+    {
+      "name": "Query 3",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:14.446848",
+      "details": {
+        "query": "what is the main component or technique or ingredi",
+        "cache_hit": false,
+        "cache_type": null,
+        "similarity": null,
+        "tokens_used": 162
+      }
+    },
+    {
+      "name": "Cache Accumulation",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:14.446848",
+      "details": {
+        "first_query_cache_hit": false,
+        "subsequent_queries_hit_cache": false,
+        "cache_hits": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "Memory Stats After Multiple Queries",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:14.446848",
+      "details": {
+        "exact_cache_enabled": true,
+        "semantic_cache_enabled": true,
+        "semantic_cache_working": true,
+        "compression_enabled": true,
+        "preferences_enabled": true,
+        "similarity_threshold": 0.65,
+        "direct_return_threshold": 0.75,
+        "size": 5,
+        "max_size": 100,
+        "eviction_policy": "lru",
+        "total_tokens_saved": 1454,
+        "semantic_status": {
+          "enabled": true,
+          "working": true,
+          "embedding_model_loaded": true,
+          "vector_store_ready": true,
+          "init_error": null,
+          "similarity_threshold": 0.65,
+          "direct_return_threshold": 0.75,
+          "vector_store_stats": {
+            "total_vectors": 5,
+            "dimension": 384,
+            "id_count": 5
+          }
+        },
+        "preferences": {
+          "tone": "simple",
+          "format": "paragraph",
+          "confidence": 0.7,
+          "interactions": 8
+        }
+      }
+    },
+    {
+      "name": "Memory Layer Savings (Cache Hit)",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:14.477859",
+      "details": {
+        "memory_savings": 352,
+        "cache_hit": true,
+        "all_savings": {
+          "memory_layer": 352,
+          "orchestrator": 0,
+          "bandit": 0,
+          "total_savings": 352
+        }
+      }
+    },
+    {
+      "name": "Orchestrator & Bandit Savings",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:21.110801",
+      "details": {
+        "orchestrator_savings": 1700,
+        "bandit_savings": 1700,
+        "all_savings": {
+          "memory_layer": 0,
+          "orchestrator": 1700,
+          "bandit": 1700,
+          "total_savings": 3400
+        }
+      }
+    },
+    {
+      "name": "A/B Comparison",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:39.052851",
+      "details": {
+        "baseline_tokens": 434,
+        "optimized_tokens": 314,
+        "token_savings": 120,
+        "savings_percent": 27.65,
+        "optimized_better": true
+      }
+    },
+    {
+      "name": "A/B Component Savings",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:39.052851",
+      "details": {
+        "memory_layer": 0,
+        "orchestrator": 1700,
+        "bandit": 1700,
+        "total_savings": 3400
+      }
+    },
+    {
+      "name": "Empty Query",
+      "status": "warning",
+      "timestamp": "2025-12-01T21:56:39.969481",
+      "details": {
+        "handled": true
+      }
+    },
+    {
+      "name": "Very Long Query",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:45.712857",
+      "details": {
+        "query_length": 1709,
+        "tokens_used": 512
+      }
+    },
+    {
+      "name": "Special Characters",
+      "status": "pass",
+      "timestamp": "2025-12-01T21:56:48.258412",
+      "details": {
+        "tokens_used": 161
+      }
+    }
+  ],
+  "summary": {
+    "total_tests": 30,
+    "passed": 28,
+    "failed": 1,
+    "warnings": 1,
+    "pass_rate": 93.33,
+    "test_end": "2025-12-01T21:56:48.258412"
+  },
+  "errors": []
+}

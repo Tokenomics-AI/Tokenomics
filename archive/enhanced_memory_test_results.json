@@ -1,0 +1,129 @@
+{
+  "baseline": [
+    {
+      "query": "How to build an agentic system with Autogen?",
+      "tokens": 661,
+      "latency": 12831.086158752441,
+      "cache_hit": false,
+      "strategy": "balanced"
+    },
+    {
+      "query": "What is machine learning?",
+      "tokens": 364,
+      "latency": 7716.809988021851,
+      "cache_hit": false,
+      "strategy": "fast"
+    },
+    {
+      "query": "Explain neural networks in simple terms",
+      "tokens": 363,
+      "latency": 5913.555383682251,
+      "cache_hit": false,
+      "strategy": "powerful"
+    },
+    {
+      "query": "How to optimize Python code?",
+      "tokens": 740,
+      "latency": 13025.81000328064,
+      "cache_hit": false,
+      "strategy": "powerful"
+    },
+    {
+      "query": "What are the best practices for API design?",
+      "tokens": 623,
+      "latency": 12042.01340675354,
+      "cache_hit": false,
+      "strategy": "fast"
+    }
+  ],
+  "enhanced": [
+    {
+      "query": "How to build an agentic system with Autogen?",
+      "tokens": 696,
+      "latency": 12310.527563095093,
+      "cache_hit": false,
+      "strategy": "fast",
+      "preference_context": {},
+      "compressed_tokens": 18
+    },
+    {
+      "query": "What is machine learning?",
+      "tokens": 394,
+      "latency": 7979.203939437866,
+      "cache_hit": false,
+      "strategy": "fast",
+      "preference_context": {},
+      "compressed_tokens": 12
+    },
+    {
+      "query": "Explain neural networks in simple terms",
+      "tokens": 421,
+      "latency": 7747.974634170532,
+      "cache_hit": false,
+      "strategy": "fast",
+      "preference_context": {
+        "tone": "simple"
+      },
+      "compressed_tokens": 14
+    },
+    {
+      "query": "How to optimize Python code?",
+      "tokens": 703,
+      "latency": 11246.10710144043,
+      "cache_hit": false,
+      "strategy": "fast",
+      "preference_context": {
+        "tone": "simple"
+      },
+      "compressed_tokens": 13
+    },
+    {
+      "query": "What are the best practices for API design?",
+      "tokens": 768,
+      "latency": 13311.924695968628,
+      "cache_hit": false,
+      "strategy": "fast",
+      "preference_context": {
+        "tone": "simple"
+      },
+      "compressed_tokens": 16
+    }
+  ],
+  "comparison": {
+    "token_savings": -231,
+    "token_savings_percent": -8.396946564885496,
+    "latency_reduction": -1066.4629936218262,
+    "latency_reduction_percent": -2.0696254601941235,
+    "cache_hit_rate_baseline": 0.0,
+    "cache_hit_rate_enhanced": 0.0
+  },
+  "enhanced_features": {
+    "user_preferences": {
+      "tone": {
+        "value": "simple",
+        "confidence": 0.6499999999999999
+      },
+      "format": {
+        "value": "paragraph",
+        "confidence": 0.5
+      }
+    },
+    "entities_learned": 19,
+    "routing_metrics": {
+      "routing_metrics": {
+        "fast": {
+          "cost_per_token": 1.5e-07,
+          "quality_score": 1.0,
+          "latency_ms": 11271.029924583436,
+          "cost_quality_ratio": 6666666.666666667,
+          "efficiency_score": 0.8162940504931095
+        }
+      },
+      "best_cost_quality": {
+        "arm_id": "fast",
+        "ratio": 6666666.666666667
+      },
+      "total_routes": 1
+    }
+  }
+}

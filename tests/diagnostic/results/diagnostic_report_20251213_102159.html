@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenomics Platform Diagnostic Report</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .status-healthy { color: #10b981; font-weight: bold; }
+        .status-degraded { color: #f59e0b; font-weight: bold; }
+        .status-failed { color: #ef4444; font-weight: bold; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .recommendation {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .error {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Tokenomics Platform Diagnostic Report</h1>
+        <p>Test Period: 2025-12-13T10:16:28.465323 to 2025-12-13T10:21:59.967735</p>
+        <p>Overall Status: <span class="status-healthy">HEALTHY</span></p>
+    </div>
+    
+    <div class="section">
+        <h2>Executive Summary</h2>
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-value">100.0%</div>
+                <div class="metric-label">Success Rate</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">55.6%</div>
+                <div class="metric-label">Token Savings</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">-15.1%</div>
+                <div class="metric-label">Latency Reduction</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">33.3%</div>
+                <div class="metric-label">Cache Hit Rate</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Component Health</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><strong>Memory Layer</strong></td>
+                    <td><span class="status-healthy">HEALTHY</span></td>
+                    <td>exact_cache_enabled: True, semantic_cache_enabled: True, cache_size: 0, compression_enabled: True, l...</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Orchestrator</strong></td>
+                    <td><span class="status-healthy">HEALTHY</span></td>
+                    <td>default_budget: 4000, max_context_tokens: 8000...</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Bandit Optimizer</strong></td>
+                    <td><span class="status-healthy">HEALTHY</span></td>
+                    <td>num_strategies: 3, strategies: ['cheap', 'balanced', 'premium'], algorithm: BanditAlgorithm.UCB...</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Quality Judge</strong></td>
+                    <td><span class="status-healthy">HEALTHY</span></td>
+                    <td>enabled: True, model: gpt-4o, provider: openai...</td>
+                </tr>
+
+                <tr>
+                    <td><strong>LLMLingua Compression</strong></td>
+                    <td><span class="status-degraded">DEGRADED</span></td>
+                    <td>...</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>Aggregated Metrics</h2>
+        <h3>Token Metrics</h3>
+        <div class="metric-grid">
+
+            <div class="metric-card">
+                <div class="metric-value">4,267</div>
+                <div class="metric-label">Total Token Savings</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">55.6%</div>
+                <div class="metric-label">Savings Percentage</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">427</div>
+                <div class="metric-label">Avg Baseline Tokens</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">190</div>
+                <div class="metric-label">Avg Optimized Tokens</div>
+            </div>
+
+        </div>
+        <h3>Component Savings Breakdown</h3>
+        <div class="metric-grid">
+
+            <div class="metric-card">
+                <div class="metric-value">1,864</div>
+                <div class="metric-label">Memory Layer Savings</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">1,836</div>
+                <div class="metric-label">Orchestrator Savings</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">0</div>
+                <div class="metric-label">Bandit Savings</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">0</div>
+                <div class="metric-label">Compression Savings</div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Diagnostics</h2>
+        <h3>Working Components</h3>
+        <ul>
+<li>Memory Layer</li>
+<li>Orchestrator</li>
+<li>Bandit Optimizer</li>
+<li>Quality Judge</li>
+
+        </ul>
+        
+        <h3>Issues Found</h3>
+<p>No issues found.</p>
+        <h3>Warnings</h3>
+
+        <div class="recommendation">
+            <strong>compression_not_working</strong>: No compression savings detected. LLMLingua may not be working.
+        </div>
+
+    </div>
+    
+    <div class="section">
+        <h2>Recommendations</h2>
+        <ul>
+<li>Install LLMLingua-2 for better compression: pip install llmlingua>=2.0.0</li>
+<li>Check LLMLingua-2 installation and initialization. Compression may be using fallback.</li>
+
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+Test ID,Phase,Description,Passed,Cache Type,Similarity,Tokens Used,Strategy,Complexity,Memory Savings,Orchestrator Savings,Total Savings,Issues
+final_exact_1,10_final_validation,Final exact cache validation,False,,,311,cheap,simple,0,11,11,"Cache type mismatch: expected 'exact', got 'None'"
+final_semantic_1,10_final_validation,Final semantic validation,False,context,0.822,614,cheap,simple,523,0,523,"Cache type mismatch: expected 'semantic_direct', got 'context'; Similarity too low: expected >= 0.85, got 0.822"
+seed_python,1_cache_seeding,Seed query for Python - will be used for exact and,True,semantic_direct,0.822,0,cheap,simple,311,0,311,
+seed_ml,1_cache_seeding,Seed query for ML - will be used for semantic matc,True,,,167,cheap,simple,0,76,76,
+seed_rest,1_cache_seeding,Seed query for REST APIs - will be used for contex,False,,,313,cheap,simple,0,212,212,"Complexity mismatch: expected 'medium', got 'simple'"
+seed_database,1_cache_seeding,Seed query for databases,True,,,313,cheap,simple,0,88,88,
+exact_python_1,2_exact_cache,EXACT same query as seed - must hit exact cache wi,False,semantic_direct,0.822,0,cheap,simple,311,0,311,"Cache type mismatch: expected 'exact', got 'semantic_direct'"
+exact_python_2,2_exact_cache,Third identical query - validates cache consistenc,False,semantic_direct,0.822,0,cheap,simple,311,0,311,"Cache type mismatch: expected 'exact', got 'semantic_direct'"
+exact_rest,2_exact_cache,Exact match for REST query,True,exact,,0,cheap,simple,313,0,313,
+semantic_direct_python_1,3_semantic_direct,Very similar to 'What is Python?' - should return ,True,semantic_direct,0.900,0,cheap,simple,311,0,311,
+semantic_direct_python_2,3_semantic_direct,Another high similarity Python query,True,semantic_direct,0.888,0,cheap,simple,311,0,311,
+semantic_direct_ml,3_semantic_direct,High similarity to ML seed query,True,semantic_direct,0.891,0,cheap,simple,167,0,167,
+context_python_packages,4_context_injection,Related to Python but different enough - should in,False,,,316,cheap,simple,0,212,212,"Cache type mismatch: expected 'context', got 'None'"
+context_rest_benefits,4_context_injection,Related to REST but asks different question - cont,True,context,0.716,622,cheap,simple,531,0,531,
+context_ml_vs_dl,4_context_injection,Related to ML seed - should use context,False,,,318,cheap,simple,0,212,212,"Cache type mismatch: expected 'context', got 'None'"
+compress_long_query,5_compression,Long query (>800 chars) - should trigger LLMLingua,False,,,455,cheap,complex,0,212,212,Expected compression but none occurred
+compress_follow_up,5_compression,Follow-up that may use compressed context from cac,False,,,315,cheap,simple,0,212,212,"Cache type mismatch: expected 'context', got 'None'"
+pref_formal,6_preferences,"Formal tone indicators: 'please', 'kindly'",False,,,317,cheap,simple,0,120,120,"Tone mismatch: expected 'formal', got 'simple'"
+pref_casual,6_preferences,"Casual tone indicators: 'hey', 'what's'",False,,,315,cheap,simple,0,112,112,"Tone mismatch: expected 'casual', got 'simple'"
+pref_technical,6_preferences,"Technical tone indicators: 'architecture', 'implem",False,context,0.775,618,cheap,simple,527,0,527,"Tone mismatch: expected 'technical', got 'simple'"
+pref_list,6_preferences,List format indicator: 'list the steps',True,,,315,cheap,simple,0,212,212,
+pref_code,6_preferences,"Code format indicator: 'code', 'example'",True,,,314,cheap,simple,0,212,212,
+complexity_simple_1,7_complexity,Simple query - should use 'cheap' strategy,True,,,311,cheap,simple,0,210,210,
+complexity_simple_2,7_complexity,Another simple query,True,,,236,cheap,simple,0,6,6,
+complexity_medium_1,7_complexity,Medium complexity - should use 'balanced' strategy,False,,,318,cheap,simple,0,212,212,"Complexity mismatch: expected 'medium', got 'simple'; Strategy mismatch: expected 'balanced', got 'cheap'"
+complexity_medium_2,7_complexity,Another medium complexity query,False,,,316,cheap,simple,0,212,212,"Complexity mismatch: expected 'medium', got 'simple'"
+complexity_complex_1,7_complexity,Complex query - should use 'premium' strategy with,False,,,358,cheap,complex,0,212,300,"Strategy mismatch: expected 'premium', got 'cheap'"
+quality_test_1,8_quality_judge,Test quality judge - compare baseline vs optimized,True,,,314,cheap,simple,0,212,212,
+quality_test_2,8_quality_judge,Another quality comparison test,True,,,315,cheap,simple,0,56,56,
+quality_test_3,8_quality_judge,Third quality test for statistics,True,,,313,cheap,simple,0,212,212,
+budget_low,9_token_budget,Test with low token budget (1000),True,,,312,cheap,simple,0,212,212,
+budget_high,9_token_budget,Test with high token budget (4000),True,context,0.784,617,cheap,simple,526,0,526,

@@ -1,0 +1,55 @@
+flowchart TD
+    Query[User Query] --> Complexity[Complexity Analysis<br/>Keyword-Based Semantic]
+    
+    Complexity --> Simple[Simple]
+    Complexity --> Medium[Medium]
+    Complexity --> Complex[Complex]
+    
+    Simple --> CheapStrategy[Cheap Strategy<br/>gpt-4o-mini<br/>300 tokens<br/>$0.15/1M]
+    Medium --> BalancedStrategy[Balanced Strategy<br/>gpt-4o-mini<br/>600 tokens<br/>$0.15/1M]
+    Complex --> PremiumStrategy[Premium Strategy<br/>gpt-4o<br/>1000 tokens<br/>$2.50/1M]
+    
+    CheapStrategy --> RouterBench[RouterBench Scoring]
+    BalancedStrategy --> RouterBench
+    PremiumStrategy --> RouterBench
+    
+    RouterBench --> CostCalc[Calculate Cost<br/>tokens × cost_per_million]
+    RouterBench --> QualityEst[Estimate Quality<br/>Historical Performance]
+    RouterBench --> LatencyEst[Estimate Latency<br/>Model Speed]
+    
+    CostCalc --> Efficiency[Efficiency Score<br/>Quality×0.5 + Cost×0.3 + Speed×0.2]
+    QualityEst --> Efficiency
+    LatencyEst --> Efficiency
+    
+    Efficiency --> Penalties[Apply Complexity Penalties]
+    
+    Penalties --> SimplePenalty[Simple: -30% premium<br/>-10% balanced]
+    Penalties --> MediumPenalty[Medium: -10% cheap]
+    Penalties --> ComplexPenalty[Complex: -20% cheap]
+    
+    SimplePenalty --> UCB[UCB Algorithm<br/>Exploration vs Exploitation]
+    MediumPenalty --> UCB
+    ComplexPenalty --> UCB
+    
+    UCB --> Select[Select Best Strategy]
+    
+    Select --> Execute[Execute Query<br/>Same API Key<br/>Different Model]
+    
+    Execute --> Learn[Update Bandit Rewards<br/>Quality × Cost × Latency]
+    
+    Learn --> NextQuery[Next Query]
+    
+    style Query fill:#e1f5ff
+    style CheapStrategy fill:#d4edda
+    style BalancedStrategy fill:#d1ecf1
+    style PremiumStrategy fill:#f8d7da
+    style Select fill:#fff3cd
+    style Execute fill:#e1ffe1
+
+
+
+
+
+
+
+

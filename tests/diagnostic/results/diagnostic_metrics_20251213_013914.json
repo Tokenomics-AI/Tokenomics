@@ -1,0 +1,50 @@
+{
+  "total_queries": 18,
+  "successful_queries": 18,
+  "failed_queries": 0,
+  "tokens": {
+    "baseline_total": 7576,
+    "optimized_total": 3436,
+    "total_savings": 4140,
+    "savings_percent": 54.64625131995776,
+    "average_baseline": 420.8888888888889,
+    "average_optimized": 190.88888888888889
+  },
+  "latency": {
+    "baseline_total_ms": 143403.40328216553,
+    "optimized_total_ms": 181452.1768093109,
+    "total_reduction_ms": -38048.773527145386,
+    "reduction_percent": -26.53268517782615,
+    "average_baseline_ms": 7966.855737898085,
+    "average_optimized_ms": 10080.676489406162
+  },
+  "component_savings": {
+    "memory_layer": 1864,
+    "orchestrator": 1822,
+    "bandit": 0,
+    "compression": 0,
+    "total": 3686
+  },
+  "cache": {
+    "hit_rate_percent": 33.33333333333333,
+    "total_hits": 6,
+    "exact_hits": 3,
+    "semantic_hits": 3,
+    "misses": 12
+  },
+  "strategy_distribution": {
+    "cheap": 18
+  },
+  "quality_judge": {
+    "total_evaluations": 12,
+    "optimized_wins": 6,
+    "baseline_wins": 0,
+    "equivalent": 6,
+    "average_confidence": 0.8708333333333332
+  },
+  "compression": {
+    "context_compressed_count": 0,
+    "query_compressed_count": 0,
+    "total_compression_savings": 0
+  }
+}

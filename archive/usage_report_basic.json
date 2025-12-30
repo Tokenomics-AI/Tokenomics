@@ -1,0 +1,69 @@
+{
+  "summary": {
+    "start_time": "2025-11-23T10:52:04.712125",
+    "end_time": "2025-11-23T10:52:23.811586",
+    "total_queries": 4,
+    "cache_hits": 1,
+    "cache_misses": 3,
+    "cache_hit_rate_percent": 25.0,
+    "total_tokens_used": 3377,
+    "tokens_with_cache": 3377,
+    "tokens_saved": 0,
+    "token_savings_rate_percent": 0.0,
+    "total_latency_ms": 19067.27,
+    "average_latency_ms": 4766.82,
+    "total_cost_estimate_usd": 0.0,
+    "cost_saved_usd": 0.0,
+    "cost_savings_rate_percent": 0
+  },
+  "records": [
+    {
+      "timestamp": "2025-11-23T10:52:10.961841",
+      "query": "What is machine learning?",
+      "response_length": 4082,
+      "tokens_used": 1028,
+      "latency_ms": 6221.691131591797,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "powerful",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:52:17.336064",
+      "query": "Explain neural networks",
+      "response_length": 4360,
+      "tokens_used": 1097,
+      "latency_ms": 6373.22211265564,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "fast",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:52:17.337270",
+      "query": "What is machine learning?",
+      "response_length": 4082,
+      "tokens_used": 0,
+      "latency_ms": 0,
+      "cache_hit": true,
+      "cache_type": "exact",
+      "strategy": "none",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    },
+    {
+      "timestamp": "2025-11-23T10:52:23.811586",
+      "query": "How do transformers work?",
+      "response_length": 4979,
+      "tokens_used": 1252,
+      "latency_ms": 6472.3522663116455,
+      "cache_hit": false,
+      "cache_type": "none",
+      "strategy": "balanced",
+      "model": "gemini-2.0-flash-exp",
+      "cost_estimate": 0.0
+    }
+  ]
+}

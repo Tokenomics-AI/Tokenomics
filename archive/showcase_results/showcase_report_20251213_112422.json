@@ -1,0 +1,4514 @@
+{
+  "test_start": "2025-12-13T11:05:24.220182",
+  "test_end": "2025-12-13T11:24:22.723464",
+  "platform_config": {
+    "llm_provider": "openai",
+    "llm_model": "gpt-4o-mini",
+    "cache_size": 1000,
+    "enable_llmlingua": true,
+    "similarity_threshold": 0.75,
+    "direct_return_threshold": 0.85,
+    "judge_enabled": true
+  },
+  "component_health": [
+    {
+      "name": "Memory Layer",
+      "status": "failed",
+      "details": {},
+      "errors": [
+        "'MemoryCache' object has no attribute 'cache'"
+      ]
+    },
+    {
+      "name": "Orchestrator",
+      "status": "healthy",
+      "details": {
+        "default_budget": 4000,
+        "max_context_tokens": 8000
+      },
+      "errors": []
+    },
+    {
+      "name": "Bandit Optimizer",
+      "status": "healthy",
+      "details": {
+        "algorithm": "ucb",
+        "num_strategies": 3,
+        "strategies": [
+          "cheap",
+          "balanced",
+          "premium"
+        ]
+      },
+      "errors": []
+    },
+    {
+      "name": "Quality Judge",
+      "status": "healthy",
+      "details": {
+        "enabled": true,
+        "model": "gpt-4o",
+        "provider": "openai"
+      },
+      "errors": []
+    },
+    {
+      "name": "LLMLingua Compression",
+      "status": "degraded",
+      "details": {},
+      "errors": [
+        "LLMLingua not available (using fallback)"
+      ]
+    }
+  ],
+  "query_results": [
+    {
+      "query": "What is Python programming?",
+      "category": "cache",
+      "subcategory": "exact_hit_seed",
+      "description": "Seed query for exact cache testing",
+      "baseline_tokens": 466,
+      "baseline_latency_ms": 10737.378120422363,
+      "baseline_response": "Python programming refers to the process of writing code in the Python programming language, which is a high-level, interpreted language known for its readability and simplicity. Python was created by",
+      "optimized_tokens": 312,
+      "optimized_latency_ms": 21494.637727737427,
+      "optimized_response": "Python programming refers to the process of writing code in the Python programming language, which is a high-level, interpreted language known for its readability and simplicity. Python was created by",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": false,
+        "preference_tone": null,
+        "preference_format": null,
+        "preference_confidence": 0.0,
+        "preference_interaction_count": 0,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": false,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides additional context about Python's global popularity and versatility, enhancing the reader's understanding of its significance.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 124,
+        "bandit": 0,
+        "total_savings": 124
+      },
+      "expected_behaviors": [
+        "exact_cache"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:05:54.306400"
+    },
+    {
+      "query": "Explain artificial intelligence",
+      "category": "cache",
+      "subcategory": "exact_hit_seed",
+      "description": "Seed query for exact cache testing",
+      "baseline_tokens": 522,
+      "baseline_latency_ms": 11292.020320892334,
+      "baseline_response": "Artificial Intelligence (AI) refers to the simulation of human intelligence processes by machines, particularly computer systems. These processes include learning (the acquisition of information and r",
+      "optimized_tokens": 310,
+      "optimized_latency_ms": 31207.62300491333,
+      "optimized_response": "Artificial Intelligence (AI) refers to the simulation of human intelligence processes by machines, particularly computer systems. These processes include learning (the acquisition of information and r",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.5,
+        "preference_interaction_count": 3,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer is more complete as it includes the full explanation of Narrow AI, whereas the baseline answer is cut off.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "exact_cache"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:06:26.538416"
+    },
+    {
+      "query": "What is machine learning?",
+      "category": "cache",
+      "subcategory": "exact_hit_seed",
+      "description": "Seed query for exact cache testing",
+      "baseline_tokens": 524,
+      "baseline_latency_ms": 13053.098678588867,
+      "baseline_response": "Machine learning is a subset of artificial intelligence (AI) that focuses on the development of algorithms and statistical models that enable computers to perform tasks without explicit programming. I",
+      "optimized_tokens": 312,
+      "optimized_latency_ms": 17822.63684272766,
+      "optimized_response": "Machine learning is a subset of artificial intelligence (AI) that focuses on the development of algorithms and statistical models that enable computers to perform tasks without explicit programming. I",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.6,
+        "preference_interaction_count": 4,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar definition of machine learning, with only minor wording differences that do not significantly alter the meaning.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 97,
+        "bandit": 0,
+        "total_savings": 97
+      },
+      "expected_behaviors": [
+        "exact_cache"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:07:09.038060"
+    },
+    {
+      "query": "Tell me about Python programming",
+      "category": "cache",
+      "subcategory": "semantic_direct",
+      "description": "High similarity query for semantic direct return",
+      "baseline_tokens": 524,
+      "baseline_latency_ms": 11299.830198287964,
+      "baseline_response": "Python is a high-level, interpreted programming language known for its readability and simplicity. It was created by Guido van Rossum and first released in 1991. Python has gained immense popularity d",
+      "optimized_tokens": 0,
+      "optimized_latency_ms": 27.475833892822266,
+      "optimized_response": "Python programming refers to the process of writing code in the Python programming language, which is a high-level, interpreted language known for its readability and simplicity. Python was created by",
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.9162245988845825,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 1,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 1,
+        "top_similarity": 0.9162245988845825,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.6,
+        "preference_interaction_count": 5,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 1,
+          "top_similarity": 0.9162245988845825,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {},
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": null,
+      "component_savings": {
+        "memory_layer": 312,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 312
+      },
+      "expected_behaviors": [
+        "semantic_direct"
+      ],
+      "actual_behaviors": [
+        "semantic_direct",
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:07:39.913795"
+    },
+    {
+      "query": "Can you explain artificial intelligence?",
+      "category": "cache",
+      "subcategory": "semantic_direct",
+      "description": "High similarity query for semantic direct return",
+      "baseline_tokens": 450,
+      "baseline_latency_ms": 9704.530954360962,
+      "baseline_response": "Certainly! Artificial intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think and learn like humans. The goal of AI is to create systems that can perf",
+      "optimized_tokens": 0,
+      "optimized_latency_ms": 25.354623794555664,
+      "optimized_response": "Artificial Intelligence (AI) refers to the simulation of human intelligence processes by machines, particularly computer systems. These processes include learning (the acquisition of information and r",
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.9412392377853394,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 1,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 1,
+        "top_similarity": 0.9412392377853394,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.7,
+        "preference_interaction_count": 6,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 1,
+          "top_similarity": 0.9412392377853394,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {},
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 6
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3894
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": null,
+      "component_savings": {
+        "memory_layer": 310,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 310
+      },
+      "expected_behaviors": [
+        "semantic_direct"
+      ],
+      "actual_behaviors": [
+        "semantic_direct",
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:07:51.243044"
+    },
+    {
+      "query": "I want to understand machine learning",
+      "category": "cache",
+      "subcategory": "semantic_direct",
+      "description": "High similarity query for semantic direct return",
+      "baseline_tokens": 525,
+      "baseline_latency_ms": 8699.681282043457,
+      "baseline_response": "Certainly! Machine learning (ML) is a subset of artificial intelligence (AI) that focuses on the development of algorithms and statistical models that enable computers to perform tasks without explici",
+      "optimized_tokens": 616,
+      "optimized_latency_ms": 14610.461711883545,
+      "optimized_response": "Machine learning (ML) is a fascinating and rapidly evolving field within artificial intelligence (AI) that enables computers to learn from data and make decisions or predictions without being explicit",
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.7977551221847534,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 1,
+        "semantic_matches_found": 1,
+        "top_similarity": 0.7977551221847534,
+        "context_injected": true,
+        "context_tokens_added": 295,
+        "context_original_tokens": 737,
+        "context_compressed_tokens": 295,
+        "context_similarity": 0.7977551221847534,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.7,
+        "preference_interaction_count": 7,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 1,
+          "top_similarity": 0.7977551221847534,
+          "context_retrieval": true,
+          "preference_retrieval": true,
+          "context_compression": true
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": true,
+        "context_original_tokens": 737,
+        "context_compressed_tokens": 295,
+        "context_compression_ratio": 0.40027137042062416,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 442
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 6
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "retrieved_context",
+            "tokens": 295
+          },
+          {
+            "component": "response",
+            "tokens": 3599
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more engaging introduction and begins to explain the importance of data, which is crucial for understanding machine learning.",
+        "confidence": 0.85
+      },
+      "component_savings": {
+        "memory_layer": 525,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 525
+      },
+      "expected_behaviors": [
+        "semantic_direct"
+      ],
+      "actual_behaviors": [
+        "context_injection",
+        "context_compression",
+        "llmlingua_compression",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:08:00.975440"
+    },
+    {
+      "query": "How does Python work as a programming language?",
+      "category": "cache",
+      "subcategory": "context_injection",
+      "description": "Medium similarity query to trigger context injection",
+      "baseline_tokens": 528,
+      "baseline_latency_ms": 9644.52338218689,
+      "baseline_response": "Python is a high-level, interpreted programming language known for its simplicity and readability. Here’s an overview of how Python works as a programming language:\n\n### 1. **High-Level Language**\nPyt",
+      "optimized_tokens": 0,
+      "optimized_latency_ms": 29.761314392089844,
+      "optimized_response": "Python programming refers to the process of writing code in the Python programming language, which is a high-level, interpreted language known for its readability and simplicity. Python was created by",
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8735180497169495,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 1,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 1,
+        "top_similarity": 0.8735180497169495,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.7,
+        "preference_interaction_count": 8,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 1,
+          "top_similarity": 0.8735180497169495,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {},
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": null,
+      "component_savings": {
+        "memory_layer": 312,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 312
+      },
+      "expected_behaviors": [
+        "context_injection",
+        "context_compression"
+      ],
+      "actual_behaviors": [
+        "semantic_direct",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:08:24.285583"
+    },
+    {
+      "query": "What are the applications of artificial intelligence?",
+      "category": "cache",
+      "subcategory": "context_injection",
+      "description": "Medium similarity query to trigger context injection",
+      "baseline_tokens": 527,
+      "baseline_latency_ms": 9526.75175666809,
+      "baseline_response": "Artificial intelligence (AI) has a wide range of applications across various industries and sectors. Here are some key areas where AI is being utilized:\n\n1. **Healthcare**:\n   - **Diagnostics**: AI al",
+      "optimized_tokens": 315,
+      "optimized_latency_ms": 16047.208309173584,
+      "optimized_response": "Artificial intelligence (AI) has a wide range of applications across various industries and sectors. Here are some key areas where AI is being utilized:\n\n1. **Healthcare**:\n   - **Diagnostics**: AI al",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.7,
+        "preference_interaction_count": 9,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 8
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3892
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more concise and clear explanation of AI applications in healthcare, and it begins to introduce additional sectors beyond healthcare.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "context_injection",
+        "context_compression"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:08:33.962779"
+    },
+    {
+      "query": "Describe the types of machine learning algorithms",
+      "category": "cache",
+      "subcategory": "context_injection",
+      "description": "Medium similarity query to trigger context injection",
+      "baseline_tokens": 526,
+      "baseline_latency_ms": 9800.405740737915,
+      "baseline_response": "Machine learning algorithms can be broadly categorized into several types based on their learning approach and the nature of the data they handle. Here are the main types:\n\n### 1. **Supervised Learnin",
+      "optimized_tokens": 314,
+      "optimized_latency_ms": 14742.149114608765,
+      "optimized_response": "Machine learning algorithms can be broadly categorized into several types based on their learning approach and the nature of the data they handle. Here are the main categories:\n\n### 1. Supervised Lear",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.6499999999999999,
+        "preference_interaction_count": 10,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 7
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3893
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer and more concise explanation of regression within supervised learning, including examples, which enhances understanding.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "context_injection",
+        "context_compression"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:08:59.536740"
+    },
+    {
+      "query": "What is quantum computing?",
+      "category": "cache",
+      "subcategory": "cache_miss",
+      "description": "New topic query that should miss cache",
+      "baseline_tokens": 370,
+      "baseline_latency_ms": 5914.580583572388,
+      "baseline_response": "Quantum computing is a type of computing that takes advantage of the principles of quantum mechanics to process information in fundamentally different ways than classical computers. While classical co",
+      "optimized_tokens": 276,
+      "optimized_latency_ms": 12840.343475341797,
+      "optimized_response": "Quantum computing is a type of computation that takes advantage of the principles of quantum mechanics to process information in fundamentally different ways than classical computers. While classical ",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.7499999999999999,
+        "preference_interaction_count": 11,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "baseline",
+        "explanation": "The baseline answer is complete, while the optimized answer is cut off mid-sentence, making it incomplete.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 25,
+        "bandit": 0,
+        "total_savings": 25
+      },
+      "expected_behaviors": [],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:09:24.080386"
+    },
+    {
+      "query": "Explain blockchain technology",
+      "category": "cache",
+      "subcategory": "cache_miss",
+      "description": "New topic query that should miss cache",
+      "baseline_tokens": 522,
+      "baseline_latency_ms": 10340.418100357056,
+      "baseline_response": "Blockchain technology is a decentralized and distributed digital ledger system that records transactions across multiple computers in such a way that the registered transactions cannot be altered retr",
+      "optimized_tokens": 310,
+      "optimized_latency_ms": 17421.395540237427,
+      "optimized_response": "Blockchain technology is a decentralized digital ledger system that records transactions across multiple computers in a way that ensures the security, transparency, and integrity of the data. Here are",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.8499999999999999,
+        "preference_interaction_count": 12,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide the same initial explanation of blockchain technology, with only minor wording differences that do not affect the overall understanding.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:09:42.837307"
+    },
+    {
+      "query": "How does cloud computing work?",
+      "category": "cache",
+      "subcategory": "cache_miss",
+      "description": "New topic query that should miss cache",
+      "baseline_tokens": 525,
+      "baseline_latency_ms": 11365.781307220459,
+      "baseline_response": "Cloud computing is a technology that allows users to access and store data and applications over the internet instead of on local servers or personal computers. It provides a range of services, includ",
+      "optimized_tokens": 313,
+      "optimized_latency_ms": 17104.150533676147,
+      "optimized_response": "Cloud computing is a technology that allows users to access and store data and applications over the internet instead of on local servers or personal computers. It provides a variety of services, incl",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.8499999999999999,
+        "preference_interaction_count": 13,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 6
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3894
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar introduction to cloud computing, mentioning key aspects like internet-based access, storage, and service models, but neither is complete.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:10:10.599121"
+    },
+    {
+      "query": "Based on the information about Python, explain its key features",
+      "category": "compression",
+      "subcategory": "long_context",
+      "description": "Query that should retrieve and compress long context",
+      "baseline_tokens": 530,
+      "baseline_latency_ms": 10686.875820159912,
+      "baseline_response": "Python is a high-level, interpreted programming language known for its simplicity and versatility. Here are some of its key features:\n\n1. **Easy to Read and Write**: Python's syntax is designed to be ",
+      "optimized_tokens": 318,
+      "optimized_latency_ms": 20661.959171295166,
+      "optimized_response": "Python is a high-level, interpreted programming language known for its simplicity and versatility. Here are some of its key features:\n\n1. **Easy to Learn and Use**: Python has a clean and readable syn",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "paragraph",
+        "preference_confidence": 0.9499999999999998,
+        "preference_interaction_count": 14,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 11
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3889
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more complete explanation of the benefits of Python being an interpreted language, specifically mentioning easier debugging and testing.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "context_injection",
+        "context_compression",
+        "llmlingua_compression"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:10:39.069053"
+    },
+    {
+      "query": "I need a comprehensive explanation of how transformer architectures work in natural language processing. Please cover the attention mechanism in detail, explaining how self-attention allows the model to focus on different parts of the input sequence. Explain the encoder-decoder structure and how it processes sequences. Describe how positional encoding works and why it's necessary for transformers. Explain the multi-head attention concept and how it allows the model to attend to information from different representation subspaces. Compare how transformers differ from previous RNN and LSTM models, highlighting the advantages and disadvantages. Also explain the training process including pre-training and fine-tuning phases. Describe the role of self-attention in detail and provide examples of real-world applications of transformer models in modern AI systems. Include information about BERT, GPT, and other popular transformer architectures.",
+      "category": "compression",
+      "subcategory": "long_query",
+      "description": "Long query 1 that should trigger query compression",
+      "baseline_tokens": 677,
+      "baseline_latency_ms": 12757.750749588013,
+      "baseline_response": "### Overview of Transformer Architectures in Natural Language Processing\n\nTransformers have revolutionized the field of natural language processing (NLP) by providing a powerful framework for understa",
+      "optimized_tokens": 465,
+      "optimized_latency_ms": 20856.24599456787,
+      "optimized_response": "### Overview of Transformer Architectures in Natural Language Processing\n\nTransformers have revolutionized the field of natural language processing (NLP) by providing a powerful architecture that over",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.8999999999999998,
+        "preference_interaction_count": 15,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "complex",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "user_query",
+            "tokens": 159
+          },
+          {
+            "component": "response",
+            "tokens": 3741
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers start similarly and provide an overview of transformers, mentioning key innovations like the attention mechanism and encoder-decoder structure. Neither answer provides enough detail to distinguish a clear winner.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "query_compression",
+        "llmlingua_compression"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:11:10.418999"
+    },
+    {
+      "query": "Can you provide a detailed comparison between different cloud computing platforms including AWS, Azure, and Google Cloud Platform? I want to understand the differences in pricing models, how each platform structures their costs, and which is most cost-effective for different scenarios. Compare their service offerings across compute, storage, networking, databases, and machine learning services. Explain geographic availability and data center locations for each platform. Compare security features including encryption, compliance certifications, and identity management. Analyze integration capabilities with existing enterprise systems and third-party tools. Recommend which platform would be best for startups, enterprise applications, machine learning workloads, and data analytics use cases. Include information about free tiers, pricing calculators, and cost optimization strategies.",
+      "category": "compression",
+      "subcategory": "long_query",
+      "description": "Long query 2 that should trigger query compression",
+      "baseline_tokens": 657,
+      "baseline_latency_ms": 9328.69839668274,
+      "baseline_response": "Certainly! Below is a detailed comparison of the three leading cloud computing platforms: Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP). This comparison will cover variou",
+      "optimized_tokens": 445,
+      "optimized_latency_ms": 16403.7983417511,
+      "optimized_response": "Certainly! Below is a detailed comparison of the three leading cloud computing platforms: Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP). This comparison covers various as",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.9999999999999998,
+        "preference_interaction_count": 16,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "complex",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "user_query",
+            "tokens": 141
+          },
+          {
+            "component": "response",
+            "tokens": 3759
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "baseline",
+        "explanation": "The baseline answer provides more complete information by including Spot Instances in the AWS pricing model, which is missing in the optimized answer.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "query_compression",
+        "llmlingua_compression"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:11:44.032995"
+    },
+    {
+      "query": "Explain in detail how neural networks learn from data through the backpropagation algorithm. Describe the forward pass where input data flows through the network layers and produces predictions. Explain how loss functions measure the difference between predictions and actual values. Detail the backward pass where gradients are calculated and propagated back through the network. Explain how gradient descent optimization updates the network weights to minimize the loss. Compare different optimization algorithms like SGD, Adam, and RMSprop. Describe regularization techniques like dropout and L2 regularization that prevent overfitting. Explain how batch normalization helps with training stability and convergence. Include information about learning rates, epochs, and how to monitor training progress.",
+      "category": "compression",
+      "subcategory": "long_query",
+      "description": "Long query 3 that should trigger query compression",
+      "baseline_tokens": 649,
+      "baseline_latency_ms": 8617.64121055603,
+      "baseline_response": "Neural networks are powerful models that learn from data through a process called training, which involves two main phases: the forward pass and the backward pass. The backpropagation algorithm is cen",
+      "optimized_tokens": 1137,
+      "optimized_latency_ms": 30596.147060394287,
+      "optimized_response": "Neural networks are powerful models that learn to make predictions from data through a process called training, which involves the backpropagation algorithm. This process consists of two main phases: ",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.9499999999999997,
+        "preference_interaction_count": 17,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "complex",
+        "model": "gpt-4o",
+        "allocations": [
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "user_query",
+            "tokens": 129
+          },
+          {
+            "component": "response",
+            "tokens": 3771
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "premium",
+        "model": "gpt-4o"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar introduction to the forward pass in neural networks, but neither is complete enough to determine a clear winner.",
+        "confidence": 0.7
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 0
+      },
+      "expected_behaviors": [
+        "query_compression",
+        "llmlingua_compression"
+      ],
+      "actual_behaviors": [
+        "premium_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:12:09.765492"
+    },
+    {
+      "query": "Based on the comprehensive information about Python programming language that we discussed earlier, I need you to explain in detail how Python's object-oriented programming features work, including classes, inheritance, polymorphism, encapsulation, and how these concepts are implemented in Python. Also explain the difference between Python 2 and Python 3, the key features added in recent versions, and how Python's memory management works including garbage collection and reference counting.",
+      "category": "compression",
+      "subcategory": "both_context_query",
+      "description": "Long query with context injection - both should be compressed",
+      "baseline_tokens": 604,
+      "baseline_latency_ms": 10963.675022125244,
+      "baseline_response": "Certainly! Let's delve into Python's object-oriented programming (OOP) features, the differences between Python 2 and Python 3, recent features, and memory management.\n\n### Object-Oriented Programming",
+      "optimized_tokens": 392,
+      "optimized_latency_ms": 20564.41855430603,
+      "optimized_response": "Certainly! Let's delve into the object-oriented programming (OOP) features of Python, as well as the differences between Python 2 and Python 3, recent features, and memory management.\n\n### Object-Orie",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.8999999999999997,
+        "preference_interaction_count": 18,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 85
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3815
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer and more concise introduction to the OOP features in Python, immediately addressing the core concepts requested.",
+        "confidence": 0.85
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "context_injection",
+        "context_compression",
+        "query_compression",
+        "llmlingua_compression"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:12:48.979280"
+    },
+    {
+      "query": "Explain how compression works when LLMLingua is not available",
+      "category": "compression",
+      "subcategory": "fallback",
+      "description": "Test fallback compression behavior",
+      "baseline_tokens": 531,
+      "baseline_latency_ms": 11654.13784980774,
+      "baseline_response": "When discussing compression in the context of language models (LLMs) like LLMLingua, it's important to understand the general principles of data compression, as well as how they might apply to the rep",
+      "optimized_tokens": 319,
+      "optimized_latency_ms": 19663.7921333313,
+      "optimized_response": "When LLMLingua or similar advanced language models are not available, compression techniques can still be employed to reduce the size of data for storage or transmission. Here’s a general overview of ",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.9999999999999997,
+        "preference_interaction_count": 19,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 13
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3887
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer and more structured explanation of compression techniques, specifically distinguishing between lossless and lossy methods, which is more informative for understanding compression without LLMLingua.",
+        "confidence": 0.85
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "fallback_compression"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:13:20.507374"
+    },
+    {
+      "query": "What is 2+2?",
+      "category": "orchestrator",
+      "subcategory": "simple",
+      "description": "Very simple query for minimal token allocation",
+      "baseline_tokens": 22,
+      "baseline_latency_ms": 746.0086345672607,
+      "baseline_response": "2 + 2 equals 4.",
+      "optimized_tokens": 22,
+      "optimized_latency_ms": 2323.012113571167,
+      "optimized_response": "2 + 2 equals 4.",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 20,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 7
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3893
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers are identical and correctly state that 2 + 2 equals 4.",
+        "confidence": 1.0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 0
+      },
+      "expected_behaviors": [
+        "minimal_allocation"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:13:51.825304"
+    },
+    {
+      "query": "Who is the president?",
+      "category": "orchestrator",
+      "subcategory": "simple",
+      "description": "Simple factual query",
+      "baseline_tokens": 49,
+      "baseline_latency_ms": 1369.3108558654785,
+      "baseline_response": "As of my last update in October 2023, Joe Biden is the President of the United States. However, please verify with up-to-date sources, as political situations can change.",
+      "optimized_tokens": 60,
+      "optimized_latency_ms": 3820.8818435668945,
+      "optimized_response": "As of my last knowledge update in October 2023, Joe Biden is the President of the United States. He took office on January 20, 2021. Please verify with up-to-date sources, as political positions can c",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 21,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide the same factual information and suggest verifying with current sources, with only slight wording differences.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 0
+      },
+      "expected_behaviors": [
+        "minimal_allocation"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:13:54.894325"
+    },
+    {
+      "query": "Explain how HTTP requests work in web development",
+      "category": "orchestrator",
+      "subcategory": "medium",
+      "description": "Medium complexity query for balanced allocation",
+      "baseline_tokens": 527,
+      "baseline_latency_ms": 9829.383611679077,
+      "baseline_response": "HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the web. It is a protocol used for transmitting hypertext via the internet, allowing web browsers and servers to communica",
+      "optimized_tokens": 315,
+      "optimized_latency_ms": 20302.926063537598,
+      "optimized_response": "HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the web. It is a protocol used for transmitting hypertext via the internet, allowing web browsers and servers to communica",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 22,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar introduction to HTTP requests and the client-server model, with minor wording differences that do not significantly impact the clarity or completeness of the explanation.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "balanced_allocation"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:14:00.084517"
+    },
+    {
+      "query": "What are the differences between REST and GraphQL APIs?",
+      "category": "orchestrator",
+      "subcategory": "medium",
+      "description": "Medium complexity query",
+      "baseline_tokens": 530,
+      "baseline_latency_ms": 11948.219060897827,
+      "baseline_response": "REST (Representational State Transfer) and GraphQL are two different approaches to building APIs, each with its own strengths and weaknesses. Here are the key differences between them:\n\n### 1. **Data ",
+      "optimized_tokens": 318,
+      "optimized_latency_ms": 16928.515672683716,
+      "optimized_response": "REST (Representational State Transfer) and GraphQL are two different approaches to building APIs, each with its own strengths and weaknesses. Here are the key differences between them:\n\n### 1. **Data ",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.95,
+        "preference_interaction_count": 23,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 10
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3890
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more comprehensive comparison by mentioning the strengths and weaknesses of each approach, offering a clearer context for understanding their differences.",
+        "confidence": 0.85
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "balanced_allocation"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:14:30.216827"
+    },
+    {
+      "query": "Design a comprehensive microservices architecture for an e-commerce platform. Explain how to handle service discovery, API gateway patterns, distributed transactions, event-driven communication, data consistency, monitoring, and scaling strategies. Compare different approaches and recommend best practices.",
+      "category": "orchestrator",
+      "subcategory": "complex",
+      "description": "Complex query requiring maximum token allocation",
+      "baseline_tokens": 566,
+      "baseline_latency_ms": 11300.312280654907,
+      "baseline_response": "Designing a comprehensive microservices architecture for an e-commerce platform involves several key components and considerations. Below is an outline of the architecture, along with explanations of ",
+      "optimized_tokens": 354,
+      "optimized_latency_ms": 17580.54518699646,
+      "optimized_response": "Designing a comprehensive microservices architecture for an e-commerce platform involves several key components and considerations. Below is a detailed breakdown of the architecture, including service",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.8999999999999999,
+        "preference_interaction_count": 24,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 47
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3853
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers start similarly and provide an outline for a microservices architecture, but neither is complete enough to determine a clear winner. They both introduce the topic and begin listing components without significant differentiation.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "maximum_allocation"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:14:59.093562"
+    },
+    {
+      "query": "Explain the complete software development lifecycle from requirements gathering to deployment. Cover agile methodologies, CI/CD pipelines, testing strategies, code review processes, version control best practices, and DevOps principles.",
+      "category": "orchestrator",
+      "subcategory": "complex",
+      "description": "Complex multi-part query",
+      "baseline_tokens": 556,
+      "baseline_latency_ms": 11391.114711761475,
+      "baseline_response": "The software development lifecycle (SDLC) is a structured process that guides the development of software applications from initial concept to deployment and maintenance. Below is a comprehensive over",
+      "optimized_tokens": 344,
+      "optimized_latency_ms": 21337.385892868042,
+      "optimized_response": "The Software Development Lifecycle (SDLC) is a structured process that guides the development of software applications from initial concept to deployment and maintenance. Below is a comprehensive over",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.8499999999999999,
+        "preference_interaction_count": 25,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 39
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3861
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers start identically and provide the same initial information about the SDLC and requirements gathering.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "maximum_allocation"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:15:27.974419"
+    },
+    {
+      "query": "Explain machine learning in detail",
+      "category": "orchestrator",
+      "subcategory": "budget_constraint",
+      "description": "Query that tests budget constraint handling",
+      "baseline_tokens": 524,
+      "baseline_latency_ms": 12226.145267486572,
+      "baseline_response": "Machine learning (ML) is a subset of artificial intelligence (AI) that focuses on the development of algorithms and statistical models that enable computers to perform specific tasks without explicit ",
+      "optimized_tokens": 0,
+      "optimized_latency_ms": 17.1816349029541,
+      "optimized_response": "Machine learning (ML) is a fascinating and rapidly evolving field within artificial intelligence (AI) that enables computers to learn from data and make decisions or predictions without being explicit",
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8835208415985107,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 1,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 2,
+        "top_similarity": 0.8835208415985107,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.9499999999999998,
+        "preference_interaction_count": 26,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 2,
+          "top_similarity": 0.8835208415985107,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {},
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 6
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3894
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": null,
+      "component_savings": {
+        "memory_layer": 616,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 616
+      },
+      "expected_behaviors": [
+        "budget_optimization"
+      ],
+      "actual_behaviors": [
+        "semantic_direct",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:16:00.702920"
+    },
+    {
+      "query": "What is a variable?",
+      "category": "bandit",
+      "subcategory": "cheap_strategy",
+      "description": "Simple query that should trigger cheap strategy",
+      "baseline_tokens": 203,
+      "baseline_latency_ms": 4425.2636432647705,
+      "baseline_response": "A variable is a fundamental concept in programming and mathematics that represents a storage location identified by a name (an identifier) that can hold different values throughout the execution of a ",
+      "optimized_tokens": 213,
+      "optimized_latency_ms": 12305.865287780762,
+      "optimized_response": "A variable is a fundamental concept in programming and mathematics that represents a storage location identified by a name, which can hold different values during the execution of a program or within ",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 27,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer explanation by emphasizing the ability of variables to hold different values and includes an example of changing a variable's value.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 14,
+        "bandit": 0,
+        "total_savings": 14
+      },
+      "expected_behaviors": [
+        "cheap_strategy"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:16:12.949380"
+    },
+    {
+      "query": "Define recursion",
+      "category": "bandit",
+      "subcategory": "cheap_strategy",
+      "description": "Simple definition query",
+      "baseline_tokens": 275,
+      "baseline_latency_ms": 5087.611198425293,
+      "baseline_response": "Recursion is a programming and mathematical concept where a function calls itself in order to solve a problem. This approach allows complex problems to be broken down into simpler, more manageable sub",
+      "optimized_tokens": 267,
+      "optimized_latency_ms": 14489.216566085815,
+      "optimized_response": "Recursion is a programming and mathematical concept where a function calls itself in order to solve a problem. It involves breaking down a complex problem into simpler subproblems of the same type. A ",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 28,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 2
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3898
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer explanation of recursion by emphasizing the breakdown of complex problems into simpler subproblems of the same type and clarifies the role of the base case in preventing infinite recursion.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 17,
+        "bandit": 0,
+        "total_savings": 17
+      },
+      "expected_behaviors": [
+        "cheap_strategy"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:16:29.680509"
+    },
+    {
+      "query": "What is a database?",
+      "category": "bandit",
+      "subcategory": "cheap_strategy",
+      "description": "Simple factual query",
+      "baseline_tokens": 369,
+      "baseline_latency_ms": 7937.42561340332,
+      "baseline_response": "A database is an organized collection of structured information or data, typically stored electronically in a computer system. Databases are designed to manage, store, retrieve, and manipulate data ef",
+      "optimized_tokens": 312,
+      "optimized_latency_ms": 20932.00945854187,
+      "optimized_response": "A database is an organized collection of structured information or data, typically stored electronically in a computer system. Databases are designed to manage, store, retrieve, and manipulate data ef",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 29,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more comprehensive overview by mentioning the various applications of databases and the types of data they can store, making it more informative.",
+        "confidence": 0.85
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 38,
+        "bandit": 0,
+        "total_savings": 38
+      },
+      "expected_behaviors": [
+        "cheap_strategy"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:16:49.257336"
+    },
+    {
+      "query": "Explain the differences between SQL and NoSQL databases",
+      "category": "bandit",
+      "subcategory": "balanced_strategy",
+      "description": "Medium complexity for balanced strategy",
+      "baseline_tokens": 528,
+      "baseline_latency_ms": 12116.463422775269,
+      "baseline_response": "SQL (Structured Query Language) and NoSQL (Not Only SQL) databases represent two different paradigms for storing and managing data. Here are the key differences between them:\n\n### 1. **Data Model:**\n ",
+      "optimized_tokens": 316,
+      "optimized_latency_ms": 22158.26988220215,
+      "optimized_response": "SQL (Structured Query Language) and NoSQL (Not Only SQL) databases are two broad categories of database management systems, each with its own characteristics, advantages, and use cases. Here are the k",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 30,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 10
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3890
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a more comprehensive introduction and begins to elaborate on the characteristics and use cases of SQL and NoSQL databases, making it more informative.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "balanced_strategy",
+        "routerbench_routing"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:17:18.127778"
+    },
+    {
+      "query": "How do you implement authentication in a web application?",
+      "category": "bandit",
+      "subcategory": "balanced_strategy",
+      "description": "Medium complexity query",
+      "baseline_tokens": 529,
+      "baseline_latency_ms": 13697.581052780151,
+      "baseline_response": "Implementing authentication in a web application involves several steps, and the approach can vary based on the technology stack you're using. However, the general principles remain consistent across ",
+      "optimized_tokens": 317,
+      "optimized_latency_ms": 16732.01298713684,
+      "optimized_response": "Implementing authentication in a web application involves several steps and best practices to ensure that users can securely log in and access protected resources. Below is a general outline of the pr",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.95,
+        "preference_interaction_count": 31,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 10
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3890
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer and more complete introduction, emphasizing secure login and access to protected resources, which is crucial for authentication.",
+        "confidence": 0.85
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "balanced_strategy",
+        "routerbench_routing"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:17:52.403511"
+    },
+    {
+      "query": "What are the best practices for API design?",
+      "category": "bandit",
+      "subcategory": "balanced_strategy",
+      "description": "Medium complexity query",
+      "baseline_tokens": 528,
+      "baseline_latency_ms": 13304.159164428711,
+      "baseline_response": "Designing a robust and user-friendly API is crucial for ensuring that developers can easily integrate and use your service. Here are some best practices for API design:\n\n### 1. **Use RESTful Principle",
+      "optimized_tokens": 316,
+      "optimized_latency_ms": 20076.913356781006,
+      "optimized_response": "Designing a robust and user-friendly API is crucial for ensuring that developers can easily integrate and interact with your service. Here are some best practices for API design:\n\n### 1. **Use RESTful",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.8999999999999999,
+        "preference_interaction_count": 32,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 9
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3891
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide similar information regarding RESTful principles, focusing on resource orientation and statelessness, with minor wording differences.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "balanced_strategy",
+        "routerbench_routing"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:18:22.833105"
+    },
+    {
+      "query": "Design a scalable distributed system architecture that can handle millions of concurrent users. Explain load balancing strategies, database sharding, caching layers, CDN integration, and how to ensure high availability and fault tolerance.",
+      "category": "bandit",
+      "subcategory": "premium_strategy",
+      "description": "Complex query for premium strategy",
+      "baseline_tokens": 558,
+      "baseline_latency_ms": 8725.611925125122,
+      "baseline_response": "Designing a scalable distributed system architecture to handle millions of concurrent users involves several key components and strategies. Below is a comprehensive outline of such an architecture, in",
+      "optimized_tokens": 346,
+      "optimized_latency_ms": 20113.13533782959,
+      "optimized_response": "Designing a scalable distributed system architecture capable of handling millions of concurrent users involves several key components and strategies. Below is a comprehensive overview of how to achiev",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.8499999999999999,
+        "preference_interaction_count": 33,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 39
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3861
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers start similarly and provide a structured overview of the system architecture, focusing on the same key components and strategies.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "premium_strategy",
+        "routerbench_routing"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:18:56.214177"
+    },
+    {
+      "query": "Explain how to build a real-time recommendation system using machine learning. Cover collaborative filtering, content-based filtering, hybrid approaches, model training, A/B testing, and production deployment strategies.",
+      "category": "bandit",
+      "subcategory": "premium_strategy",
+      "description": "Complex ML query for premium strategy",
+      "baseline_tokens": 555,
+      "baseline_latency_ms": 10478.402376174927,
+      "baseline_response": "Building a real-time recommendation system using machine learning involves several key components and methodologies. Below, I'll outline the process, covering collaborative filtering, content-based fi",
+      "optimized_tokens": 343,
+      "optimized_latency_ms": 16131.204843521118,
+      "optimized_response": "Building a real-time recommendation system using machine learning involves several steps, including data collection, model selection, training, evaluation, and deployment. Below is a comprehensive gui",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.9499999999999998,
+        "preference_interaction_count": 34,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 37
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3863
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer begins with data collection, which is a crucial first step in building a recommendation system, providing a more logical flow to the process.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "premium_strategy",
+        "routerbench_routing"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:19:25.052925"
+    },
+    {
+      "query": "What is exploration in bandit algorithms?",
+      "category": "bandit",
+      "subcategory": "exploration",
+      "description": "Query to test bandit exploration phase",
+      "baseline_tokens": 412,
+      "baseline_latency_ms": 8846.872091293335,
+      "baseline_response": "In the context of bandit algorithms, \"exploration\" refers to the strategy of trying out different actions or options to gather information about their potential rewards. Bandit problems, particularly ",
+      "optimized_tokens": 315,
+      "optimized_latency_ms": 15029.167413711548,
+      "optimized_response": "In the context of bandit algorithms, \"exploration\" refers to the strategy of trying out different actions or options to gather information about their potential rewards. Bandit algorithms are often us",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.8999999999999998,
+        "preference_interaction_count": 35,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 8
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3892
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides additional context by mentioning practical applications of bandit algorithms, making it more informative.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 61,
+        "bandit": 0,
+        "total_savings": 61
+      },
+      "expected_behaviors": [
+        "bandit_exploration"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:19:51.662532"
+    },
+    {
+      "query": "Hey, can you tell me about Python? Keep it casual and simple.",
+      "category": "preferences",
+      "subcategory": "tone_casual",
+      "description": "Casual tone query for preference learning",
+      "baseline_tokens": 218,
+      "baseline_latency_ms": 3433.5973262786865,
+      "baseline_response": "Sure! Python is a popular programming language known for its simplicity and readability. It’s great for beginners because the syntax is straightforward, which means you can focus more on learning prog",
+      "optimized_tokens": 625,
+      "optimized_latency_ms": 11169.342756271362,
+      "optimized_response": "Sure! Python is a super popular programming language that's known for being easy to read and write. It was created by Guido van Rossum and first came out in 1991. One of the best things about Python i",
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.7922766208648682,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 1,
+        "semantic_matches_found": 1,
+        "top_similarity": 0.7922766208648682,
+        "context_injected": true,
+        "context_tokens_added": 293,
+        "context_original_tokens": 732,
+        "context_compressed_tokens": 293,
+        "context_similarity": 0.7922766208648682,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.8499999999999998,
+        "preference_interaction_count": 36,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 1,
+          "top_similarity": 0.7922766208648682,
+          "context_retrieval": true,
+          "preference_retrieval": true,
+          "context_compression": true
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": true,
+        "context_original_tokens": 732,
+        "context_compressed_tokens": 293,
+        "context_compression_ratio": 0.40027322404371585,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 439
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 15
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "retrieved_context",
+            "tokens": 293
+          },
+          {
+            "component": "response",
+            "tokens": 3592
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides additional context by mentioning the creator and release year of Python, and it starts to list specific features, which adds depth to the explanation.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 193,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 193
+      },
+      "expected_behaviors": [
+        "preference_learning",
+        "tone_detection"
+      ],
+      "actual_behaviors": [
+        "context_injection",
+        "context_compression",
+        "llmlingua_compression",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:20:15.539625"
+    },
+    {
+      "query": "I would like to request a formal explanation of the Python programming language, please.",
+      "category": "preferences",
+      "subcategory": "tone_formal",
+      "description": "Formal tone query for preference learning",
+      "baseline_tokens": 535,
+      "baseline_latency_ms": 11762.675285339355,
+      "baseline_response": "Certainly! Python is a high-level, interpreted programming language known for its clear syntax and readability. It was created by Guido van Rossum and first released in 1991. Python has gained widespr",
+      "optimized_tokens": 856,
+      "optimized_latency_ms": 20191.683769226074,
+      "optimized_response": "### Formal Explanation of the Python Programming Language\n\n**Introduction to Python:**\nPython is a high-level, interpreted programming language that was created by Guido van Rossum and first released ",
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.8050915002822876,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 1,
+        "semantic_matches_found": 2,
+        "top_similarity": 0.8050915002822876,
+        "context_injected": true,
+        "context_tokens_added": 519,
+        "context_original_tokens": 1297,
+        "context_compressed_tokens": 519,
+        "context_similarity": 0.8050915002822876,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.7999999999999997,
+        "preference_interaction_count": 37,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 2,
+          "top_similarity": 0.8050915002822876,
+          "context_retrieval": true,
+          "preference_retrieval": true,
+          "context_compression": true
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": true,
+        "context_original_tokens": 1297,
+        "context_compressed_tokens": 519,
+        "context_compression_ratio": 0.40015420200462604,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 778
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 16
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "retrieved_context",
+            "tokens": 519
+          },
+          {
+            "component": "response",
+            "tokens": 3365
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar introduction to Python, highlighting its readability, simplicity, and history.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 535,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 535
+      },
+      "expected_behaviors": [
+        "preference_learning",
+        "tone_detection"
+      ],
+      "actual_behaviors": [
+        "context_injection",
+        "context_compression",
+        "llmlingua_compression",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:20:30.145554"
+    },
+    {
+      "query": "List the main features of Python programming language",
+      "category": "preferences",
+      "subcategory": "format_list",
+      "description": "List format query for preference learning",
+      "baseline_tokens": 527,
+      "baseline_latency_ms": 9009.64617729187,
+      "baseline_response": "Python is a versatile and widely-used programming language known for its simplicity and readability. Here are some of its main features:\n\n1. **Easy to Read and Write**: Python's syntax is clear and st",
+      "optimized_tokens": 315,
+      "optimized_latency_ms": 17766.215324401855,
+      "optimized_response": "Python is a versatile and widely-used programming language known for its simplicity and readability. Here are some of its main features:\n\n1. **Easy to Learn and Use**: Python has a simple syntax that ",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.7999999999999997,
+        "preference_interaction_count": 38,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 8
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3892
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide similar information about Python's features, such as its simplicity, readability, and interpreted nature. The differences in wording do not significantly impact the conveyed information.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "preference_learning",
+        "format_detection"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:21:02.099913"
+    },
+    {
+      "query": "Show me a code example of how to use Python classes",
+      "category": "preferences",
+      "subcategory": "format_code",
+      "description": "Code format query for preference learning",
+      "baseline_tokens": 530,
+      "baseline_latency_ms": 10124.471426010132,
+      "baseline_response": "Certainly! Below is a simple example of how to define and use classes in Python. This example demonstrates a basic `Car` class with attributes and methods.\n\n```python\nclass Car:\n    def __init__(self,",
+      "optimized_tokens": 318,
+      "optimized_latency_ms": 18963.433504104614,
+      "optimized_response": "Certainly! Below is a simple example of how to define and use classes in Python. This example demonstrates a class called `Dog` that has attributes and methods to represent a dog's characteristics and",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.7499999999999997,
+        "preference_interaction_count": 39,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 11
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3889
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar level of detail and clarity in demonstrating how to define and use a class in Python, albeit with different examples.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "preference_learning",
+        "format_detection"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:21:28.875774"
+    },
+    {
+      "query": "Explain Python in a simple way",
+      "category": "preferences",
+      "subcategory": "confidence_building",
+      "description": "Query to build preference confidence",
+      "baseline_tokens": 318,
+      "baseline_latency_ms": 6452.182054519653,
+      "baseline_response": "Python is a popular programming language known for its simplicity and readability. Here are some key points to help you understand it in a simple way:\n\n1. **Easy to Read**: Python uses clear and strai",
+      "optimized_tokens": 798,
+      "optimized_latency_ms": 12929.070234298706,
+      "optimized_response": "Python is a popular programming language that is easy to learn and use. It was created in 1991 by Guido van Rossum. Here are some key points about Python:\n\n1. **Easy to Read**: Python has a simple and",
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.8232074975967407,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 1,
+        "semantic_matches_found": 2,
+        "top_similarity": 0.8232074975967407,
+        "context_injected": true,
+        "context_tokens_added": 525,
+        "context_original_tokens": 1312,
+        "context_compressed_tokens": 525,
+        "context_similarity": 0.8232074975967407,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.8499999999999996,
+        "preference_interaction_count": 40,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 2,
+          "top_similarity": 0.8232074975967407,
+          "context_retrieval": true,
+          "preference_retrieval": true,
+          "context_compression": true
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": true,
+        "context_original_tokens": 1312,
+        "context_compressed_tokens": 525,
+        "context_compression_ratio": 0.40015243902439024,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 787
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 7
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "retrieved_context",
+            "tokens": 525
+          },
+          {
+            "component": "response",
+            "tokens": 3368
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides additional context about Python's creation and highlights its interpreted nature and dynamic typing, which are important features for beginners to understand.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 296,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 296
+      },
+      "expected_behaviors": [
+        "preference_learning",
+        "confidence_building"
+      ],
+      "actual_behaviors": [
+        "context_injection",
+        "context_compression",
+        "llmlingua_compression",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:21:57.963679"
+    },
+    {
+      "query": "Hi",
+      "category": "edge_cases",
+      "subcategory": "very_short",
+      "description": "Minimal query test",
+      "baseline_tokens": 17,
+      "baseline_latency_ms": 600.3768444061279,
+      "baseline_response": "Hello! How can I assist you today?",
+      "optimized_tokens": 17,
+      "optimized_latency_ms": 2478.9299964904785,
+      "optimized_response": "Hello! How can I assist you today?",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.8499999999999996,
+        "preference_interaction_count": 41,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 1
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3899
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers are identical in wording and intent, offering a polite greeting and an offer to assist.",
+        "confidence": 1.0
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 0
+      },
+      "expected_behaviors": [],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:22:17.346928"
+    },
+    {
+      "query": "I need an extremely detailed and comprehensive explanation covering multiple aspects of software engineering, including but not limited to: software design patterns, architectural patterns, design principles like SOLID, clean code practices, testing methodologies including unit testing, integration testing, and end-to-end testing, version control systems and Git workflows, code review processes, documentation standards, performance optimization techniques, security best practices, scalability considerations, database design and optimization, API design principles, microservices architecture, containerization with Docker, orchestration with Kubernetes, CI/CD pipeline implementation, monitoring and logging strategies, error handling and exception management, agile development methodologies, project management tools, collaboration practices, and how all these elements work together in a modern software development environment.",
+      "category": "edge_cases",
+      "subcategory": "very_long",
+      "description": "Very long query test",
+      "baseline_tokens": 661,
+      "baseline_latency_ms": 8256.25467300415,
+      "baseline_response": "Certainly! Software engineering is a vast field that encompasses various practices, principles, and methodologies aimed at creating high-quality software systems. Below is a comprehensive overview of ",
+      "optimized_tokens": 1149,
+      "optimized_latency_ms": 31335.11185646057,
+      "optimized_response": "Certainly! Software engineering is a multifaceted discipline that encompasses a wide array of practices, principles, and methodologies aimed at creating high-quality software systems. Below is a compr",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "code",
+        "preference_confidence": 0.7999999999999996,
+        "preference_interaction_count": 42,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "complex",
+        "model": "gpt-4o",
+        "allocations": [
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "user_query",
+            "tokens": 143
+          },
+          {
+            "component": "response",
+            "tokens": 3757
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "premium",
+        "model": "gpt-4o"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers begin similarly and provide an introduction to software design patterns without significant differences in content or clarity.",
+        "confidence": 0.9
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 0
+      },
+      "expected_behaviors": [
+        "query_compression"
+      ],
+      "actual_behaviors": [
+        "premium_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:22:20.426235"
+    },
+    {
+      "query": "Explain regex patterns: [a-z]+\\d{2,4} and how to use them in Python?",
+      "category": "edge_cases",
+      "subcategory": "special_chars",
+      "description": "Query with special characters",
+      "baseline_tokens": 541,
+      "baseline_latency_ms": 10406.935214996338,
+      "baseline_response": "The regex pattern `[a-z]+\\d{2,4}` can be broken down into its components to understand its meaning:\n\n1. **`[a-z]+`**:\n   - The square brackets `[]` define a character class. This means that it will ma",
+      "optimized_tokens": 329,
+      "optimized_latency_ms": 16659.818172454834,
+      "optimized_response": "Regular expressions (regex) are sequences of characters that form a search pattern, primarily used for string matching and manipulation. Let's break down the regex pattern `[a-z]+\\d{2,4}` and then dis",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.8999999999999996,
+        "preference_interaction_count": 43,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "medium",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 23
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3877
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "equivalent",
+        "explanation": "Both answers provide a similar breakdown of the regex pattern, explaining the components `[a-z]+` and `\\d{2,4}` in a clear manner. However, neither answer is complete, as they both cut off before fully explaining the pattern or its usage in Python.",
+        "confidence": 0.8
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": true,
+      "errors": [],
+      "timestamp": "2025-12-13T11:23:00.017602"
+    },
+    {
+      "query": "Following up on our previous discussion about Python, explain how decorators work",
+      "category": "edge_cases",
+      "subcategory": "multi_turn",
+      "description": "Multi-turn context query",
+      "baseline_tokens": 532,
+      "baseline_latency_ms": 9468.106508255005,
+      "baseline_response": "Certainly! In Python, decorators are a powerful and flexible way to modify or enhance the behavior of functions or methods. A decorator is essentially a function that takes another function as an argu",
+      "optimized_tokens": 320,
+      "optimized_latency_ms": 14875.373363494873,
+      "optimized_response": "Decorators in Python are a powerful and flexible way to modify or enhance the behavior of functions or methods. They allow you to wrap another function, modifying its behavior without changing its cod",
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 0,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 0.9999999999999996,
+        "preference_interaction_count": 44,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {
+        "context_compressed": false,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_compression_ratio": 1.0,
+        "query_compressed": false,
+        "query_original_tokens": 0,
+        "query_compressed_tokens": 0,
+        "query_compression_ratio": 1.0,
+        "total_compression_savings": 0
+      },
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 13
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3887
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": {
+        "winner": "optimized",
+        "explanation": "The optimized answer provides a clearer explanation by mentioning specific use cases like logging and memoization, and it starts to explain how decorators work with functions as first-class citizens.",
+        "confidence": 0.85
+      },
+      "component_savings": {
+        "memory_layer": 0,
+        "orchestrator": 212,
+        "bandit": 0,
+        "total_savings": 212
+      },
+      "expected_behaviors": [
+        "context_injection"
+      ],
+      "actual_behaviors": [
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [],
+      "timestamp": "2025-12-13T11:23:27.084355"
+    },
+    {
+      "query": "What is Python programming?",
+      "category": "cache",
+      "subcategory": "exact_hit",
+      "description": "Exact cache hit test - should match first query",
+      "baseline_tokens": 524,
+      "baseline_latency_ms": 11427.972555160522,
+      "baseline_response": "Python programming refers to the process of writing code in the Python programming language, which is a high-level, interpreted language known for its readability and versatility. Developed by Guido v",
+      "optimized_tokens": 0,
+      "optimized_latency_ms": 0.0,
+      "optimized_response": "Python programming refers to the process of writing code in the Python programming language, which is a high-level, interpreted language known for its readability and simplicity. Python was created by",
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8050915002822876,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 1,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 45,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {},
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": null,
+      "component_savings": {
+        "memory_layer": 312,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 312
+      },
+      "expected_behaviors": [
+        "exact_cache"
+      ],
+      "actual_behaviors": [
+        "semantic_direct",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:23:51.427835"
+    },
+    {
+      "query": "Explain artificial intelligence",
+      "category": "cache",
+      "subcategory": "exact_hit",
+      "description": "Exact cache hit test",
+      "baseline_tokens": 522,
+      "baseline_latency_ms": 10016.77131652832,
+      "baseline_response": "Artificial Intelligence (AI) refers to the simulation of human intelligence processes by machines, especially computer systems. These processes include learning (the acquisition of information and rul",
+      "optimized_tokens": 0,
+      "optimized_latency_ms": 0.0,
+      "optimized_response": "Artificial Intelligence (AI) refers to the simulation of human intelligence processes by machines, particularly computer systems. These processes include learning (the acquisition of information and r",
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.9412392377853394,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 1,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 46,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {},
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 4
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3896
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": null,
+      "component_savings": {
+        "memory_layer": 310,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 310
+      },
+      "expected_behaviors": [
+        "exact_cache"
+      ],
+      "actual_behaviors": [
+        "semantic_direct",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:24:02.857786"
+    },
+    {
+      "query": "What is machine learning?",
+      "category": "cache",
+      "subcategory": "exact_hit",
+      "description": "Exact cache hit test",
+      "baseline_tokens": 413,
+      "baseline_latency_ms": 9842.985153198242,
+      "baseline_response": "Machine learning is a subset of artificial intelligence (AI) that focuses on the development of algorithms and statistical models that enable computers to perform tasks without explicit programming. I",
+      "optimized_tokens": 0,
+      "optimized_latency_ms": 0.9961128234863281,
+      "optimized_response": "Machine learning is a subset of artificial intelligence (AI) that focuses on the development of algorithms and statistical models that enable computers to perform tasks without explicit programming. I",
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.7750847935676575,
+      "memory_metrics": {
+        "exact_cache_hits": 0,
+        "semantic_direct_hits": 1,
+        "semantic_context_hits": 0,
+        "semantic_matches_found": 0,
+        "top_similarity": null,
+        "context_injected": false,
+        "context_tokens_added": 0,
+        "context_original_tokens": 0,
+        "context_compressed_tokens": 0,
+        "context_similarity": null,
+        "preferences_used": true,
+        "preference_tone": "simple",
+        "preference_format": "list",
+        "preference_confidence": 1.0,
+        "preference_interaction_count": 47,
+        "memory_operations": {
+          "exact_lookup": true,
+          "semantic_search": true,
+          "semantic_matches_found": 0,
+          "top_similarity": null,
+          "context_retrieval": false,
+          "preference_retrieval": true,
+          "context_compression": false
+        }
+      },
+      "compression_metrics": {},
+      "orchestrator_metrics": {
+        "token_budget": 4000,
+        "complexity": "simple",
+        "model": "gpt-4o-mini",
+        "allocations": [
+          {
+            "component": "user_query",
+            "tokens": 5
+          },
+          {
+            "component": "system_prompt",
+            "tokens": 100
+          },
+          {
+            "component": "response",
+            "tokens": 3895
+          }
+        ]
+      },
+      "bandit_metrics": {
+        "strategy": "cheap",
+        "model": "gpt-4o-mini"
+      },
+      "quality_judge": null,
+      "component_savings": {
+        "memory_layer": 312,
+        "orchestrator": 0,
+        "bandit": 0,
+        "total_savings": 312
+      },
+      "expected_behaviors": [
+        "exact_cache"
+      ],
+      "actual_behaviors": [
+        "semantic_direct",
+        "cheap_strategy"
+      ],
+      "behavior_match": false,
+      "errors": [
+        "Invalid format specifier '.3f if result.similarity else 'N/A'' for object of type 'float'"
+      ],
+      "timestamp": "2025-12-13T11:24:12.876481"
+    }
+  ],
+  "aggregated_metrics": {
+    "total_queries": 46,
+    "successful_queries": 35,
+    "failed_queries": 11,
+    "tokens": {
+      "baseline_total": 16645,
+      "optimized_total": 12144,
+      "total_savings": 4501,
+      "savings_percent": 27.041153499549413,
+      "average_baseline": 475.57142857142856,
+      "average_optimized": 346.9714285714286
+    },
+    "latency": {
+      "baseline_total_ms": 325108.7441444397,
+      "optimized_total_ms": 619766.4499282837,
+      "total_reduction_ms": -294657.705783844,
+      "reduction_percent": -90.63358371343378,
+      "average_baseline_ms": 9288.821261269706,
+      "average_optimized_ms": 17707.61285509382
+    },
+    "component_savings": {
+      "memory_layer": 0,
+      "orchestrator": 5252,
+      "bandit": 0,
+      "compression": 0,
+      "total": 5252
+    },
+    "cache": {
+      "hit_rate_percent": 0.0,
+      "total_hits": 0,
+      "exact_hits": 0,
+      "semantic_direct_hits": 0,
+      "context_hits": 0,
+      "misses": 46
+    },
+    "memory_layer": {
+      "exact_cache_hits": 0,
+      "semantic_direct_hits": 0,
+      "context_injections": 0,
+      "total_context_tokens_injected": 0,
+      "total_context_tokens_saved": 0,
+      "total_semantic_matches_found": 0,
+      "avg_similarity": 0.0,
+      "preferences_used": 34,
+      "preference_tones": {
+        "simple": 34
+      },
+      "preference_formats": {
+        "paragraph": 8,
+        "code": 16,
+        "list": 10
+      }
+    },
+    "compression": {
+      "context_compressed_count": 0,
+      "query_compressed_count": 0,
+      "llmlingua_context_compressions": 0,
+      "total_compression_savings": 0
+    },
+    "bandit": {
+      "strategy_distribution": {
+        "cheap": 33,
+        "premium": 2
+      },
+      "total_strategies_used": 2
+    },
+    "quality_judge": {
+      "total_evaluations": 35,
+      "optimized_wins": 16,
+      "baseline_wins": 2,
+      "equivalent": 17,
+      "average_confidence": 0.8628571428571427
+    }
+  },
+  "component_analysis": {
+    "memory_layer": {},
+    "orchestrator": {
+      "avg_budget": 4000.0,
+      "complexity_distribution": {
+        "simple": 25,
+        "complex": 4,
+        "medium": 6
+      }
+    },
+    "bandit": {
+      "strategy_selection_rate": 1.0,
+      "strategies_used": [
+        "premium",
+        "cheap"
+      ]
+    },
+    "compression": {}
+  },
+  "recommendations": [
+    "Install LLMLingua-2 for better compression: pip install llmlingua",
+    "Check LLMLingua-2 installation and initialization. Compression may be using fallback.",
+    "Fix failed components: Memory Layer",
+    "Review warnings and address any issues found"
+  ],
+  "summary": {
+    "status": "FAILED",
+    "success_rate": 76.08695652173914,
+    "token_savings_percent": 27.041153499549413,
+    "latency_reduction_percent": -90.63358371343378,
+    "cache_hit_rate": 0.0,
+    "working_components": 3,
+    "issues_found": 1
+  }
+}

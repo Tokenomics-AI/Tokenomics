@@ -1,0 +1,302 @@
+﻿================================================================================
+COMPREHENSIVE DIAGNOSTIC TEST SUITE
+================================================================================
+Start Time: 2025-12-13T01:33:29.169647
+
+================================================================================
+INITIALIZING PLATFORM
+================================================================================
+[OK] API key found: sk-proj-Rk...
+[OK] Configuration loaded:
+  - LLM Provider: openai
+  - LLM Model: gpt-4o-mini
+  - Cache Size: 1000
+  - LLMLingua Enabled: True
+  - Quality Judge Enabled: True
+{"error": "llmlingua package not installed. Install with: pip install llmlingua>=2.0.0. Error: llmlingua package not installed. Install with: pip install llmlingua>=2.0.0", "model": "llmlingua-2-bert-base-multilingual-cased-meetingbank", "event": "Failed to initialize LLMLingua-2"}
+{"event": "LLMLingua-2 initialization failed, falling back to simple compression"}
+[OK] Platform initialized successfully
+
+Component Status:
+  - Memory Layer: [OK]
+  - Orchestrator: [OK]
+  - Bandit: [OK]
+  - Quality Judge: [OK]
+  - LLMLingua: [FAIL]
+
+================================================================================
+CREATING TEST DATASET
+================================================================================
+[OK] Created 18 test queries
+  - Short: 3
+  - Medium: 3
+  - Long: 2
+  - Repeated: 3
+  - Similar: 3
+  - Complex: 2
+  - Simple: 2
+
+================================================================================
+TESTING COMPONENT HEALTH
+================================================================================
+[OK] Memory Layer: Healthy
+[OK] Orchestrator: Healthy
+[FAIL] Bandit Optimizer: Error - 'BanditOptimizer' object has no attribute 'get_strategies'
+[OK] Quality Judge: Healthy
+[WARN] LLMLingua: Not available (using fallback)
+
+================================================================================
+TESTING COMPONENT FUNCTIONALITY
+================================================================================
+
+[Memory Layer] Testing Exact Cache...
+  [OK] Exact cache storage and retrieval working
+
+[Orchestrator] Testing Complexity Analysis...
+  [OK] Simple query complexity: simple
+  [OK] Complex query complexity: medium
+  [WARN] Complexity analysis may need adjustment
+
+[Bandit] Testing Strategy Selection...
+  [FAIL] Error testing bandit: 'BanditOptimizer' object has no attribute 'get_strategies'
+
+[LLMLingua] Testing Compression...
+  [WARN] LLMLingua not available (using fallback)
+
+================================================================================
+RUNNING QUERY TESTS - USE CASE SCENARIOS
+================================================================================
+
+Test Groups:
+  - short: 3 queries
+  - medium: 3 queries
+  - long: 2 queries
+  - repeated: 3 queries
+  - similar: 3 queries
+  - complex: 2 queries
+  - simple: 2 queries
+
+[1/18] Query Test - SHORT
+
+  Testing: What is Python?...
+    Type: short
+    Baseline: 311 tokens, 7881ms
+    Optimized: 311 tokens, 18203ms
+    Savings: 0 tokens (0.0%), 0ms (0.0%)
+    Strategy: cheap
+    [OK] Expected: Cheap strategy for simple query
+
+[2/18] Query Test - SHORT
+
+  Testing: Explain AI...
+    Type: short
+    Baseline: 467 tokens, 7806ms
+    Optimized: 309 tokens, 17922ms
+    Savings: 158 tokens (33.8%), 0ms (0.0%)
+    Strategy: cheap
+    [OK] Expected: Cheap strategy for simple query
+
+[3/18] Query Test - SHORT
+
+  Testing: What is machine learning?...
+    Type: short
+    Baseline: 360 tokens, 6323ms
+    Optimized: 312 tokens, 16091ms
+    Savings: 48 tokens (13.3%), 0ms (0.0%)
+    Strategy: cheap
+    [OK] Expected: Cheap strategy for simple query
+
+[4/18] Query Test - MEDIUM
+
+  Testing: Explain how neural networks work in machine learning...
+    Type: medium
+    Baseline: 527 tokens, 8815ms
+    Optimized: 315 tokens, 19577ms
+    Savings: 212 tokens (40.2%), 0ms (0.0%)
+    Strategy: cheap
+
+[5/18] Query Test - MEDIUM
+
+  Testing: What are the main differences between supervised and unsuper...
+    Type: medium
+    Baseline: 532 tokens, 12263ms
+    Optimized: 320 tokens, 19806ms
+    Savings: 212 tokens (39.8%), 0ms (0.0%)
+    Strategy: cheap
+
+[6/18] Query Test - MEDIUM
+
+  Testing: Describe the process of training a deep learning model...
+    Type: medium
+    Baseline: 528 tokens, 13641ms
+    Optimized: 316 tokens, 17278ms
+    Savings: 212 tokens (40.2%), 0ms (0.0%)
+    Strategy: cheap
+
+[7/18] Query Test - LONG
+
+  Testing: I need a comprehensive explanation of how transformer archit...
+    Type: long
+    Baseline: 598 tokens, 10288ms
+    Optimized: 386 tokens, 15360ms
+    Savings: 212 tokens (35.5%), 0ms (0.0%)
+    Strategy: cheap
+    [WARN] NOTE: Query compression not triggered (may be below threshold)
+
+[8/18] Query Test - LONG
+
+  Testing: Can you provide a detailed comparison between different clou...
+    Type: long
+    Baseline: 589 tokens, 10269ms
+    Optimized: 377 tokens, 19128ms
+    Savings: 212 tokens (36.0%), 0ms (0.0%)
+    Strategy: cheap
+    [WARN] NOTE: Query compression not triggered (may be below threshold)
+
+[9/18] Query Test - REPEATED
+
+  Testing: What is Python?...
+    Type: repeated
+    Baseline: 352 tokens, 6266ms
+    Optimized: 0 tokens, 1ms
+    Savings: 352 tokens (100.0%), 6265ms (100.0%)
+    Cache: exact hit
+    Strategy: cheap
+    [OK] Expected: Exact cache hit confirmed
+
+[10/18] Query Test - REPEATED
+
+  Testing: What is Python?...
+    Type: repeated
+    Baseline: 327 tokens, 5736ms
+    Optimized: 0 tokens, 0ms
+    Savings: 327 tokens (100.0%), 5736ms (100.0%)
+    Cache: exact hit
+    Strategy: cheap
+    [OK] Expected: Exact cache hit confirmed
+
+[11/18] Query Test - REPEATED
+
+  Testing: Explain AI...
+    Type: repeated
+    Baseline: 482 tokens, 7771ms
+    Optimized: 0 tokens, 1ms
+    Savings: 482 tokens (100.0%), 7770ms (100.0%)
+    Cache: exact hit
+    Strategy: cheap
+    [OK] Expected: Exact cache hit confirmed
+
+[12/18] Query Test - SIMILAR
+
+  Testing: What is the Python programming language?...
+    Type: similar
+    Baseline: 376 tokens, 6078ms
+    Optimized: 0 tokens, 19ms
+    Savings: 376 tokens (100.0%), 6059ms (99.7%)
+    Cache: semantic_direct hit
+    Strategy: cheap
+    [OK] Expected: Semantic cache working
+
+[13/18] Query Test - SIMILAR
+
+  Testing: Tell me about Python...
+    Type: similar
+    Baseline: 523 tokens, 10742ms
+    Optimized: 0 tokens, 33ms
+    Savings: 523 tokens (100.0%), 10709ms (99.7%)
+    Cache: semantic_direct hit
+    Strategy: cheap
+    [OK] Expected: Semantic cache working
+
+[14/18] Query Test - SIMILAR
+
+  Testing: Can you explain what Python is?...
+    Type: similar
+    Baseline: 412 tokens, 6992ms
+    Optimized: 0 tokens, 15ms
+    Savings: 412 tokens (100.0%), 6977ms (99.8%)
+    Cache: semantic_direct hit
+    Strategy: cheap
+    [OK] Expected: Semantic cache working
+
+[15/18] Query Test - COMPLEX
+
+  Testing: How does gradient descent work in machine learning, and what...
+    Type: complex
+    Baseline: 545 tokens, 10119ms
+    Optimized: 333 tokens, 15645ms
+    Savings: 212 tokens (38.9%), 0ms (0.0%)
+    Strategy: cheap
+
+[16/18] Query Test - COMPLEX
+
+  Testing: Explain the trade-offs between using a microservices archite...
+    Type: complex
+    Baseline: 543 tokens, 9785ms
+    Optimized: 331 tokens, 16044ms
+    Savings: 212 tokens (39.0%), 0ms (0.0%)
+    Strategy: cheap
+
+[17/18] Query Test - SIMPLE
+
+  Testing: What is the capital of France?...
+    Type: simple
+    Baseline: 21 tokens, 565ms
+    Optimized: 21 tokens, 1368ms
+    Savings: 0 tokens (0.0%), 0ms (0.0%)
+    Strategy: cheap
+    [OK] Expected: Cheap strategy for simple query
+
+[18/18] Query Test - SIMPLE
+
+  Testing: Who invented the telephone?...
+    Type: simple
+    Baseline: 83 tokens, 2066ms
+    Optimized: 105 tokens, 4959ms
+    Savings: 0 tokens (0.0%), 0ms (0.0%)
+    Strategy: cheap
+    [OK] Expected: Cheap strategy for simple query
+
+================================================================================
+AGGREGATING METRICS
+================================================================================
+Total Queries: 18
+Successful: 18
+Failed: 0
+
+Token Savings: 4140 tokens (54.6%)
+Latency Reduction: -38049ms (-26.5%)
+
+Component Savings:
+  Memory Layer: 1864 tokens
+  Orchestrator: 1822 tokens
+  Bandit: 0 tokens
+  Compression: 0 tokens
+
+Cache Hit Rate: 33.3% (6/18)
+  Exact: 3, Semantic: 3
+
+================================================================================
+GENERATING DIAGNOSTICS
+================================================================================
+
+[OK] Report saved to: D:\Nayan\Tokenomics\Prototype\diagnostic_results\diagnostic_report_20251213_013914.json
+[OK] Metrics saved to: D:\Nayan\Tokenomics\Prototype\diagnostic_results\diagnostic_metrics_20251213_013914.json
+[OK] HTML report saved to: D:\Nayan\Tokenomics\Prototype\diagnostic_results\diagnostic_report_20251213_013914.html
+
+================================================================================
+DIAGNOSTIC TEST SUMMARY
+================================================================================
+Status: DEGRADED
+Success Rate: 100.0%
+Token Savings: 54.6%
+Latency Reduction: -26.5%
+Cache Hit Rate: 33.3%
+
+Working Components: 3
+Issues Found: 0
+
+Recommendations:
+  - Fix Bandit Optimizer: 'BanditOptimizer' object has no attribute 'get_strategies'
+  - Install LLMLingua-2 for better compression: pip install llmlingua>=2.0.0
+  - Check LLMLingua-2 installation and initialization. Compression may be using fallback.

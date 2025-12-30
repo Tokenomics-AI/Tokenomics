@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}Tokenomics - 90.7% LLM Cost Savings{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1 class="hero-title">Tokenomics</h1>
+        <p class="hero-tagline">Intelligent LLM Token Optimization</p>
+        <div class="hero-stat">
+            <span class="stat-number">90.7%</span>
+            <span class="stat-label">Cost Savings</span>
+        </div>
+        <p class="hero-description">
+            Reduce your LLM costs through smart caching, adaptive routing, and compression.
+            Proven with real testing on 50 queries.
+        </p>
+        <div class="hero-actions">
+            <a href="/playground" class="btn btn-primary">Try Playground</a>
+            <a href="#results" class="btn btn-secondary">See Results</a>
+        </div>
+    </div>
+</section>
+
+<!-- Key Metrics -->
+<section class="metrics-section" id="results">
+    <div class="container">
+        <h2 class="section-title">Proven Performance</h2>
+        <p class="section-subtitle">Results from comprehensive 50-query test</p>
+        
+        <div class="metrics-grid">
+            <div class="metric-card highlight">
+                <div class="metric-value">$0.15 → $0.01</div>
+                <div class="metric-label">Cost per 50 Queries</div>
+                <div class="metric-detail">Baseline vs Optimized</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">20%</div>
+                <div class="metric-label">Cache Hit Rate</div>
+                <div class="metric-detail">100% on duplicates</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">90%</div>
+                <div class="metric-label">Complexity Accuracy</div>
+                <div class="metric-detail">Query classification</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">376</div>
+                <div class="metric-label">Tokens Saved</div>
+                <div class="metric-detail">Via compression</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-section">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Five optimization layers working together</p>
+        
+        <div class="flow-diagram">
+            <div class="flow-step">
+                <div class="step-icon">📥</div>
+                <div class="step-title">Query</div>
+                <div class="step-desc">User input</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-icon">💾</div>
+                <div class="step-title">Cache Check</div>
+                <div class="step-desc">Exact + Semantic</div>
+                <div class="step-result hit">20% hit rate</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-icon">📊</div>
+                <div class="step-title">Classify</div>
+                <div class="step-desc">Simple/Medium/Complex</div>
+                <div class="step-result">90% accuracy</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-icon">🎯</div>
+                <div class="step-title">Route</div>
+                <div class="step-desc">Bandit selects model</div>
+                <div class="step-result">75% savings</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <div class="step-icon">⚡</div>
+                <div class="step-title">Response</div>
+                <div class="step-desc">Optimized output</div>
+                <div class="step-result hit">90.7% cheaper</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Components -->
+<section class="components-section">
+    <div class="container">
+        <h2 class="section-title">Core Components</h2>
+        
+        <div class="components-grid">
+            <div class="component-card">
+                <div class="component-icon">🧠</div>
+                <h3>Memory Layer</h3>
+                <p>Two-tier caching with exact match and semantic similarity search using FAISS vectors.</p>
+                <div class="component-stat">
+                    <span class="stat">20% hit rate</span>
+                    <span class="stat-note">$0.033 saved</span>
+                </div>
+            </div>
+            
+            <div class="component-card">
+                <div class="component-icon">🎯</div>
+                <h3>Orchestrator</h3>
+                <p>Analyzes query complexity and allocates token budgets using knapsack optimization.</p>
+                <div class="component-stat">
+                    <span class="stat">90% accuracy</span>
+                    <span class="stat-note">Simple/Medium/Complex</span>
+                </div>
+            </div>
+            
+            <div class="component-card">
+                <div class="component-icon">🎰</div>
+                <h3>Bandit Optimizer</h3>
+                <p>UCB algorithm learns optimal strategy (cheap/balanced/premium) for each query type.</p>
+                <div class="component-stat">
+                    <span class="stat">$0.103 saved</span>
+                    <span class="stat-note">75% of total savings</span>
+                </div>
+            </div>
+            
+            <div class="component-card">
+                <div class="component-icon">🗜️</div>
+                <h3>Compression</h3>
+                <p>LLMLingua compresses long queries (>500 chars) while preserving meaning.</p>
+                <div class="component-stat">
+                    <span class="stat">376 tokens</span>
+                    <span class="stat-note">Saved on 5 queries</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Test Results Summary -->
+<section class="results-section">
+    <div class="container">
+        <h2 class="section-title">Test Results Summary</h2>
+        <p class="section-subtitle">50 queries across 7 categories</p>
+        
+        <div class="results-table-container">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Queries</th>
+                        <th>Purpose</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Simple</td>
+                        <td>10</td>
+                        <td>Test cheap strategy</td>
+                        <td class="result-pass">✓ Low cost</td>
+                    </tr>
+                    <tr>
+                        <td>Medium</td>
+                        <td>10</td>
+                        <td>Test balanced strategy</td>
+                        <td class="result-pass">✓ Proper routing</td>
+                    </tr>
+                    <tr>
+                        <td>Complex</td>
+                        <td>10</td>
+                        <td>Test premium + cascading</td>
+                        <td class="result-pass">✓ Quality maintained</td>
+                    </tr>
+                    <tr>
+                        <td>Exact Duplicates</td>
+                        <td>5</td>
+                        <td>Test exact cache</td>
+                        <td class="result-pass">✓ 100% hit rate</td>
+                    </tr>
+                    <tr>
+                        <td>Semantic Variations</td>
+                        <td>5</td>
+                        <td>Test semantic cache</td>
+                        <td class="result-pass">✓ 40% hit rate</td>
+                    </tr>
+                    <tr>
+                        <td>Long Queries</td>
+                        <td>5</td>
+                        <td>Test compression</td>
+                        <td class="result-pass">✓ All compressed</td>
+                    </tr>
+                    <tr>
+                        <td>Mixed</td>
+                        <td>5</td>
+                        <td>Edge cases</td>
+                        <td class="result-pass">✓ Handled</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="results-summary">
+            <div class="summary-card">
+                <div class="summary-label">Baseline Cost</div>
+                <div class="summary-value">$0.150788</div>
+            </div>
+            <div class="summary-arrow">→</div>
+            <div class="summary-card highlight">
+                <div class="summary-label">Optimized Cost</div>
+                <div class="summary-value">$0.013999</div>
+            </div>
+            <div class="summary-equals">=</div>
+            <div class="summary-card savings">
+                <div class="summary-label">Saved</div>
+                <div class="summary-value">$0.136788</div>
+                <div class="summary-percent">90.7%</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Try It Yourself</h2>
+        <p>See the optimization in action with the interactive playground.</p>
+        <a href="/playground" class="btn btn-primary btn-large">Open Playground</a>
+    </div>
+</section>
+{% endblock %}

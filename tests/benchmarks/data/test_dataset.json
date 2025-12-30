@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "generated_at": "2025-12-01T21:44:22.391689",
+    "total_queries": 20,
+    "num_duplicates": 5,
+    "num_paraphrases": 5,
+    "num_longtail": 10,
+    "categories": [
+      "billing",
+      "features",
+      "troubleshooting",
+      "general"
+    ]
+  },
+  "queries": [
+    {
+      "id": 16,
+      "text": "I'm having trouble with troubleshooting when I try to...",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 20,
+      "text": "Is there a way to customize troubleshooting settings?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 11,
+      "text": "I'm having trouble with troubleshooting when I try to...",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 12,
+      "text": "Can you help me understand troubleshooting better?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 17,
+      "text": "Can you help me understand troubleshooting better?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 5,
+      "text": "What is the file size limit?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 4,
+      "text": "How do I get started?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 2,
+      "text": "The app is running slowly, what should I do?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 6,
+      "text": "What is the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 7,
+      "text": "Can you explain what the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 10,
+      "text": "How do I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 9,
+      "text": "How can I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 18,
+      "text": "What's the best way to handle troubleshooting for my use case?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 13,
+      "text": "What's the best way to handle troubleshooting for my use case?",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 14,
+      "text": "I need to troubleshooting but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 8,
+      "text": "What is the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 3,
+      "text": "How do I share files with my team?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 1,
+      "text": "How do I update my payment method?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 19,
+      "text": "I need to troubleshooting but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 15,
+      "text": "Is there a way to customize troubleshooting settings?",
+      "type": "unique",
+      "category": "troubleshooting"
+    }
+  ]
+}

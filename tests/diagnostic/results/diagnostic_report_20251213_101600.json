@@ -1,0 +1,43 @@
+{
+  "test_start": "2025-12-13T10:09:56.253940",
+  "test_end": "2025-12-13T10:16:00.920881",
+  "platform_config": {
+    "llm_provider": "openai",
+    "llm_model": "gpt-4o-mini",
+    "cache_size": 1000,
+    "enable_llmlingua": true,
+    "judge_enabled": true
+  },
+  "component_health": [
+    {
+      "name": "Memory Layer",
+      "status": "healthy",
+      "details": {
+        "exact_cache_enabled": true,
+        "semantic_cache_enabled": true,
+        "cache_size": 0,
+        "compression_enabled": true,
+        "llmlingua_available": false
+      },
+      "errors": []
+    },
+    {
+      "name": "Orchestrator",
+      "status": "healthy",
+      "details": {
+        "default_budget": 4000,
+        "max_context_tokens": 8000
+      },
+      "errors": []
+    },
+    {
+      "name": "Bandit Optimizer",
+      "status": "healthy",
+      "details": {
+        "num_strategies": 3,
+        "strategies": [
+          "cheap",
+          "balanced",
+          "premium"
+        ],
+        "algorithm": 

@@ -1,0 +1,73 @@
+{
+  "overall": {
+    "total_queries": 50,
+    "total_tokens_baseline": 12574,
+    "total_tokens_optimized": 7289,
+    "token_savings": 5285,
+    "token_savings_percent": 42.03,
+    "total_cost_baseline": 0.0007,
+    "total_cost_optimized": 0.0,
+    "cost_savings_dollars": 0.0007,
+    "avg_latency_baseline_ms": 5084.98,
+    "avg_latency_optimized_ms": 4158.17,
+    "avg_latency_improvement_ms": 926.81,
+    "median_latency_baseline_ms": 4595.43,
+    "median_latency_optimized_ms": 4928.72,
+    "p95_latency_baseline_ms": 9728.19,
+    "p95_latency_optimized_ms": 8514.99
+  },
+  "by_query_type": {
+    "paraphrase": {
+      "count": 20,
+      "total_tokens_baseline": 5127,
+      "total_tokens_optimized": 1661,
+      "token_savings_percent": 67.60288667836942
+    },
+    "duplicate": {
+      "count": 10,
+      "total_tokens_baseline": 2106,
+      "total_tokens_optimized": 2086,
+      "token_savings_percent": 0.949667616334283
+    },
+    "unique": {
+      "count": 20,
+      "total_tokens_baseline": 5341,
+      "total_tokens_optimized": 3542,
+      "token_savings_percent": 33.68283093053736
+    }
+  },
+  "cache_breakdown": {
+    "overall_hit_rate_percent": 36.0,
+    "by_type": {
+      "none": 32,
+      "semantic_direct": 5,
+      "exact": 13
+    },
+    "hit_rates_by_type": {
+      "none": 64.0,
+      "semantic_direct": 10.0,
+      "exact": 26.0
+    }
+  },
+  "strategy_usage": {
+    "counts": {
+      "cheap": 50
+    },
+    "percentages": {
+      "cheap": 100.0
+    }
+  },
+  "model_usage": {
+    "counts": {
+      "gpt-4o-mini": 50
+    },
+    "percentages": {
+      "gpt-4o-mini": 100.0
+    }
+  },
+  "quality_judge": {
+    "total_judged": 0,
+    "verdicts": {},
+    "verdict_percentages": {}
+  }
+}

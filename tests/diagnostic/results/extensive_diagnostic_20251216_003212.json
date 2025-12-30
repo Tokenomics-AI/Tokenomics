@@ -1,0 +1,1316 @@
+{
+  "metadata": {
+    "timestamp": "2025-12-16T00:32:12.365719",
+    "platform_version": "1.0",
+    "llm_provider": "openai",
+    "llm_model": "gpt-4o-mini",
+    "total_test_cases": 32,
+    "elapsed_seconds": 0
+  },
+  "executive_summary": {
+    "total_queries": 32,
+    "passed": 17,
+    "failed": 15,
+    "pass_rate": "53.1%",
+    "total_tokens_used": 9033,
+    "total_baseline_tokens": 12192,
+    "total_savings": 7665,
+    "savings_percentage": "45.9%"
+  },
+  "savings_breakdown": {
+    "memory_layer": {
+      "tokens_saved": 4142,
+      "percentage": "54.0%",
+      "description": "Tokens saved from exact and semantic cache hits"
+    },
+    "orchestrator": {
+      "tokens_saved": 3435,
+      "percentage": "44.8%",
+      "description": "Tokens saved from optimized token allocation"
+    },
+    "bandit": {
+      "tokens_saved": 88,
+      "percentage": "1.1%",
+      "description": "Tokens saved from strategy selection"
+    },
+    "compression": {
+      "tokens_saved": 1854,
+      "percentage": "24.2%",
+      "description": "Tokens saved from LLMLingua compression"
+    }
+  },
+  "component_analysis": {
+    "memory_layer": {
+      "queries_processed": 32,
+      "tokens_saved": 4142,
+      "metrics": {
+        "exact_cache_hits": 1,
+        "semantic_direct_hits": 6,
+        "semantic_context_hits": 4,
+        "total_cache_hits": 11,
+        "cache_hit_rate": "34.4%",
+        "tokens_saved_from_cache": 4142
+      },
+      "issues": [
+        "Cache type validation failed for 7 queries"
+      ],
+      "status": "ISSUES_FOUND"
+    },
+    "compression": {
+      "queries_processed": 32,
+      "tokens_saved": 1854,
+      "metrics": {
+        "queries_compressed": 1,
+        "contexts_compressed": 4,
+        "total_compression_events": 5,
+        "total_tokens_saved": 1854
+      },
+      "issues": [
+        "Compression expected but not triggered for 1 queries"
+      ],
+      "status": "ISSUES_FOUND"
+    },
+    "orchestrator": {
+      "queries_processed": 32,
+      "tokens_saved": 3435,
+      "metrics": {
+        "simple_queries": 30,
+        "medium_queries": 0,
+        "complex_queries": 2,
+        "avg_token_budget": 3031.25,
+        "total_output_tokens": 7281,
+        "tokens_saved": 3435
+      },
+      "issues": [
+        "Complexity mismatch for 3 queries"
+      ],
+      "status": "ISSUES_FOUND"
+    },
+    "bandit": {
+      "queries_processed": 32,
+      "tokens_saved": 88,
+      "metrics": {
+        "cheap_selections": 32,
+        "balanced_selections": 0,
+        "premium_selections": 0,
+        "avg_reward": "0.9223",
+        "tokens_saved": 88,
+        "routing_stats": {
+          "total_queries": 50,
+          "total_cost": 0.0027098999999999995,
+          "total_tokens": 18066,
+          "arms": {
+            "cheap": {
+              "queries": 50,
+              "avg_cost": 5.419799999999999e-05,
+              "avg_tokens": 361.32,
+              "avg_latency_ms": 5088.607339859009,
+              "avg_quality": 0.978,
+              "cost_quality_ratio": 18.04494630798185,
+              "efficiency_score": 0.886504533671495
+            },
+            "balanced": {
+              "queries": 0,
+              "avg_cost": 0.0,
+              "avg_tokens": 0.0,
+              "avg_latency_ms": 0.0,
+              "avg_quality": 0.0,
+              "cost_quality_ratio": 0.0,
+              "efficiency_score": 0.5
+            },
+            "premium": {
+              "queries": 0,
+              "avg_cost": 0.0,
+              "avg_tokens": 0.0,
+              "avg_latency_ms": 0.0,
+              "avg_quality": 0.0,
+              "cost_quality_ratio": 0.0,
+              "efficiency_score": 0.5
+            }
+          },
+          "best_efficiency_arm": "cheap",
+          "best_efficiency_score": 0.886504533671495
+        }
+      },
+      "issues": [
+        "Strategy selection mismatch for 2 queries"
+      ],
+      "status": "ISSUES_FOUND"
+    },
+    "quality_judge": {
+      "queries_processed": 25,
+      "tokens_saved": 0,
+      "metrics": {
+        "comparisons_run": 25,
+        "optimized_wins": 18,
+        "equivalent_results": 5,
+        "baseline_wins": 2,
+        "quality_maintained_rate": "92.0%",
+        "avg_confidence": "0.86"
+      },
+      "issues": [],
+      "status": "OK"
+    },
+    "preferences": {
+      "queries_processed": 32,
+      "tokens_saved": 0,
+      "metrics": {
+        "tone_detections": 30,
+        "format_detections": 17,
+        "preferences_learned": 47
+      },
+      "issues": [
+        "Tone detection failed for 3 queries"
+      ],
+      "status": "ISSUES_FOUND"
+    }
+  },
+  "issues_found": [
+    {
+      "test_id": "final_exact_1",
+      "phase": "10_final_validation",
+      "issue": "Cache type mismatch: expected 'exact', got 'None'"
+    },
+    {
+      "test_id": "final_semantic_1",
+      "phase": "10_final_validation",
+      "issue": "Cache type mismatch: expected 'semantic_direct', got 'context'"
+    },
+    {
+      "test_id": "final_semantic_1",
+      "phase": "10_final_validation",
+      "issue": "Similarity too low: expected >= 0.85, got 0.822"
+    },
+    {
+      "test_id": "seed_rest",
+      "phase": "1_cache_seeding",
+      "issue": "Complexity mismatch: expected 'medium', got 'simple'"
+    },
+    {
+      "test_id": "exact_python_1",
+      "phase": "2_exact_cache",
+      "issue": "Cache type mismatch: expected 'exact', got 'semantic_direct'"
+    },
+    {
+      "test_id": "exact_python_2",
+      "phase": "2_exact_cache",
+      "issue": "Cache type mismatch: expected 'exact', got 'semantic_direct'"
+    },
+    {
+      "test_id": "context_python_packages",
+      "phase": "4_context_injection",
+      "issue": "Cache type mismatch: expected 'context', got 'None'"
+    },
+    {
+      "test_id": "context_ml_vs_dl",
+      "phase": "4_context_injection",
+      "issue": "Cache type mismatch: expected 'context', got 'None'"
+    },
+    {
+      "test_id": "compress_long_query",
+      "phase": "5_compression",
+      "issue": "Expected compression but none occurred"
+    },
+    {
+      "test_id": "compress_follow_up",
+      "phase": "5_compression",
+      "issue": "Cache type mismatch: expected 'context', got 'None'"
+    },
+    {
+      "test_id": "pref_formal",
+      "phase": "6_preferences",
+      "issue": "Tone mismatch: expected 'formal', got 'simple'"
+    },
+    {
+      "test_id": "pref_casual",
+      "phase": "6_preferences",
+      "issue": "Tone mismatch: expected 'casual', got 'simple'"
+    },
+    {
+      "test_id": "pref_technical",
+      "phase": "6_preferences",
+      "issue": "Tone mismatch: expected 'technical', got 'simple'"
+    },
+    {
+      "test_id": "complexity_medium_1",
+      "phase": "7_complexity",
+      "issue": "Complexity mismatch: expected 'medium', got 'simple'"
+    },
+    {
+      "test_id": "complexity_medium_1",
+      "phase": "7_complexity",
+      "issue": "Strategy mismatch: expected 'balanced', got 'cheap'"
+    },
+    {
+      "test_id": "complexity_medium_2",
+      "phase": "7_complexity",
+      "issue": "Complexity mismatch: expected 'medium', got 'simple'"
+    },
+    {
+      "test_id": "complexity_complex_1",
+      "phase": "7_complexity",
+      "issue": "Strategy mismatch: expected 'premium', got 'cheap'"
+    }
+  ],
+  "test_results": [
+    {
+      "test_id": "final_exact_1",
+      "phase": "10_final_validation",
+      "query": "What is Python?",
+      "description": "Final exact cache validation",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 311,
+      "input_tokens": 11,
+      "output_tokens": 300,
+      "latency_ms": 4344.225883483887,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 11,
+      "bandit_savings": 0,
+      "total_savings": 11,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {
+        "cache_type": {
+          "expected": "exact",
+          "actual": null,
+          "passed": false
+        }
+      },
+      "issues": [
+        "Cache type mismatch: expected 'exact', got 'None'"
+      ]
+    },
+    {
+      "test_id": "final_semantic_1",
+      "phase": "10_final_validation",
+      "query": "Explain Python to me",
+      "description": "Final semantic validation",
+      "passed": false,
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.8218916058540344,
+      "tokens_used": 614,
+      "input_tokens": 314,
+      "output_tokens": 300,
+      "latency_ms": 5636.831045150757,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 523,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 523,
+      "quality_winner": "equivalent",
+      "quality_confidence": 0.9,
+      "validations": {
+        "cache_type": {
+          "expected": "semantic_direct",
+          "actual": "context",
+          "passed": false
+        },
+        "min_similarity": {
+          "expected": ">= 0.85",
+          "actual": 0.8218916058540344,
+          "passed": false
+        }
+      },
+      "issues": [
+        "Cache type mismatch: expected 'semantic_direct', got 'context'",
+        "Similarity too low: expected >= 0.85, got 0.822"
+      ]
+    },
+    {
+      "test_id": "seed_python",
+      "phase": "1_cache_seeding",
+      "query": "What is Python?",
+      "description": "Seed query for Python - will be used for exact and semantic cache tests",
+      "passed": true,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8218916058540344,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 311,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 311,
+      "quality_winner": null,
+      "quality_confidence": null,
+      "validations": {
+        "complexity": {
+          "expected": "simple",
+          "actual": "simple",
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "seed_ml",
+      "phase": "1_cache_seeding",
+      "query": "Explain machine learning in simple terms",
+      "description": "Seed query for ML - will be used for semantic matching",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 167,
+      "input_tokens": 13,
+      "output_tokens": 154,
+      "latency_ms": 2712.7199172973633,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 76,
+      "bandit_savings": 0,
+      "total_savings": 76,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.85,
+      "validations": {
+        "complexity": {
+          "expected": "simple",
+          "actual": "simple",
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "seed_rest",
+      "phase": "1_cache_seeding",
+      "query": "How do REST APIs work?",
+      "description": "Seed query for REST APIs - will be used for context injection",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 313,
+      "input_tokens": 13,
+      "output_tokens": 300,
+      "latency_ms": 5860.779047012329,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {
+        "complexity": {
+          "expected": "medium",
+          "actual": "simple",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Complexity mismatch: expected 'medium', got 'simple'"
+      ]
+    },
+    {
+      "test_id": "seed_database",
+      "phase": "1_cache_seeding",
+      "query": "What is a relational database?",
+      "description": "Seed query for databases",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 313,
+      "input_tokens": 13,
+      "output_tokens": 300,
+      "latency_ms": 4299.01385307312,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 88,
+      "bandit_savings": 0,
+      "total_savings": 88,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {
+        "complexity": {
+          "expected": "simple",
+          "actual": "simple",
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "exact_python_1",
+      "phase": "2_exact_cache",
+      "query": "What is Python?",
+      "description": "EXACT same query as seed - must hit exact cache with 0 tokens",
+      "passed": false,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8218916058540344,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 311,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 311,
+      "quality_winner": null,
+      "quality_confidence": null,
+      "validations": {
+        "cache_type": {
+          "expected": "exact",
+          "actual": "semantic_direct",
+          "passed": false
+        },
+        "complexity": {
+          "expected": "simple",
+          "actual": "simple",
+          "passed": true
+        }
+      },
+      "issues": [
+        "Cache type mismatch: expected 'exact', got 'semantic_direct'"
+      ]
+    },
+    {
+      "test_id": "exact_python_2",
+      "phase": "2_exact_cache",
+      "query": "What is Python?",
+      "description": "Third identical query - validates cache consistency",
+      "passed": false,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8218916058540344,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 311,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 311,
+      "quality_winner": null,
+      "quality_confidence": null,
+      "validations": {
+        "cache_type": {
+          "expected": "exact",
+          "actual": "semantic_direct",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Cache type mismatch: expected 'exact', got 'semantic_direct'"
+      ]
+    },
+    {
+      "test_id": "exact_rest",
+      "phase": "2_exact_cache",
+      "query": "How do REST APIs work?",
+      "description": "Exact match for REST query",
+      "passed": true,
+      "cache_hit": true,
+      "cache_type": "exact",
+      "similarity": null,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 313,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 313,
+      "quality_winner": null,
+      "quality_confidence": null,
+      "validations": {
+        "cache_type": {
+          "expected": "exact",
+          "actual": "exact",
+          "passed": true
+        },
+        "zero_tokens": {
+          "expected": 0,
+          "actual": 0,
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "semantic_direct_python_1",
+      "phase": "3_semantic_direct",
+      "query": "What is the Python programming language?",
+      "description": "Very similar to 'What is Python?' - should return cached response directly",
+      "passed": true,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.9001731276512146,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 311,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 311,
+      "quality_winner": null,
+      "quality_confidence": null,
+      "validations": {
+        "cache_type": {
+          "expected": "semantic_direct",
+          "actual": "semantic_direct",
+          "passed": true
+        },
+        "min_similarity": {
+          "expected": ">= 0.85",
+          "actual": 0.9001731276512146,
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "semantic_direct_python_2",
+      "phase": "3_semantic_direct",
+      "query": "Tell me about Python",
+      "description": "Another high similarity Python query",
+      "passed": true,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8883805871009827,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 311,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 311,
+      "quality_winner": null,
+      "quality_confidence": null,
+      "validations": {
+        "cache_type": {
+          "expected": "semantic_direct",
+          "actual": "semantic_direct",
+          "passed": true
+        },
+        "min_similarity": {
+          "expected": ">= 0.85",
+          "actual": 0.8883805871009827,
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "semantic_direct_ml",
+      "phase": "3_semantic_direct",
+      "query": "Explain what machine learning is",
+      "description": "High similarity to ML seed query",
+      "passed": true,
+      "cache_hit": true,
+      "cache_type": "semantic_direct",
+      "similarity": 0.8913751244544983,
+      "tokens_used": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 0,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 167,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 167,
+      "quality_winner": null,
+      "quality_confidence": null,
+      "validations": {
+        "cache_type": {
+          "expected": "semantic_direct",
+          "actual": "semantic_direct",
+          "passed": true
+        },
+        "min_similarity": {
+          "expected": ">= 0.85",
+          "actual": 0.8913751244544983,
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "context_python_packages",
+      "phase": "4_context_injection",
+      "query": "How do I install Python packages using pip?",
+      "description": "Related to Python but different enough - should inject context",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 316,
+      "input_tokens": 16,
+      "output_tokens": 300,
+      "latency_ms": 4508.808135986328,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "equivalent",
+      "quality_confidence": 0.9,
+      "validations": {
+        "cache_type": {
+          "expected": "context",
+          "actual": null,
+          "passed": false
+        }
+      },
+      "issues": [
+        "Cache type mismatch: expected 'context', got 'None'"
+      ]
+    },
+    {
+      "test_id": "context_rest_benefits",
+      "phase": "4_context_injection",
+      "query": "What are the main benefits and use cases of REST APIs?",
+      "description": "Related to REST but asks different question - context injection",
+      "passed": true,
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.7163023948669434,
+      "tokens_used": 622,
+      "input_tokens": 322,
+      "output_tokens": 300,
+      "latency_ms": 4470.690011978149,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 531,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 531,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.85,
+      "validations": {
+        "cache_type": {
+          "expected": "context",
+          "actual": "context",
+          "passed": true
+        },
+        "min_similarity": {
+          "expected": ">= 0.7",
+          "actual": 0.7163023948669434,
+          "passed": true
+        },
+        "max_similarity": {
+          "expected": "<= 0.85",
+          "actual": 0.7163023948669434,
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "context_ml_vs_dl",
+      "phase": "4_context_injection",
+      "query": "What is the difference between machine learning and deep learning?",
+      "description": "Related to ML seed - should use context",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 318,
+      "input_tokens": 18,
+      "output_tokens": 300,
+      "latency_ms": 4649.456977844238,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.85,
+      "validations": {
+        "cache_type": {
+          "expected": "context",
+          "actual": null,
+          "passed": false
+        }
+      },
+      "issues": [
+        "Cache type mismatch: expected 'context', got 'None'"
+      ]
+    },
+    {
+      "test_id": "compress_long_query",
+      "phase": "5_compression",
+      "query": "I need a comprehensive and detailed explanation of how modern machine learning \n        algorithms work in production systems. Please cover the following topics in depth: \n        1) Neural network ar",
+      "description": "Long query (>800 chars) - should trigger LLMLingua query compression",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 455,
+      "input_tokens": 155,
+      "output_tokens": 300,
+      "latency_ms": 5051.7449378967285,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "complex",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.8,
+      "validations": {
+        "complexity": {
+          "expected": "complex",
+          "actual": "complex",
+          "passed": true
+        },
+        "compression": {
+          "expected": "query or context compressed",
+          "actual": "query=False, context=False",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Expected compression but none occurred"
+      ]
+    },
+    {
+      "test_id": "compress_follow_up",
+      "phase": "5_compression",
+      "query": "Summarize the key machine learning concepts",
+      "description": "Follow-up that may use compressed context from cache",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "latency_ms": 4294.89803314209,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {
+        "cache_type": {
+          "expected": "context",
+          "actual": null,
+          "passed": false
+        }
+      },
+      "issues": [
+        "Cache type mismatch: expected 'context', got 'None'"
+      ]
+    },
+    {
+      "test_id": "pref_formal",
+      "phase": "6_preferences",
+      "query": "Could you please kindly explain what Docker containers are?",
+      "description": "Formal tone indicators: 'please', 'kindly'",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 317,
+      "input_tokens": 17,
+      "output_tokens": 300,
+      "latency_ms": 4710.500001907349,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 120,
+      "bandit_savings": 0,
+      "total_savings": 120,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.8,
+      "validations": {
+        "tone": {
+          "expected": "formal",
+          "actual": "simple",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Tone mismatch: expected 'formal', got 'simple'"
+      ]
+    },
+    {
+      "test_id": "pref_casual",
+      "phase": "6_preferences",
+      "query": "Hey, what's the deal with Docker?",
+      "description": "Casual tone indicators: 'hey', 'what's'",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "latency_ms": 3812.222957611084,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 112,
+      "bandit_savings": 0,
+      "total_savings": 112,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.85,
+      "validations": {
+        "tone": {
+          "expected": "casual",
+          "actual": "simple",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Tone mismatch: expected 'casual', got 'simple'"
+      ]
+    },
+    {
+      "test_id": "pref_technical",
+      "phase": "6_preferences",
+      "query": "Explain the Docker container runtime architecture and implementation",
+      "description": "Technical tone indicators: 'architecture', 'implementation'",
+      "passed": false,
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.7751415967941284,
+      "tokens_used": 618,
+      "input_tokens": 318,
+      "output_tokens": 300,
+      "latency_ms": 5731.222152709961,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 527,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 527,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.85,
+      "validations": {
+        "tone": {
+          "expected": "technical",
+          "actual": "simple",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Tone mismatch: expected 'technical', got 'simple'"
+      ]
+    },
+    {
+      "test_id": "pref_list",
+      "phase": "6_preferences",
+      "query": "List the steps to deploy a Docker container",
+      "description": "List format indicator: 'list the steps'",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "latency_ms": 4517.590045928955,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.8,
+      "validations": {
+        "format": {
+          "expected": "list",
+          "actual": "list",
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "pref_code",
+      "phase": "6_preferences",
+      "query": "Show me code example for Docker compose",
+      "description": "Code format indicator: 'code', 'example'",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 314,
+      "input_tokens": 14,
+      "output_tokens": 300,
+      "latency_ms": 5644.503831863403,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {
+        "format": {
+          "expected": "code",
+          "actual": "code",
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "complexity_simple_1",
+      "phase": "7_complexity",
+      "query": "What is JSON?",
+      "description": "Simple query - should use 'cheap' strategy",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 311,
+      "input_tokens": 11,
+      "output_tokens": 300,
+      "latency_ms": 7849.637746810913,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 210,
+      "bandit_savings": 0,
+      "total_savings": 210,
+      "quality_winner": "baseline",
+      "quality_confidence": 0.9,
+      "validations": {
+        "complexity": {
+          "expected": "simple",
+          "actual": "simple",
+          "passed": true
+        },
+        "strategy": {
+          "expected": "cheap",
+          "actual": "cheap",
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "complexity_simple_2",
+      "phase": "7_complexity",
+      "query": "Define API",
+      "description": "Another simple query",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 236,
+      "input_tokens": 9,
+      "output_tokens": 227,
+      "latency_ms": 3853.0869483947754,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 6,
+      "bandit_savings": 0,
+      "total_savings": 6,
+      "quality_winner": "equivalent",
+      "quality_confidence": 0.9,
+      "validations": {
+        "complexity": {
+          "expected": "simple",
+          "actual": "simple",
+          "passed": true
+        },
+        "strategy": {
+          "expected": "cheap",
+          "actual": "cheap",
+          "passed": true
+        }
+      },
+      "issues": []
+    },
+    {
+      "test_id": "complexity_medium_1",
+      "phase": "7_complexity",
+      "query": "How does JSON parsing work in Python with error handling?",
+      "description": "Medium complexity - should use 'balanced' strategy",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 318,
+      "input_tokens": 18,
+      "output_tokens": 300,
+      "latency_ms": 5796.607971191406,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {
+        "complexity": {
+          "expected": "medium",
+          "actual": "simple",
+          "passed": false
+        },
+        "strategy": {
+          "expected": "balanced",
+          "actual": "cheap",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Complexity mismatch: expected 'medium', got 'simple'",
+        "Strategy mismatch: expected 'balanced', got 'cheap'"
+      ]
+    },
+    {
+      "test_id": "complexity_medium_2",
+      "phase": "7_complexity",
+      "query": "Explain the difference between GET and POST HTTP methods",
+      "description": "Another medium complexity query",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 316,
+      "input_tokens": 16,
+      "output_tokens": 300,
+      "latency_ms": 5104.549884796143,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "baseline",
+      "quality_confidence": 0.8,
+      "validations": {
+        "complexity": {
+          "expected": "medium",
+          "actual": "simple",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Complexity mismatch: expected 'medium', got 'simple'"
+      ]
+    },
+    {
+      "test_id": "complexity_complex_1",
+      "phase": "7_complexity",
+      "query": "Design a complete, production-ready microservices architecture \n        for an enterprise e-commerce platform that needs to handle millions of daily transactions. \n        The system must include: use",
+      "description": "Complex query - should use 'premium' strategy with gpt-4o",
+      "passed": false,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 358,
+      "input_tokens": 58,
+      "output_tokens": 300,
+      "latency_ms": 5725.280046463013,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "complex",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 88,
+      "total_savings": 300,
+      "quality_winner": "equivalent",
+      "quality_confidence": 0.7,
+      "validations": {
+        "complexity": {
+          "expected": "complex",
+          "actual": "complex",
+          "passed": true
+        },
+        "strategy": {
+          "expected": "premium",
+          "actual": "cheap",
+          "passed": false
+        }
+      },
+      "issues": [
+        "Strategy mismatch: expected 'premium', got 'cheap'"
+      ]
+    },
+    {
+      "test_id": "quality_test_1",
+      "phase": "8_quality_judge",
+      "query": "Explain the concept of recursion in programming",
+      "description": "Test quality judge - compare baseline vs optimized",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 314,
+      "input_tokens": 14,
+      "output_tokens": 300,
+      "latency_ms": 5055.257797241211,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {},
+      "issues": []
+    },
+    {
+      "test_id": "quality_test_2",
+      "phase": "8_quality_judge",
+      "query": "What are design patterns in software engineering?",
+      "description": "Another quality comparison test",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 315,
+      "input_tokens": 15,
+      "output_tokens": 300,
+      "latency_ms": 4741.883754730225,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 56,
+      "bandit_savings": 0,
+      "total_savings": 56,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.8,
+      "validations": {},
+      "issues": []
+    },
+    {
+      "test_id": "quality_test_3",
+      "phase": "8_quality_judge",
+      "query": "How does garbage collection work?",
+      "description": "Third quality test for statistics",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 313,
+      "input_tokens": 13,
+      "output_tokens": 300,
+      "latency_ms": 6291.351079940796,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.8,
+      "validations": {},
+      "issues": []
+    },
+    {
+      "test_id": "budget_low",
+      "phase": "9_token_budget",
+      "query": "What is SQL injection?",
+      "description": "Test with low token budget (1000)",
+      "passed": true,
+      "cache_hit": false,
+      "cache_type": null,
+      "similarity": null,
+      "tokens_used": 312,
+      "input_tokens": 12,
+      "output_tokens": 300,
+      "latency_ms": 6342.895030975342,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 0,
+      "orchestrator_savings": 212,
+      "bandit_savings": 0,
+      "total_savings": 212,
+      "quality_winner": "equivalent",
+      "quality_confidence": 0.9,
+      "validations": {},
+      "issues": []
+    },
+    {
+      "test_id": "budget_high",
+      "phase": "9_token_budget",
+      "query": "Explain SQL injection prevention techniques in detail",
+      "description": "Test with high token budget (4000)",
+      "passed": true,
+      "cache_hit": true,
+      "cache_type": "context",
+      "similarity": 0.7842671871185303,
+      "tokens_used": 617,
+      "input_tokens": 317,
+      "output_tokens": 300,
+      "latency_ms": 6209.426403045654,
+      "strategy": "cheap",
+      "model": "gpt-4o-mini",
+      "complexity": "simple",
+      "memory_savings": 526,
+      "orchestrator_savings": 0,
+      "bandit_savings": 0,
+      "total_savings": 526,
+      "quality_winner": "optimized",
+      "quality_confidence": 0.9,
+      "validations": {},
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  tokenomics:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tokenomics-platform
+    volumes:
+      # Mount source code for development
+      - .:/app
+      # Mount results directory for output
+      - ./showcase_results:/app/showcase_results
+      - ./diagnostic_results:/app/diagnostic_results
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+      - TF_CPP_MIN_LOG_LEVEL=2
+      - TRANSFORMERS_OFFLINE=0
+    stdin_open: true
+    tty: true
+    command: python test_comprehensive_showcase.py
+
+  # Interactive shell for debugging
+  shell:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tokenomics-shell
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+
+  # Quick LLMLingua verification
+  verify-llmlingua:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tokenomics-verify
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+      - TF_CPP_MIN_LOG_LEVEL=2
+    command: >
+      python -c "
+      from tokenomics.compression.llmlingua_compressor import LLMLinguaCompressor;
+      c = LLMLinguaCompressor();
+      print('LLMLingua Status:', 'WORKING' if c.is_available() else 'NOT WORKING');
+      print('Model:', c.model_name);
+      if c.is_available():
+          result = c.compress_context(['This is a test context for compression verification.']);
+          print('Compression Test:', 'SUCCESS' if result.get(\"success\") else 'FAILED');
+          print('Compression Ratio:', f\"{result.get('compression_ratio', 1.0):.2%}\");
+      else:
+          print('Error:', c.get_init_error());
+      "
+
+
+
+
+

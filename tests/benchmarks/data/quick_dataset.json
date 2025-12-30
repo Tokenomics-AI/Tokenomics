@@ -1,0 +1,317 @@
+{
+  "metadata": {
+    "generated_at": "2025-12-01T22:05:41.495798",
+    "total_queries": 50,
+    "num_duplicates": 10,
+    "num_paraphrases": 20,
+    "num_longtail": 20,
+    "categories": [
+      "billing",
+      "features",
+      "troubleshooting",
+      "general"
+    ]
+  },
+  "queries": [
+    {
+      "id": 15,
+      "text": "How do I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 29,
+      "text": "How can I enable two-factor authentication?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 6,
+      "text": "What is your privacy policy?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 23,
+      "text": "Where can I find my invoice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 39,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 10,
+      "text": "Can I get a discount?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 5,
+      "text": "How do I view my billing history?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 14,
+      "text": "How can I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 11,
+      "text": "What is the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 44,
+      "text": "I need to billing but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 31,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 30,
+      "text": "How do I enable two-factor authentication?",
+      "type": "paraphrase",
+      "category": "features"
+    },
+    {
+      "id": 38,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 50,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 18,
+      "text": "Why was I charged twice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 3,
+      "text": "Why is my account locked?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 1,
+      "text": "Can I customize the dashboard?",
+      "type": "duplicate",
+      "category": "features"
+    },
+    {
+      "id": 40,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 19,
+      "text": "Why was I charged twice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 12,
+      "text": "Can you explain what the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 26,
+      "text": "What happens if my payment fails?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 48,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 41,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 28,
+      "text": "What happens if my payment fails?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 36,
+      "text": "I'm having trouble with billing when I try to...",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 33,
+      "text": "What's the best way to handle general for my use case?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 43,
+      "text": "What's the best way to handle billing for my use case?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 7,
+      "text": "I forgot my password, how do I reset it?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 34,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 42,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 8,
+      "text": "How do I change my billing cycle?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 32,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 16,
+      "text": "How do I cancel my subscription?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 45,
+      "text": "Is there a way to customize billing settings?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 2,
+      "text": "How do I contact support?",
+      "type": "duplicate",
+      "category": "general"
+    },
+    {
+      "id": 47,
+      "text": "Can you help me understand general better?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 4,
+      "text": "Why did my upload fail?",
+      "type": "duplicate",
+      "category": "troubleshooting"
+    },
+    {
+      "id": 49,
+      "text": "I need to general but I'm not sure how to proceed.",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 25,
+      "text": "Where can I find my invoice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 37,
+      "text": "Can you help me understand billing better?",
+      "type": "unique",
+      "category": "billing"
+    },
+    {
+      "id": 9,
+      "text": "How do I update my payment method?",
+      "type": "duplicate",
+      "category": "billing"
+    },
+    {
+      "id": 35,
+      "text": "Is there a way to customize general settings?",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 13,
+      "text": "What is the refund policy?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 27,
+      "text": "What happens if my payment fails?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 46,
+      "text": "I'm having trouble with general when I try to...",
+      "type": "unique",
+      "category": "general"
+    },
+    {
+      "id": 21,
+      "text": "What payment methods do you accept?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 24,
+      "text": "Where can I find my invoice?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 22,
+      "text": "What payment methods do you accept?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 20,
+      "text": "What payment methods do you accept?",
+      "type": "paraphrase",
+      "category": "billing"
+    },
+    {
+      "id": 17,
+      "text": "Why was I charged twice?",
+      "type": "paraphrase",
+      "category": "billing"
+    }
+  ]
+}
