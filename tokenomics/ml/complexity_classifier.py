@@ -10,7 +10,17 @@ logger = structlog.get_logger()
 
 
 class ComplexityClassifier:
-    """ML-based complexity classifier using XGBoost multi-class classifier."""
+    """
+    ML-based complexity classifier using XGBoost multi-class classifier.
+    
+    **Current Implementation:**
+    - Pre-trained model: 2-class classifier (simple/medium only)
+    - "Complex" classification: Uses heuristic fallback (keyword indicators, query length, comparison patterns)
+    - Hybrid approach: ML model for simple/medium, heuristics for complex
+    
+    **Future Enhancement:**
+    - Model can be retrained with 3-class data (simple/medium/complex) when sufficient training data is available
+    """
     
     def __init__(self, data_collector=None, tokenizer=None, model_path: str = "models/complexity_classifier.pkl"):
         """
@@ -119,7 +129,14 @@ class ComplexityClassifier:
     def predict(self, query: str, query_embedding: Optional[List[float]] = None) -> str:
         """
         Predict complexity (simple/medium/complex).
-        Uses ML model if trained, otherwise uses heuristic fallback.
+        
+        **Hybrid Approach:**
+        - If ML model is trained: Uses ML for "simple"/"medium" classification (2-class model)
+        - "Complex" classification: Always uses heuristic fallback (even when ML model is available)
+        - If ML model not available: Uses heuristic for all three classes
+        
+        This ensures all three complexity levels are supported while leveraging
+        the ML model's accuracy for simple/medium queries.
         
         Args:
             query: User query
@@ -128,21 +145,34 @@ class ComplexityClassifier:
         Returns:
             Complexity level: "simple", "medium", or "complex"
         """
+        # First check if query should be classified as "complex" using heuristics
+        # (since ML model is 2-class and cannot detect "complex")
+        heuristic_complexity = self._predict_heuristic(query)
+        if heuristic_complexity == "complex":
+            # Use heuristic for complex queries (ML model limitation)
+            logger.debug("Complexity predicted (heuristic for complex)", query_preview=query[:50])
+            return "complex"
+        
+        # For simple/medium, use ML model if available, otherwise use heuristic
         if self.model_trained and self.ml_model:
             return self._predict_ml(query, query_embedding)
         else:
-            return self._predict_heuristic(query)
+            return heuristic_complexity
     
     def _predict_ml(self, query: str, query_embedding: Optional[List[float]] = None) -> str:
         """
         ML model-based prediction (when model is trained).
         
+        **Note:** Current model is 2-class (simple/medium). If prediction suggests "complex"
+        would be appropriate, this method will return "medium" and the heuristic fallback
+        should be used for "complex" classification.
+        
         Args:
             query: User query
             query_embedding: Optional query embedding vector
         
         Returns:
-            Complexity level: "simple", "medium", or "complex"
+            Complexity level: "simple" or "medium" (current model limitation)
         """
         if not self.ml_model:
             logger.debug("ML model not available, using heuristic")
@@ -489,6 +519,7 @@ class ComplexityClassifier:
             self.ml_model = None
             self.class_to_complexity = None
             return False
+
 
 
 

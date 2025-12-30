@@ -7,5 +7,6 @@
     "0": "simple",
     "1": "medium"
   },
-  "feature_count": 14
+  "feature_count": 14,
+  "note": "This is a 2-class model (simple/medium only). The 'complex' classification uses a heuristic fallback based on keyword indicators, query length, and comparison patterns. The model can be retrained with 3-class data when sufficient training examples are available."
 }

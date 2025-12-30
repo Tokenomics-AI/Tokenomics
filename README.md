@@ -20,7 +20,7 @@ We ran a comprehensive test with **50 diverse queries** across 7 categories. Her
 | Optimized Cost (50 queries) | $0.013999 |
 | **Total Saved** | **$0.136788** |
 | Cache Hit Rate | 20% |
-| Complexity Accuracy | 90% |
+| Complexity Accuracy | 90% (2-class ML model; complex uses heuristics) |
 
 ### Savings Breakdown by Component
 
@@ -56,7 +56,8 @@ TOTAL SAVINGS:            $0.137  (90.7%)
                             ▼
 ┌───────────────────────────────────────────────────────────────────┐
 │  2. TOKEN ORCHESTRATOR                                            │
-│     ├── Complexity Analysis: Simple/Medium/Complex (90% accuracy) │
+│     ├── Complexity Analysis: Simple/Medium/Complex                │
+│     │   (ML: 2-class simple/medium, heuristic fallback for complex)│
 │     ├── Knapsack Optimization: Maximize utility per token         │
 │     └── Token Budget Allocation: Smart distribution               │
 └───────────────────────────┬───────────────────────────────────────┘
@@ -107,9 +108,11 @@ Tokenomics gets smarter over time through multiple ML components:
 
 | Model | Purpose | Accuracy |
 |-------|---------|----------|
-| **Complexity Classifier** | Categorize queries as simple/medium/complex | 90% |
+| **Complexity Classifier** | Categorize queries as simple/medium/complex | 90% (2-class ML + heuristic for complex) |
 | **Token Predictor** | Estimate response length before calling LLM | 72% |
 | **Escalation Predictor** | Predict when quality escalation is needed | 85% |
+
+**Note on Complexity Classifier:** The current pre-trained model is a 2-class classifier (simple/medium). Queries classified as "complex" use a heuristic-based fallback that analyzes keyword indicators, query length, and comparison patterns. This hybrid approach ensures all three complexity levels are supported while the model can be retrained with 3-class data in the future.
 
 ### Continuous Learning
 
@@ -199,7 +202,7 @@ python app.py
 | Component | Purpose | Key Metric |
 |-----------|---------|------------|
 | **Memory Layer** | Exact + semantic caching | 20% cache hit rate |
-| **Token Orchestrator** | Complexity analysis & budget allocation | 90% accuracy |
+| **Token Orchestrator** | Complexity analysis & budget allocation | 90% (2-class ML + heuristics) |
 | **Bandit Optimizer** | Cost-aware model routing | 75% of savings |
 | **LLMLingua Compression** | Reduce long query tokens | 376 tokens saved |
 | **Cascading Inference** | Quality-protected model selection | Maintains quality |
