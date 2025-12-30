@@ -286,6 +286,41 @@ result = platform.query(
 
 ---
 
+## Benchmarks
+
+We provide a rigorous cost benchmark comparing **BASELINE** (no optimization) vs **TOKENOMICS** (full pipeline).
+
+### Latest Benchmark Results
+
+| Metric | Value |
+|--------|-------|
+| **Mean Cost Savings** | **85.5%** |
+| Baseline Cost (10 prompts) | $0.037800 |
+| Tokenomics Cost (10 prompts) | $0.001836 |
+| Total Saved | $0.035964 |
+| Cache Hit Rate (cold) | 0% |
+
+**Methodology:**
+- Baseline: Cache disabled, no compression, no routing, fixed model (`gpt-4o`)
+- Tokenomics: Full pipeline enabled, cache starts cold
+- Quality check: Minimum output length validation
+
+📄 **Full Benchmark Report:** [BENCHMARK_COST_RESULTS.md](BENCHMARK_COST_RESULTS.md)
+
+### Run Your Own Benchmark
+
+```bash
+# Cold pass (cache empty)
+python scripts/run_cost_benchmark.py \
+    --workload benchmarks/workloads_v0.json \
+    --output BENCHMARK_COST_RESULTS.md
+
+# Two-pass (cold + warm to measure cache impact)
+python scripts/run_cost_benchmark.py --two_pass
+```
+
+---
+
 ## Future Work & Open Problems
 
 Tokenomics is intentionally early-stage and experimental.  

@@ -1,0 +1,67 @@
+{
+  "version": "0.1",
+  "description": "Cost benchmark workload: 10 prompts across simple/medium/complex categories",
+  "prompts": [
+    {
+      "id": "simple-1",
+      "category": "simple",
+      "prompt": "What is the capital of France?",
+      "notes": "Trivial factual lookup, minimal tokens expected"
+    },
+    {
+      "id": "simple-2",
+      "category": "simple",
+      "prompt": "What is 15 multiplied by 7?",
+      "notes": "Basic arithmetic, very short response"
+    },
+    {
+      "id": "simple-3",
+      "category": "simple",
+      "prompt": "Name three primary colors.",
+      "notes": "Simple list, constrained output"
+    },
+    {
+      "id": "medium-1",
+      "category": "medium",
+      "prompt": "Explain the difference between TCP and UDP protocols in networking.",
+      "notes": "Technical comparison requiring structured explanation"
+    },
+    {
+      "id": "medium-2",
+      "category": "medium",
+      "prompt": "How does photosynthesis work in plants? Include the main inputs and outputs.",
+      "notes": "Science explanation with specific requirements"
+    },
+    {
+      "id": "medium-3",
+      "category": "medium",
+      "prompt": "What are the key differences between Python lists and tuples? When should you use each?",
+      "notes": "Programming concept with practical guidance"
+    },
+    {
+      "id": "medium-4",
+      "category": "medium",
+      "prompt": "Describe the water cycle and its main stages.",
+      "notes": "Process explanation requiring sequential detail"
+    },
+    {
+      "id": "complex-1",
+      "category": "complex",
+      "prompt": "Design a REST API for a simple e-commerce product catalog. Include endpoints for listing products, getting product details, creating new products, and updating inventory. Provide example request/response formats.",
+      "notes": "System design requiring detailed technical output"
+    },
+    {
+      "id": "complex-2",
+      "category": "complex",
+      "prompt": "Explain the CAP theorem in distributed systems. Provide real-world examples of systems that prioritize different combinations of Consistency, Availability, and Partition tolerance.",
+      "notes": "Advanced concept with examples"
+    },
+    {
+      "id": "complex-3",
+      "category": "complex",
+      "prompt": "Compare and contrast microservices architecture with monolithic architecture. Discuss the trade-offs in terms of scalability, deployment complexity, team organization, and debugging. When would you recommend each approach?",
+      "notes": "Architecture comparison requiring nuanced analysis"
+    }
+  ]
+}
+
