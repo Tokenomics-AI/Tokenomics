@@ -99,6 +99,52 @@ TOTAL SAVINGS:            $0.137  (90.7%)
 
 ---
 
+## Learning & Adaptation
+
+Tokenomics gets smarter over time through multiple ML components:
+
+### Pre-trained ML Models
+
+| Model | Purpose | Accuracy |
+|-------|---------|----------|
+| **Complexity Classifier** | Categorize queries as simple/medium/complex | 90% |
+| **Token Predictor** | Estimate response length before calling LLM | 72% |
+| **Escalation Predictor** | Predict when quality escalation is needed | 85% |
+
+### Continuous Learning
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  BANDIT OPTIMIZER (UCB Algorithm)                               │
+│                                                                 │
+│  Learns from every query:                                       │
+│  ├── Tracks cost vs quality for each strategy                   │
+│  ├── Balances exploration (try new) vs exploitation (use best)  │
+│  └── Adapts routing based on actual outcomes                    │
+│                                                                 │
+│  Result: Routing improves automatically with usage              │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Data Collection Pipeline
+
+The platform collects training data from real queries to retrain models:
+
+```bash
+# Collect training data
+python scripts/collect_training_data.py
+
+# Retrain models with new data
+python scripts/train_ml_models.py
+
+# Evaluate model performance
+python scripts/evaluate_ml_models.py
+```
+
+**Pre-trained models:** `models/` directory contains ready-to-use `.pkl` files.
+
+---
+
 ## Quick Start
 
 ### 1. Clone and Setup
