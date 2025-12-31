@@ -42,6 +42,10 @@ wheels/
 chroma_db/
 cache/
 
+# Large archive files
+tokenomics_full.zip
+*.zip
+
 # Logs
 logs/
 *.log

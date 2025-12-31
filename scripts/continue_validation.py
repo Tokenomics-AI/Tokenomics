@@ -54,3 +54,4 @@ if __name__ == "__main__":
     print("=" * 80)
     
     sys.exit(0 if all([platform_success, component_success]) else 1)
+

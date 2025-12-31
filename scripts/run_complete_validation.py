@@ -280,3 +280,4 @@ if __name__ == "__main__":
     runner = CompleteValidationRunner()
     success = runner.run_all()
     sys.exit(0 if success else 1)
+
