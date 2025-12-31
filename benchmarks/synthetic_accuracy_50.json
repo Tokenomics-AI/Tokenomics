@@ -1,0 +1,424 @@
+{
+  "version": "0.1",
+  "description": "50 synthetic queries originally used for decision accuracy validation. Categories include simple, medium, complex queries, exact duplicates for cache testing, semantic variations, long queries for compression testing, and mixed scenarios.",
+  "source": "scripts/comprehensive_e2e_test.py",
+  "prompts": [
+    {
+      "id": "1",
+      "category": "simple",
+      "prompt": "What is 2+2?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Basic arithmetic - minimal tokens needed"
+    },
+    {
+      "id": "2",
+      "category": "simple",
+      "prompt": "What is the capital of France?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Simple factual question"
+    },
+    {
+      "id": "3",
+      "category": "simple",
+      "prompt": "Define gravity in one sentence.",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Constrained simple definition"
+    },
+    {
+      "id": "4",
+      "category": "simple",
+      "prompt": "What color is the sky?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Trivial factual question"
+    },
+    {
+      "id": "5",
+      "category": "simple",
+      "prompt": "Name three fruits.",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Simple list generation"
+    },
+    {
+      "id": "6",
+      "category": "simple",
+      "prompt": "What is the chemical symbol for water?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Simple chemistry fact"
+    },
+    {
+      "id": "7",
+      "category": "simple",
+      "prompt": "How many days are in a week?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Basic numerical fact"
+    },
+    {
+      "id": "8",
+      "category": "simple",
+      "prompt": "What is the largest ocean?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Simple geography fact"
+    },
+    {
+      "id": "9",
+      "category": "simple",
+      "prompt": "Spell the word 'necessary'.",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Simple spelling task"
+    },
+    {
+      "id": "10",
+      "category": "simple",
+      "prompt": "What is Python in one sentence?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Constrained tech definition"
+    },
+    {
+      "id": "11",
+      "category": "medium",
+      "prompt": "Explain how photosynthesis works in plants, including the main inputs and outputs.",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Science explanation requiring detail"
+    },
+    {
+      "id": "12",
+      "category": "medium",
+      "prompt": "What are the key differences between TCP and UDP protocols?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Technical comparison"
+    },
+    {
+      "id": "13",
+      "category": "medium",
+      "prompt": "Describe the process of how a web browser loads a webpage.",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Technical process explanation"
+    },
+    {
+      "id": "14",
+      "category": "medium",
+      "prompt": "Explain the difference between supervised and unsupervised machine learning.",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "ML concepts comparison"
+    },
+    {
+      "id": "15",
+      "category": "medium",
+      "prompt": "How does a database index improve query performance?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Database concept explanation"
+    },
+    {
+      "id": "16",
+      "category": "medium",
+      "prompt": "What is the difference between a stack and a queue data structure?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Data structure comparison"
+    },
+    {
+      "id": "17",
+      "category": "medium",
+      "prompt": "Explain how version control systems like Git manage code changes.",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Dev tools explanation"
+    },
+    {
+      "id": "18",
+      "category": "medium",
+      "prompt": "Describe the main principles of object-oriented programming.",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Programming paradigm explanation"
+    },
+    {
+      "id": "19",
+      "category": "medium",
+      "prompt": "How does HTTPS encryption protect data in transit?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Security concept explanation"
+    },
+    {
+      "id": "20",
+      "category": "medium",
+      "prompt": "Explain the concept of recursion with a simple example.",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Programming concept with example"
+    },
+    {
+      "id": "21",
+      "category": "complex",
+      "prompt": "Write a comprehensive explanation of the Transformer architecture in deep learning, including self-attention mechanisms, multi-head attention, positional encoding, encoder-decoder structure, and how it revolutionized NLP. Compare it to RNNs and LSTMs.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Deep technical explanation requiring extensive knowledge"
+    },
+    {
+      "id": "22",
+      "category": "complex",
+      "prompt": "Provide a detailed analysis of distributed consensus algorithms including Raft and Paxos. Explain their safety and liveness properties, leader election, log replication, and compare their trade-offs for different use cases.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Advanced distributed systems concepts"
+    },
+    {
+      "id": "23",
+      "category": "complex",
+      "prompt": "Explain the complete lifecycle of a Kubernetes pod from creation to termination, including scheduling, container runtime, networking, storage, health checks, and resource management. Include failure scenarios and recovery mechanisms.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Complex infrastructure topic"
+    },
+    {
+      "id": "24",
+      "category": "complex",
+      "prompt": "Design a scalable real-time recommendation system architecture. Cover data pipelines, feature engineering, model training and serving, A/B testing infrastructure, handling cold start, and explain the trade-offs between collaborative filtering and content-based approaches.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "System design with multiple components"
+    },
+    {
+      "id": "25",
+      "category": "complex",
+      "prompt": "Explain quantum computing fundamentals including qubits, superposition, entanglement, quantum gates, Shor's algorithm, Grover's algorithm, quantum error correction, and its implications for cryptography and optimization.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Advanced physics/CS intersection"
+    },
+    {
+      "id": "26",
+      "category": "complex",
+      "prompt": "Provide a complete guide to implementing a CI/CD pipeline with GitOps principles. Include source control strategies, build automation, testing pyramid, deployment strategies (blue-green, canary), infrastructure as code, monitoring, and rollback procedures.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "DevOps best practices comprehensive"
+    },
+    {
+      "id": "27",
+      "category": "complex",
+      "prompt": "Explain the CAP theorem and its implications for distributed database design. Cover consistency models (eventual, strong, causal), partition tolerance strategies, and how systems like Cassandra, MongoDB, and CockroachDB make different trade-offs.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Distributed database theory"
+    },
+    {
+      "id": "28",
+      "category": "complex",
+      "prompt": "Write a detailed explanation of neural network optimization techniques including gradient descent variants (SGD, Adam, RMSprop), learning rate scheduling, batch normalization, dropout, weight initialization strategies, and how to diagnose and fix training issues.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Deep learning training techniques"
+    },
+    {
+      "id": "29",
+      "category": "complex",
+      "prompt": "Explain microservices architecture patterns including service discovery, API gateway, circuit breaker, saga pattern for distributed transactions, event sourcing, CQRS, and strategies for handling data consistency across services.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Microservices design patterns"
+    },
+    {
+      "id": "30",
+      "category": "complex",
+      "prompt": "Provide a comprehensive overview of modern web security including OWASP Top 10, XSS prevention, CSRF protection, SQL injection, authentication best practices (OAuth, JWT), CORS, CSP headers, and secure session management.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Security comprehensive coverage"
+    },
+    {
+      "id": "31",
+      "category": "exact_duplicate",
+      "prompt": "What is 2+2?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "EXACT DUPLICATE of query #1 - test exact cache hit",
+      "duplicate_of": "1"
+    },
+    {
+      "id": "32",
+      "category": "exact_duplicate",
+      "prompt": "What is the capital of France?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "EXACT DUPLICATE of query #2 - test exact cache hit",
+      "duplicate_of": "2"
+    },
+    {
+      "id": "33",
+      "category": "exact_duplicate",
+      "prompt": "How does a database index improve query performance?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "EXACT DUPLICATE of query #15 - test exact cache hit",
+      "duplicate_of": "15"
+    },
+    {
+      "id": "34",
+      "category": "exact_duplicate",
+      "prompt": "What is Python in one sentence?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "EXACT DUPLICATE of query #10 - test exact cache hit",
+      "duplicate_of": "10"
+    },
+    {
+      "id": "35",
+      "category": "exact_duplicate",
+      "prompt": "What is the difference between a stack and a queue data structure?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "EXACT DUPLICATE of query #16 - test exact cache hit",
+      "duplicate_of": "16"
+    },
+    {
+      "id": "36",
+      "category": "semantic_variation",
+      "prompt": "What's the result of adding two and two?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Semantic variation of query #1 - test semantic cache",
+      "similar_to": "1"
+    },
+    {
+      "id": "37",
+      "category": "semantic_variation",
+      "prompt": "Tell me the capital city of France.",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Semantic variation of query #2 - test semantic cache",
+      "similar_to": "2"
+    },
+    {
+      "id": "38",
+      "category": "semantic_variation",
+      "prompt": "Can you explain how indexing helps database queries run faster?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Semantic variation of query #15 - test semantic cache",
+      "similar_to": "15"
+    },
+    {
+      "id": "39",
+      "category": "semantic_variation",
+      "prompt": "Describe Python programming language briefly.",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Semantic variation of query #10 - test semantic cache",
+      "similar_to": "10"
+    },
+    {
+      "id": "40",
+      "category": "semantic_variation",
+      "prompt": "Compare stack and queue - what are the main differences?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Semantic variation of query #16 - test semantic cache",
+      "similar_to": "16"
+    },
+    {
+      "id": "41",
+      "category": "long_query",
+      "prompt": "I am working on a complex software project that involves building a web application using React for the frontend and Node.js with Express for the backend. The application needs to handle user authentication with OAuth 2.0, store data in PostgreSQL with Redis caching, and deploy to AWS using Docker containers managed by Kubernetes. I need help understanding how to structure the project, set up the development environment, configure the CI/CD pipeline using GitHub Actions, implement proper error handling and logging, set up monitoring with Prometheus and Grafana, and ensure security best practices are followed throughout the development lifecycle. Can you provide a comprehensive guide covering all these aspects?",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Long query (600+ chars) - test LLMLingua compression",
+      "char_count": 763
+    },
+    {
+      "id": "42",
+      "category": "long_query",
+      "prompt": "We are designing a machine learning pipeline for a recommendation system that needs to process millions of user interactions daily. The system should include data ingestion from multiple sources including Kafka streams and batch files from S3, feature engineering using Spark, model training with TensorFlow or PyTorch, model serving with low latency requirements under 50ms, A/B testing framework for comparing model versions, and comprehensive monitoring of model performance including drift detection. The infrastructure should be cloud-native and cost-effective. Please explain the architecture, technology choices, and implementation considerations for each component of this system.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Long query (650+ chars) - test LLMLingua compression",
+      "char_count": 729
+    },
+    {
+      "id": "43",
+      "category": "long_query",
+      "prompt": "I need to understand the complete process of setting up a production-ready Kubernetes cluster on AWS using EKS. This includes configuring the VPC with proper networking, setting up IAM roles and policies for least privilege access, configuring node groups with appropriate instance types, implementing cluster autoscaling, setting up ingress controllers with SSL termination, configuring persistent storage with EBS and EFS, implementing network policies for pod-to-pod communication security, setting up monitoring with CloudWatch and third-party tools, implementing centralized logging with FluentBit and Elasticsearch, and establishing backup and disaster recovery procedures. Please provide step-by-step guidance.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Long query (700+ chars) - test LLMLingua compression",
+      "char_count": 775
+    },
+    {
+      "id": "44",
+      "category": "long_query",
+      "prompt": "Our company is migrating from a monolithic application to a microservices architecture. The current system is a large Java application with an Oracle database, handling e-commerce operations including product catalog, inventory management, order processing, payment handling, and customer management. We need to decompose this into independent services while maintaining data consistency, implement an API gateway for routing and rate limiting, set up service mesh for inter-service communication, migrate from Oracle to appropriate databases for each service (considering PostgreSQL, MongoDB, and Redis), and ensure zero-downtime deployment capabilities. What is the recommended approach for this migration including timeline, risks, and mitigation strategies?",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Long query (750+ chars) - test LLMLingua compression",
+      "char_count": 811
+    },
+    {
+      "id": "45",
+      "category": "long_query",
+      "prompt": "I am researching natural language processing techniques for building a conversational AI system. The system needs to understand user intent from free-form text input, extract named entities and their relationships, maintain conversation context across multiple turns, generate natural and contextually appropriate responses, handle multiple languages with proper localization, and learn from user feedback to improve over time. I would like to understand the current state-of-the-art approaches including transformer-based models like BERT and GPT, fine-tuning strategies for domain-specific applications, evaluation metrics for conversation quality, and deployment considerations for production systems with high availability requirements. Please provide a comprehensive technical overview.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Long query (780+ chars) - test LLMLingua compression",
+      "char_count": 852
+    },
+    {
+      "id": "46",
+      "category": "mixed",
+      "prompt": "What is 2+2?",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Third exact duplicate of #1 - validate cache persistence",
+      "duplicate_of": "1"
+    },
+    {
+      "id": "47",
+      "category": "mixed",
+      "prompt": "Write a haiku about programming.",
+      "expected_complexity": "simple",
+      "expected_strategy": "cheap",
+      "purpose": "Creative simple task - test creative routing"
+    },
+    {
+      "id": "48",
+      "category": "mixed",
+      "prompt": "Explain the trade-offs between consistency and availability in distributed systems, with specific examples of systems that prioritize each.",
+      "expected_complexity": "complex",
+      "expected_strategy": "premium",
+      "purpose": "Complex but medium-length - test complexity detection"
+    },
+    {
+      "id": "49",
+      "category": "mixed",
+      "prompt": "List 5 programming languages and their primary use cases.",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "List with explanation - balanced complexity"
+    },
+    {
+      "id": "50",
+      "category": "mixed",
+      "prompt": "What is machine learning and how does it differ from traditional programming?",
+      "expected_complexity": "medium",
+      "expected_strategy": "balanced",
+      "purpose": "Final query - standard explanation question"
+    }
+  ]
+}
+

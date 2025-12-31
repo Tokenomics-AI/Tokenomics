@@ -288,29 +288,47 @@ result = platform.query(
 
 ## Benchmarks
 
-We provide a rigorous cost benchmark comparing **BASELINE** (no optimization) vs **TOKENOMICS** (full pipeline).
+We provide rigorous cost benchmarks comparing **BASELINE** (no optimization) vs **TOKENOMICS** (full pipeline).
 
-### Latest Benchmark Results
+### Synthetic-50 Benchmark (Decision Accuracy Workload)
+
+| Metric | Value |
+|--------|-------|
+| **Mean Cost Savings** | **90.7%** |
+| Total Baseline Cost | $0.217602 |
+| Total Tokenomics Cost | $0.013989 |
+| Cache Hit Rate | 20% |
+| Exact Duplicate Hit Rate | 100% |
+| Semantic Variation Hit Rate | 80% |
+
+📄 **Full Report:** [BENCHMARK_COST_RESULTS_SYNTHETIC_50.md](BENCHMARK_COST_RESULTS_SYNTHETIC_50.md)
+
+### 10-Prompt Quick Benchmark
 
 | Metric | Value |
 |--------|-------|
 | **Mean Cost Savings** | **85.5%** |
 | Baseline Cost (10 prompts) | $0.037800 |
 | Tokenomics Cost (10 prompts) | $0.001836 |
-| Total Saved | $0.035964 |
-| Cache Hit Rate (cold) | 0% |
 
-**Methodology:**
-- Baseline: Cache disabled, no compression, no routing, fixed model (`gpt-4o`)
-- Tokenomics: Full pipeline enabled, cache starts cold
-- Quality check: Minimum output length validation
+📄 **Full Report:** [BENCHMARK_COST_RESULTS.md](BENCHMARK_COST_RESULTS.md)
 
-📄 **Full Benchmark Report:** [BENCHMARK_COST_RESULTS.md](BENCHMARK_COST_RESULTS.md)
+### Methodology
+
+- **BASELINE**: Cache completely disabled, no compression, no routing, fixed `gpt-4o` model
+- **TOKENOMICS**: Full pipeline enabled, cache starts cold (empty), warms across prompts
+- **Quality check**: Minimum output length validation
 
 ### Run Your Own Benchmark
 
 ```bash
-# Cold pass (cache empty)
+# 50-query synthetic benchmark (with breakdown analysis)
+python scripts/run_cost_benchmark.py \
+    --workload benchmarks/synthetic_accuracy_50.json \
+    --output BENCHMARK_COST_RESULTS_SYNTHETIC_50.md \
+    --include_breakdowns
+
+# 10-query quick benchmark
 python scripts/run_cost_benchmark.py \
     --workload benchmarks/workloads_v0.json \
     --output BENCHMARK_COST_RESULTS.md

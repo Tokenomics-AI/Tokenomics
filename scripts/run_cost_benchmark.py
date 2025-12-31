@@ -110,6 +110,10 @@ class PromptResult:
     quality_score: float = 1.0
     quality_pass: bool = True
     quality_check_type: str = "none"
+    
+    # Expected values from workload (for breakdown analysis)
+    expected_complexity: str = ""
+    expected_strategy: str = ""
 
 
 @dataclass
@@ -378,6 +382,8 @@ def run_single_prompt(
     prompt_id = prompt_data["id"]
     category = prompt_data["category"]
     prompt = prompt_data["prompt"]
+    expected_complexity = prompt_data.get("expected_complexity", "")
+    expected_strategy = prompt_data.get("expected_strategy", "")
     
     print(f"  Running {prompt_id}...", end=" ", flush=True)
     
@@ -385,6 +391,8 @@ def run_single_prompt(
         prompt_id=prompt_id,
         category=category,
         prompt=prompt,
+        expected_complexity=expected_complexity,
+        expected_strategy=expected_strategy,
     )
     
     # Run baseline
@@ -515,6 +523,126 @@ def compute_summary(results: List[PromptResult]) -> BenchmarkSummary:
 
 
 # ============================================================================
+# BREAKDOWN ANALYSIS
+# ============================================================================
+
+def compute_complexity_breakdown(results: List[PromptResult]) -> Dict[str, Dict[str, Any]]:
+    """Compute breakdown by complexity bucket."""
+    successful = [r for r in results if r.baseline_error is None and r.tokenomics_error is None]
+    
+    # Group by complexity (use expected_complexity if available, else predicted)
+    buckets: Dict[str, List[PromptResult]] = {}
+    for r in successful:
+        complexity = r.expected_complexity if r.expected_complexity else r.complexity_label
+        if not complexity:
+            complexity = "unknown"
+        if complexity not in buckets:
+            buckets[complexity] = []
+        buckets[complexity].append(r)
+    
+    breakdown = {}
+    for complexity, items in sorted(buckets.items()):
+        if not items:
+            continue
+        
+        cost_savings = [r.cost_savings_pct for r in items if r.baseline_cost_usd > 0]
+        token_savings = [r.token_savings_pct for r in items if r.baseline_total_tokens > 0]
+        
+        breakdown[complexity] = {
+            "count": len(items),
+            "median_cost_savings_pct": statistics.median(cost_savings) if cost_savings else 0.0,
+            "median_token_savings_pct": statistics.median(token_savings) if token_savings else 0.0,
+            "cache_hit_count": sum(1 for r in items if r.cache_hit),
+            "cache_hit_rate": (sum(1 for r in items if r.cache_hit) / len(items)) * 100,
+            "escalation_count": sum(1 for r in items if r.escalated),
+            "escalation_rate": (sum(1 for r in items if r.escalated) / len(items)) * 100,
+        }
+    
+    return breakdown
+
+
+def compute_routing_breakdown(results: List[PromptResult]) -> Dict[str, Dict[str, Any]]:
+    """Compute breakdown by routing outcome."""
+    successful = [r for r in results if r.baseline_error is None and r.tokenomics_error is None]
+    
+    # Group by cheaper model used vs baseline model
+    cheaper_model_results = [r for r in successful if r.tokenomics_model in ["gpt-4o-mini", "gpt-3.5-turbo"]]
+    baseline_model_results = [r for r in successful if r.tokenomics_model == BASELINE_MODEL]
+    
+    # Group by escalated vs not
+    escalated_results = [r for r in successful if r.escalated]
+    not_escalated_results = [r for r in successful if not r.escalated]
+    
+    breakdown = {}
+    
+    # Cheaper model usage
+    if cheaper_model_results:
+        cost_savings = [r.cost_savings_pct for r in cheaper_model_results if r.baseline_cost_usd > 0]
+        breakdown["cheaper_model"] = {
+            "count": len(cheaper_model_results),
+            "percentage": (len(cheaper_model_results) / len(successful)) * 100 if successful else 0,
+            "median_cost_savings_pct": statistics.median(cost_savings) if cost_savings else 0.0,
+        }
+    
+    # Baseline model usage
+    if baseline_model_results:
+        cost_savings = [r.cost_savings_pct for r in baseline_model_results if r.baseline_cost_usd > 0]
+        breakdown["baseline_model"] = {
+            "count": len(baseline_model_results),
+            "percentage": (len(baseline_model_results) / len(successful)) * 100 if successful else 0,
+            "median_cost_savings_pct": statistics.median(cost_savings) if cost_savings else 0.0,
+        }
+    
+    # Escalated
+    if escalated_results:
+        cost_savings = [r.cost_savings_pct for r in escalated_results if r.baseline_cost_usd > 0]
+        breakdown["escalated"] = {
+            "count": len(escalated_results),
+            "percentage": (len(escalated_results) / len(successful)) * 100 if successful else 0,
+            "median_cost_savings_pct": statistics.median(cost_savings) if cost_savings else 0.0,
+        }
+    
+    # Not escalated
+    if not_escalated_results:
+        cost_savings = [r.cost_savings_pct for r in not_escalated_results if r.baseline_cost_usd > 0]
+        breakdown["not_escalated"] = {
+            "count": len(not_escalated_results),
+            "percentage": (len(not_escalated_results) / len(successful)) * 100 if successful else 0,
+            "median_cost_savings_pct": statistics.median(cost_savings) if cost_savings else 0.0,
+        }
+    
+    return breakdown
+
+
+def compute_category_breakdown(results: List[PromptResult]) -> Dict[str, Dict[str, Any]]:
+    """Compute breakdown by workload category."""
+    successful = [r for r in results if r.baseline_error is None and r.tokenomics_error is None]
+    
+    buckets: Dict[str, List[PromptResult]] = {}
+    for r in successful:
+        category = r.category if r.category else "unknown"
+        if category not in buckets:
+            buckets[category] = []
+        buckets[category].append(r)
+    
+    breakdown = {}
+    for category, items in sorted(buckets.items()):
+        if not items:
+            continue
+        
+        cost_savings = [r.cost_savings_pct for r in items if r.baseline_cost_usd > 0]
+        
+        breakdown[category] = {
+            "count": len(items),
+            "median_cost_savings_pct": statistics.median(cost_savings) if cost_savings else 0.0,
+            "cache_hit_count": sum(1 for r in items if r.cache_hit),
+            "cache_hit_rate": (sum(1 for r in items if r.cache_hit) / len(items)) * 100,
+        }
+    
+    return breakdown
+
+
+# ============================================================================
 # MARKDOWN REPORT GENERATION
 # ============================================================================
 
@@ -539,6 +667,8 @@ def generate_markdown_report(
     summary: BenchmarkSummary,
     config: Dict[str, Any],
     pass_name: str = "",
+    include_breakdowns: bool = False,
+    workload_description: str = "",
 ) -> str:
     """Generate markdown report."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -546,7 +676,11 @@ def generate_markdown_report(
     
     title_suffix = f" ({pass_name.upper()} PASS)" if pass_name else ""
     
-    md = f"""# Tokenomics Cost Benchmark Results{title_suffix}
+    # Determine title based on workload
+    is_synthetic = "synthetic" in config.get("workload", "").lower()
+    title = "Cost Benchmark (Synthetic-50)" if is_synthetic else "Tokenomics Cost Benchmark Results"
+    
+    md = f"""# {title}{title_suffix}
 
 **Generated:** {timestamp}  
 **Git Commit:** `{git_hash}`
@@ -566,17 +700,33 @@ def generate_markdown_report(
 | Compression | Disabled (baseline) / Enabled (tokenomics) |
 | Routing | Disabled (baseline) / Bandit UCB (tokenomics) |
 
+**Cache Rules:**
+- BASELINE: Cache completely disabled (no read, no write)
+- TOKENOMICS: Cache starts empty (cold), warms across prompts
+
 ---
 
 ## Workload Summary
-
-| Category | Count |
+"""
+    
+    # Add workload description if provided
+    if workload_description:
+        md += f"\n{workload_description}\n\n"
+    
+    # Count categories dynamically
+    category_counts = {}
+    for r in results:
+        cat = r.category if r.category else "unknown"
+        category_counts[cat] = category_counts.get(cat, 0) + 1
+    
+    md += """| Category | Count |
 |----------|-------|
-| Simple | {sum(1 for r in results if r.category == 'simple')} |
-| Medium | {sum(1 for r in results if r.category == 'medium')} |
-| Complex | {sum(1 for r in results if r.category == 'complex')} |
-| **Total** | **{len(results)}** |
-
+"""
+    for cat, count in sorted(category_counts.items()):
+        md += f"| {cat} | {count} |\n"
+    md += f"| **Total** | **{len(results)}** |\n"
+    
+    md += f"""
 ---
 
 ## Aggregate Summary
@@ -620,6 +770,59 @@ def generate_markdown_report(
 | Quality Failures | {summary.quality_failures} |
 | Mean Latency Delta | {summary.mean_latency_delta_ms:.0f}ms |
 
+"""
+    
+    # Add breakdown sections if requested
+    if include_breakdowns:
+        # Complexity breakdown
+        complexity_breakdown = compute_complexity_breakdown(results)
+        if complexity_breakdown:
+            md += """---
+
+## Breakdown by Complexity
+
+| Complexity | Count | Median Cost Savings | Cache Hit Rate | Escalation Rate |
+|------------|-------|---------------------|----------------|-----------------|
+"""
+            for complexity, stats in complexity_breakdown.items():
+                md += f"| {complexity} | {stats['count']} | {stats['median_cost_savings_pct']:.1f}% | {stats['cache_hit_rate']:.1f}% | {stats['escalation_rate']:.1f}% |\n"
+        
+        # Category breakdown
+        category_breakdown = compute_category_breakdown(results)
+        if category_breakdown:
+            md += """
+---
+
+## Breakdown by Category
+
+| Category | Count | Median Cost Savings | Cache Hit Rate |
+|----------|-------|---------------------|----------------|
+"""
+            for category, stats in category_breakdown.items():
+                md += f"| {category} | {stats['count']} | {stats['median_cost_savings_pct']:.1f}% | {stats['cache_hit_rate']:.1f}% |\n"
+        
+        # Routing breakdown
+        routing_breakdown = compute_routing_breakdown(results)
+        if routing_breakdown:
+            md += """
+---
+
+## Breakdown by Routing Outcome
+
+| Outcome | Count | Percentage | Median Cost Savings |
+|---------|-------|------------|---------------------|
+"""
+            outcome_labels = {
+                "cheaper_model": "Cheaper Model Used",
+                "baseline_model": "Baseline Model Used",
+                "escalated": "Escalated",
+                "not_escalated": "Not Escalated",
+            }
+            for outcome, stats in routing_breakdown.items():
+                label = outcome_labels.get(outcome, outcome)
+                md += f"| {label} | {stats['count']} | {stats['percentage']:.1f}% | {stats['median_cost_savings_pct']:.1f}% |\n"
+    
+    md += """
 ---
 
 ## Per-Prompt Results
@@ -633,6 +836,9 @@ def generate_markdown_report(
         cache_str = r.cache_type if r.cache_hit else "miss"
         md += f"| {r.prompt_id} | {r.category} | {r.baseline_total_tokens} | {r.tokenomics_total_tokens} | {r.token_savings_pct:.1f}% | ${r.baseline_cost_usd:.6f} | ${r.tokenomics_cost_usd:.6f} | {r.cost_savings_pct:.1f}% | {cache_str} | {r.strategy_selected or 'N/A'} {error_marker}|\n"
     
+    # Determine if synthetic workload
+    is_synthetic = "synthetic" in config.get("workload", "").lower()
+    
     md += f"""
 ---
 
@@ -642,13 +848,15 @@ def generate_markdown_report(
 
 2. **Cache Cold Start**: Tokenomics cache starts empty at benchmark start. The cache is NOT cleared between prompts, allowing natural cache warming.
 
-3. **Workload Dependence**: Results are specific to this workload ({len(results)} prompts). Production savings depend on actual query patterns, repetition, and complexity distribution.
+3. **Workload Dependence**: Results are specific to this workload ({len(results)} prompts). {'This is a synthetic workload, not a production distribution. ' if is_synthetic else ''}Production savings depend on actual query patterns, repetition, and complexity distribution.
 
-4. **Quality Metric**: Quality is measured using `{config.get('quality_check', 'minlen')}` check. This is a proxy metric, not a comprehensive quality evaluation.
+4. **Cache Benefits**: {'Caching benefits may be limited if prompts are not repetitive. This synthetic workload includes intentional duplicates to test caching. ' if is_synthetic else ''}Cache hit rates depend on query similarity and repetition patterns.
 
-5. **Latency Variance**: Latency measurements include API round-trip time and may vary based on network conditions and API load.
+5. **Quality Metric**: Quality is measured using `{config.get('quality_check', 'minlen')}` check. This is a proxy metric, not a comprehensive quality evaluation.
 
-6. **Model Pricing**: Costs are estimated based on OpenAI's published pricing as of the benchmark date. Actual costs may vary.
+6. **Latency Variance**: Latency measurements include API round-trip time and may vary based on network conditions and API load.
+
+7. **Model Pricing**: Costs are estimated based on OpenAI's published pricing as of the benchmark date. Actual costs may vary.
 
 ---
 
@@ -663,13 +871,16 @@ source venv/bin/activate
 
 # Run benchmark
 python scripts/run_cost_benchmark.py \\
-    --workload benchmarks/workloads_v0.json \\
-    --output BENCHMARK_COST_RESULTS.md \\
-    --quality_check minlen \\
-    --seed {config.get('seed', 42)}
+    --workload {config.get('workload', 'benchmarks/workloads_v0.json')} \\
+    --output {config.get('output', 'BENCHMARK_COST_RESULTS.md')} \\
+    --quality_check {config.get('quality_check', 'minlen')} \\
+    --seed {config.get('seed', 42)}{' --include_breakdowns' if config.get('include_breakdowns') else ''}
 ```
 
-Expected runtime: ~{len(results) * 5} seconds (varies with API latency)
+**Required Environment Variables:**
+- `OPENAI_API_KEY`: Valid OpenAI API key
+
+**Expected Runtime:** ~{len(results) * 5} seconds (varies with API latency)
 
 ---
 
@@ -723,6 +934,11 @@ def main():
         action="store_true",
         help="Run two passes: cold (empty cache) then warm (populated cache)",
     )
+    parser.add_argument(
+        "--include_breakdowns",
+        action="store_true",
+        help="Include breakdown analysis by complexity bucket and routing outcome",
+    )
     
     args = parser.parse_args()
     
@@ -745,6 +961,7 @@ def main():
     print(f"Workload: {args.workload} ({len(prompts)} prompts)")
     print(f"Quality Check: {args.quality_check}")
     print(f"Two-Pass Mode: {args.two_pass}")
+    print(f"Include Breakdowns: {args.include_breakdowns}")
     print(f"{'='*60}\n")
     
     # Check API key
@@ -764,10 +981,15 @@ def main():
     
     config = {
         "workload": args.workload,
+        "output": args.output,
         "quality_check": args.quality_check,
         "seed": args.seed,
         "two_pass": args.two_pass,
+        "include_breakdowns": args.include_breakdowns,
     }
+    
+    # Get workload description
+    workload_description = workload.get("description", "")
     
     all_results = []
     
@@ -793,6 +1015,18 @@ def main():
     print(f"Total Tokenomics Cost:  ${cold_summary.total_tokenomics_cost:.6f}")
     print(f"Total Savings:          ${cold_summary.total_cost_savings:.6f} ({cold_summary.mean_cost_savings_pct:.1f}%)")
     print(f"Cache Hit Rate:         {cold_summary.cache_hit_rate:.1f}%")
+    
+    # Print breakdowns if requested
+    if args.include_breakdowns:
+        print(f"\n--- Breakdown by Complexity ---")
+        complexity_breakdown = compute_complexity_breakdown(cold_results)
+        for complexity, stats in complexity_breakdown.items():
+            print(f"  {complexity}: {stats['count']} prompts, {stats['median_cost_savings_pct']:.1f}% median savings, {stats['cache_hit_rate']:.1f}% cache hit")
+        
+        print(f"\n--- Breakdown by Category ---")
+        category_breakdown = compute_category_breakdown(cold_results)
+        for category, stats in category_breakdown.items():
+            print(f"  {category}: {stats['count']} prompts, {stats['median_cost_savings_pct']:.1f}% median savings, {stats['cache_hit_rate']:.1f}% cache hit")
     
     all_results.extend(cold_results)
     
@@ -828,11 +1062,25 @@ def main():
     print(f"{'='*60}\n")
     
     # Use cold results for main report (most conservative)
-    report = generate_markdown_report(cold_results, cold_summary, config, pass_name="cold" if args.two_pass else "")
+    report = generate_markdown_report(
+        cold_results, 
+        cold_summary, 
+        config, 
+        pass_name="cold" if args.two_pass else "",
+        include_breakdowns=args.include_breakdowns,
+        workload_description=workload_description,
+    )
     
     if args.two_pass and warm_summary:
         # Append warm pass section
-        warm_report = generate_markdown_report(warm_results, warm_summary, config, pass_name="warm")
+        warm_report = generate_markdown_report(
+            warm_results, 
+            warm_summary, 
+            config, 
+            pass_name="warm",
+            include_breakdowns=args.include_breakdowns,
+            workload_description=workload_description,
+        )
         report += f"\n\n---\n\n{warm_report}"
     
     # Write report
